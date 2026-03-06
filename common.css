@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Fira+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f5f0e8;
+  color: #2c2c2c;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(ja) body,
+:lang(ja) {
+  font-family: 'Noto Serif JP', 'Yu Mincho', serif;
+  line-height: 2.0;
+}
+
+:lang(en) body,
+:lang(en) {
+  font-family: 'Libre Baskerville', 'Georgia', serif;
+  line-height: 1.9;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+h1 {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #1a5276;
+}
+
+:lang(ja) h1 {
+  font-size: 1.8em;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+:lang(en) h1 {
+  font-size: 1.7em;
+  line-height: 1.4;
+}
+
+p {
+  margin-bottom: 0.6em;
+}
+
+:lang(ja) p {
+  text-indent: 1em;
+}
+
+:lang(en) p {
+  text-indent: 1.5em;
+}
+
+p.no-indent {
+  text-indent: 0;
+}
+
+.section-break {
+  height: 2em;
+}
+
+.dialogue {
+  text-indent: 0;
+  margin-bottom: 0.3em;
+}
+
+strong {
+  font-weight: 700;
+  color: #1a5276;
+}
+
+a {
+  color: #4c97ff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(76, 151, 255, 0.3);
+}
+
+a:hover {
+  color: #1a5276;
+  border-bottom-color: #1a5276;
+}
+
+/* Blockquote */
+blockquote {
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  background: rgba(26, 82, 118, 0.06);
+  border-left: 4px solid #1a5276;
+  font-style: italic;
+  text-indent: 0;
+}
+
+blockquote p {
+  text-indent: 0;
+  margin-bottom: 0;
+}
+
+/* Code blocks */
+pre {
+  margin: 1.5em 0;
+  padding: 1.2em 1.5em;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'Fira Mono', 'Menlo', monospace;
+  font-size: 0.88em;
+  line-height: 1.7;
+}
+
+pre code {
+  font-family: inherit;
+}
+
+/* Syntax highlighting */
+.kw { color: #cba6f7; }
+.fn { color: #89b4fa; }
+.op { color: #89dceb; }
+.num { color: #fab387; }
+.str { color: #a6e3a1; }
+.cm { color: #6c7086; font-style: italic; }
+
+/* Inline code */
+code {
+  font-family: 'Fira Mono', 'Menlo', monospace;
+  font-size: 0.9em;
+  background: rgba(0,0,0,0.06);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 32px 16px 60px;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  body {
+    font-size: 16px;
+  }
+  :lang(ja) body,
+  :lang(ja) {
+    line-height: 1.9;
+  }
+  :lang(en) body,
+  :lang(en) {
+    line-height: 1.8;
+  }
+  pre {
+    font-size: 0.82em;
+    padding: 1em;
+  }
+}
