@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青いブロックと海のひみつ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif JP', 'Yu Mincho', '游明朝', serif;
+    background: #f5f0e8;
+    color: #2c2c2c;
+    line-height: 2.0;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+    letter-spacing: 0.08em;
+    color: #1a5276;
+    line-height: 1.5;
+  }
+
+  p {
+    text-indent: 1em;
+    margin-bottom: 0.6em;
+  }
+
+  p.no-indent {
+    text-indent: 0;
+  }
+
+  .section-break {
+    height: 2em;
+  }
+
+  /* Scratch block styles */
+  .scratch-blocks {
+    margin: 1.2em 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .scratch-block {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.92em;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.6;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    width: fit-content;
+    position: relative;
+  }
+
+  /* Event blocks - yellow/gold */
+  .block-event {
+    background: #c79400;
+    border-bottom: 3px solid #a67c00;
+    border-radius: 6px 6px 6px 6px;
+    padding-top: 10px;
+  }
+  .block-event::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 12px;
+    width: 24px;
+    height: 6px;
+    background: #c79400;
+    border-radius: 3px 3px 0 0;
+  }
+
+  /* Control blocks - orange */
+  .block-control {
+    background: #e5a100;
+    border-bottom: 3px solid #c48a00;
+  }
+
+  /* Motion blocks - blue */
+  .block-motion {
+    background: #4c97ff;
+    border-bottom: 3px solid #3d7ad8;
+  }
+
+  /* Variable blocks - red/orange */
+  .block-variable {
+    background: #ff8c1a;
+    border-bottom: 3px solid #db7500;
+  }
+
+  /* Message/broadcast blocks - brown/dark yellow */
+  .block-message {
+    background: #c79400;
+    border-bottom: 3px solid #a67c00;
+  }
+
+  /* Sensing blocks - light blue */
+  .block-sensing {
+    background: #5cb1d6;
+    border-bottom: 3px solid #4a96b8;
+  }
+
+  /* Operator blocks - green */
+  .block-operator {
+    background: #59c059;
+    border-bottom: 3px solid #46a046;
+  }
+
+  /* Looks blocks - purple */
+  .block-looks {
+    background: #9966ff;
+    border-bottom: 3px solid #7e4fd6;
+  }
+
+  /* Inline value in block */
+  .block-value {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 0 8px;
+    font-weight: 400;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  /* Condition shape */
+  .block-condition {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 0 8px;
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0 50%);
+    min-width: 40px;
+  }
+
+  /* C-shaped block indent */
+  .scratch-blocks .indent {
+    margin-left: 24px;
+  }
+
+  .scratch-blocks .indent-2 {
+    margin-left: 48px;
+  }
+
+  /* Character label */
+  .char-label {
+    font-weight: 700;
+    display: block;
+    margin: 0.8em 0 0.2em;
+    text-indent: 0;
+    font-size: 0.95em;
+    color: #555;
+  }
+
+  /* Dialogue */
+  .dialogue {
+    text-indent: 0;
+    margin-bottom: 0.3em;
+  }
+
+  /* Illustration figure */
+  .illustration {
+    margin: 2em auto;
+    text-align: center;
+  }
+
+  .illustration img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .illustration figcaption {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .illustration figcaption a {
+    display: inline-block;
+    margin-top: 4px;
+    font-style: normal;
+    font-size: 0.95em;
+    color: #4c97ff;
+    text-decoration: none;
+    border-bottom: 1px dashed #4c97ff;
+  }
+
+  .illustration figcaption a:hover {
+    color: #1a5276;
+    border-bottom-color: #1a5276;
+  }
+
+  /* Sound effect */
+  .sfx {
+    text-align: center;
+    font-size: 1.1em;
+    letter-spacing: 0.15em;
+    margin: 1em 0;
+    text-indent: 0;
+  }
+
+  /* Status messages on monitor */
+  .monitor-msg {
+    text-indent: 0;
+    margin-bottom: 0.2em;
+    padding-left: 1em;
+  }
+
+  .monitor-msg::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #e74c3c;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    box-shadow: 0 0 4px #e74c3c;
+  }
+
+  /* Flow status messages */
+  .flow-msg {
+    text-indent: 0;
+    padding-left: 2em;
+    margin-bottom: 0.2em;
+    color: #555;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 32px 16px 60px;
+    }
+    h1 {
+      font-size: 1.4em;
+    }
+    body {
+      font-size: 16px;
+      line-height: 1.9;
+    }
+    .scratch-block {
+      font-size: 0.85em;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>青いブロックと海のひみつ</h1>
+
+<p class="no-indent">　海の近くの町に、ソウタという青年が住んでいました。</p>
+
+<p class="no-indent">　ソウタは子どものころ、プログラミングが大好きでした。とくに、Scratchというソフトがお気に入りでした。画面の中のねこを走らせたり、ジャンプさせたり、星を集めるゲームを作ったりして、何時間でも遊べました。</p>
+
+<p class="no-indent">　黄色い「はじめ」のブロック。<br>
+　オレンジ色の「ずっと」のブロック。<br>
+　青い「10歩動かす」のブロック。<br>
+　そして、何かが起きたときに合図を送る「メッセージを送る」のブロック。</p>
+
+<p class="no-indent">　ソウタは、それらをつなげて、つなげて、つなげて、<br>
+　画面の中のねこを動かしていました。</p>
+
+<p class="no-indent">　たとえば、こんなふうです。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">旗が押されたとき</span>
+  <span class="scratch-block block-control">ずっと</span>
+  <span class="scratch-block block-motion indent">10歩動かす</span>
+  <span class="scratch-block block-motion indent">もし端についたなら、跳ね返る</span>
+</div>
+
+<p class="no-indent">　すると、ねこは画面の上を、右へ、左へ、たのしそうに走ります。</p>
+
+<p class="no-indent">　でも、ときどき、うまくいかないこともありました。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">旗が押されたとき</span>
+  <span class="scratch-block block-control">ずっと</span>
+  <span class="scratch-block block-control indent">もし <span class="block-condition">「スタート」を受け取った</span> なら</span>
+  <span class="scratch-block block-motion indent-2">3歩動かす</span>
+</div>
+
+<p class="no-indent">　こんなふうに作ってしまうと、いくら旗を押しても、ねこは動きません。<br>
+　「スタート」の合図が送られていないからです。</p>
+
+<p class="no-indent">　また、こんなこともありました。</p>
+
+<p class="char-label">ねこ1：</p>
+<div class="scratch-blocks">
+  <span class="scratch-block block-message">「走って」を送る</span>
+</div>
+
+<p class="char-label">ねこ2：</p>
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">「走って」を受け取ったとき</span>
+  <span class="scratch-block block-message">「わかった」を送る</span>
+</div>
+
+<p class="char-label">ねこ1：</p>
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">「わかった」を受け取ったとき</span>
+  <span class="scratch-block block-message">「走って」を送る</span>
+</div>
+
+<p class="no-indent">　こうすると、ねこたちはいつまでも合図を送り合って、<br>
+　話はつづくのに、なかなか前へ進みません。</p>
+
+<p class="no-indent">　ソウタは、そういうとき、じっとブロックを見ました。</p>
+
+<p class="no-indent">　どのブロックが、はじまりなのか。<br>
+　どこで、だれが、だれに合図を送っているのか。<br>
+　どこで待っていて、どこで何度もくり返しているのか。</p>
+
+<p class="no-indent">　そうやって考えるのが、ソウタは好きでした。</p>
+
+<div class="section-break"></div>
+
+<p class="no-indent">　大人になったソウタは、町のいろいろな機械やコンピューターの困りごとを直す仕事をしていました。むずかしい機械でも、ソウタには小さなころのScratchのブロックみたいに見えることがあったのです。</p>
+
+<p class="no-indent">　ある夏の朝のことです。</p>
+
+<p class="no-indent">　ソウタのもとに、大あわての連絡が入りました。</p>
+
+<p class="dialogue">「大変です。海辺の発電所がうまく動いていません！」</p>
+
+<p class="no-indent">　その発電所は、海の満ち引きの力をつかって電気を作る、大きくて立派な発電所でした。町のあかりも、学校のクーラーも、夜の信号も、その発電所の電気に助けられています。</p>
+
+<p class="no-indent">　ソウタはすぐに発電所へ向かいました。</p>
+
+<p class="no-indent">　発電所の中では、大人たちがみんな困った顔をしていました。大きなモニターには赤い文字がいくつも光っています。</p>
+
+<p class="monitor-msg">出力低下</p>
+<p class="monitor-msg">調整中</p>
+<p class="monitor-msg">確認待ち</p>
+
+<p class="no-indent">　所長さんが言いました。</p>
+
+<p class="dialogue">「機械はこわれていないんです。でも、なぜかみんなうまく動いてくれないんですよ。考えこんでしまったみたいで……」</p>
+
+<p class="no-indent">　ソウタは、モニターをじっと見ました。<br>
+　たしかに、機械は止まっていません。でも、少し動いては止まり、また少し動いては迷っているようでした。</p>
+
+<p class="no-indent">　まるで、<br>
+　みんなが『あなたからどうぞ』<br>
+　みんなが『いえいえ、そちらこそ』<br>
+　とゆずり合って、だれも先へ進めないみたいでした。</p>
+
+<p class="no-indent">　ソウタは小さくうなずきました。</p>
+
+<p class="dialogue">「わかったかもしれません」</p>
+
+<p class="dialogue">「ほんとうですか！」と、所長さん。</p>
+
+<p class="no-indent">　けれどソウタは、白い紙を広げませんでした。<br>
+　かわりに監視卓の横にあった補助端末を借りて、そこにScratchを開きました。</p>
+
+<p class="no-indent">　若い技師さんが目を丸くしました。</p>
+
+<p class="dialogue">「えっ……Scratchですか？」</p>
+
+<p class="dialogue">「はい。いきなり本物の制御をさわる前に、流れだけ取り出して、小さく動かしてみます」</p>
+
+<p class="dialogue">「でも、発電所ですよ？」</p>
+
+<p class="dialogue">「だからです。複雑すぎるものは、そのまま見るとかえって分からなくなります。Scratchで、順番と合図だけ残してみましょう」</p>
+
+<p class="no-indent">　ソウタは、新しいプロジェクトを開きました。<br>
+　白いステージの上に、Scratchのねこが一匹あらわれます。</p>
+
+<p class="no-indent">　まずソウタは、変数をいくつも作りました。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-variable">潮位</span>
+  <span class="scratch-block block-variable">需要</span>
+  <span class="scratch-block block-variable">変化量</span>
+  <span class="scratch-block block-variable">しきい値</span>
+  <span class="scratch-block block-variable">状態</span>
+</div>
+
+<p class="no-indent">　それから、ブロックを一つずつ並べていきます。</p>
+
+<p class="no-indent">　最初の列は、海の変化を表す役です。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">旗が押されたとき</span>
+  <span class="scratch-block block-variable">しきい値 を <span class="block-value">3</span> にする</span>
+  <span class="scratch-block block-variable">潮位 を <span class="block-value">0</span> にする</span>
+  <span class="scratch-block block-control">ずっと</span>
+  <span class="scratch-block block-variable indent">潮位 を <span class="block-value">1</span> ずつ変える</span>
+  <span class="scratch-block block-variable indent">変化量 を <span class="block-value">潮位 mod 5</span> にする</span>
+  <span class="scratch-block block-control indent">もし <span class="block-condition">変化量 &gt; しきい値</span> なら</span>
+  <span class="scratch-block block-message indent-2">「再計算して」を送る</span>
+  <span class="scratch-block block-control indent">でなければ</span>
+  <span class="scratch-block block-variable indent-2">状態 を <span class="block-value">小さな変化なのでそのまま進む</span> にする</span>
+</div>
+
+<p class="dialogue">「ここで、海の様子が少しずつ変わるのを表します」とソウタは言いました。<br>
+「本物はもっと複雑ですが、まずは"変わったら何かが起きる"という骨組みだけで十分です」</p>
+
+<p class="no-indent">　次に、二列目を作ります。<br>
+　合図を受けて、町で使う電気を計算する役目です。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">「再計算して」を受け取ったとき</span>
+  <span class="scratch-block block-variable">状態 を <span class="block-value">需要を再計算中</span> にする</span>
+  <span class="scratch-block block-variable">需要 を <span class="block-value">潮位 + 10</span> にする</span>
+  <span class="scratch-block block-control">0.5 秒待つ</span>
+  <span class="scratch-block block-message">「確認して」を送る</span>
+</div>
+
+<p class="dialogue">「この"0.5秒待つ"も大事なんです」とソウタは言いました。<br>
+「Scratchでも、待つブロックが入ると、流れの見え方が変わります。発電所でも、確認の待ち時間があるせいで、話がややこしくなることがあります」</p>
+
+<p class="no-indent">　そして三列目。<br>
+　安全を見ている役目です。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">「確認して」を受け取ったとき</span>
+  <span class="scratch-block block-variable">状態 を <span class="block-value">安全確認中</span> にする</span>
+  <span class="scratch-block block-control">0.5 秒待つ</span>
+  <span class="scratch-block block-message">「調べて」を送る</span>
+</div>
+
+<p class="no-indent">　四列目。<br>
+　タービンを見にいく役目です。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">「調べて」を受け取ったとき</span>
+  <span class="scratch-block block-variable">状態 を <span class="block-value">タービンを確認して安定値を返す</span> にする</span>
+  <span class="scratch-block block-control">0.5 秒待つ</span>
+  <span class="scratch-block block-variable">状態 を <span class="block-value">安定値を返した</span> にする</span>
+</div>
+
+<p class="no-indent">　若い技師さんは、画面に並ぶブロックを見つめて言いました。</p>
+
+<p class="dialogue">「ほんとうに、発電所の仕事がそのままScratchになってる……」</p>
+
+<p class="dialogue">「ええ。相手が巨大な機械でも、やっていることを小さく分ければ、案外こうなります」</p>
+
+<p class="no-indent">　ソウタは緑の旗を押しました。</p>
+
+<p class="no-indent">　ねこはステージの左で小さく動きながら、画面の上では変数が数字を変えていきます。<br>
+　潮位が変わる。<br>
+　変化量が増える。<br>
+　しきい値を超える。<br>
+　すると「再計算して」が送られる。<br>
+　状態が「需要を再計算中」に変わる。<br>
+　少し待って、「確認して」が送られる。<br>
+　さらに少し待って、「調べて」が送られる。</p>
+
+<p class="no-indent">　そこまでは、よさそうでした。</p>
+
+<p class="no-indent">　けれど、何度か動かしているうちに、ソウタはブロックをもう少し足しました。<br>
+　実際の発電所に近づけるためです。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-variable">「安定値を返した」のあと</span>
+  <span class="scratch-block block-control">もし <span class="block-condition">需要 が 変わった</span> なら</span>
+  <span class="scratch-block block-message indent">「再計算して」を送る</span>
+</div>
+
+<p class="no-indent">　技師さんが言いました。</p>
+
+<p class="dialogue">「それ、また最初に戻りますよね」</p>
+
+<p class="dialogue">「そうです。今の制御に近づけると、そうなるはずなんです」</p>
+
+<figure class="illustration">
+  <img src="img/before-fix-blocks.png" alt="修正前のScratchブロック：フィードバックループあり" loading="lazy">
+  <figcaption>修正前：「調べて」の後に「再計算して」を送り返すフィードバックループ
+    <br><a href="before-fix.sb3" download>before-fix.sb3 をダウンロード</a></figcaption>
+</figure>
+
+<p class="no-indent">　ソウタは、もう一度、旗を押しました。</p>
+
+<p class="no-indent">　すると今度は、</p>
+<p class="flow-msg">「再計算して」</p>
+<p class="flow-msg">「確認して」</p>
+<p class="flow-msg">「調べて」</p>
+<p class="flow-msg">「再計算して」</p>
+<p class="flow-msg">「確認して」</p>
+<p class="flow-msg">「調べて」</p>
+<p class="no-indent">　と、状態がせわしなく切り替わりはじめました。</p>
+
+<p class="no-indent">　ねこは止まっていません。<br>
+　数字も変わっています。<br>
+　でも、どこか同じところをぐるぐる回っているのが見て取れました。</p>
+
+<p class="no-indent">　若い技師さんが、思わず声をあげました。</p>
+
+<p class="dialogue">「あ、これだ！」</p>
+
+<p class="dialogue">「見えましたか」</p>
+
+<p class="dialogue">「はい……。壊れているんじゃない。みんながまじめに確認しすぎて、何度も同じ話を繰り返しているんだ」</p>
+
+<p class="dialogue">「その通りです」とソウタは言いました。<br>
+「Scratchで、キャラ同士が『スタート！』『わかった！』『スタート！』って送り合うのと同じです」</p>
+
+<p class="no-indent">　所長さんも、画面をのぞきこみました。</p>
+
+<p class="dialogue">「この小さなプログラムで、発電所の迷い方が見えるのか」</p>
+
+<p class="dialogue">「はい。しかも、どこを変えればいいかも試せます」</p>
+
+<p class="no-indent">　ソウタは、条件のブロックを一つ差し替えました。</p>
+
+<p class="no-indent">　それまでのブロックは、こうでした。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-control">もし <span class="block-condition">少しでも変化した</span> なら</span>
+  <span class="scratch-block block-message indent">「再計算して」を送る</span>
+</div>
+
+<p class="no-indent">　ソウタはそれを外して、かわりにこう置きました。</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-control">もし <span class="block-condition">変化量 &gt; しきい値</span> なら</span>
+  <span class="scratch-block block-message indent">「再計算して」を送る</span>
+  <span class="scratch-block block-control">でなければ</span>
+  <span class="scratch-block block-variable indent">そのまま更新する</span>
+</div>
+
+<p class="dialogue">「小さな揺れで毎回会議を開くのをやめます」とソウタは言いました。<br>
+「本当に大きく変わったときだけ、みんなで確認するようにするんです」</p>
+
+<figure class="illustration">
+  <img src="img/after-fix-blocks.png" alt="修正後のScratchブロック：フィードバックループなし" loading="lazy">
+  <figcaption>修正後：しきい値による条件分岐で、不要な再計算ループを解消
+    <br><a href="after-fix.sb3" download>after-fix.sb3 をダウンロード</a></figcaption>
+</figure>
+
+<p class="no-indent">　そして、もう一度、旗を押しました。</p>
+
+<p class="no-indent">　潮位が変わる。<br>
+　変化量が動く。<br>
+　小さな変化のときは、そのまま進む。<br>
+　大きな変化のときだけ、「再計算して」が送られる。<br>
+　需要が再計算される。<br>
+　安全が確認される。<br>
+　タービンが調べられる。<br>
+　状態が落ち着く。</p>
+
+<p class="no-indent">　ぐるぐる回っていた流れが、すっと静かになりました。</p>
+
+<p class="no-indent">　若い技師さんは、ほとんど息をするのも忘れたように画面を見つめていました。</p>
+
+<p class="dialogue">「同じブロックなのに、条件をひとつ変えただけで、こんなに……」</p>
+
+<p class="dialogue">「Scratchって、そういうところがありますよね」とソウタ。<br>
+「一つのブロックの置き場所で、世界の動き方が変わるんです」</p>
+
+<div class="section-break"></div>
+
+<p class="no-indent">　若い技師さんは、目を輝かせました。</p>
+
+<p class="dialogue">「これ……あとで見せてもらえますか」</p>
+
+<p class="dialogue">「もちろん」</p>
+
+<p class="dialogue">「正直、最初は子ども向けだと思っていました。でも、こんなに分かりやすく、しかもその場で試せるなんて……」</p>
+
+<p class="no-indent">　ソウタはうなずきました。</p>
+
+<p class="dialogue">「大事な仕組みほど、いきなり全部を見ようとしないことです。まず小さな世界で動かす。Scratchは、そのためにとても向いています」</p>
+
+<p class="no-indent">　所長さんが、静かに言いました。</p>
+
+<p class="dialogue">「この流れを、本物の制御にも反映できそうですか」</p>
+
+<p class="dialogue">「できます。いきなり全部ではなく、まず小さい系統からです。Scratchでも、いきなりスプライト全部を変えないでしょう？」</p>
+
+<p class="no-indent">　そうして技師さんたちは、シミュレーションで試した考え方をもとに、小さなタービンの制御だけを先に直しました。</p>
+
+<p class="no-indent">　みんなが息をのんで見守ります。</p>
+
+<p class="no-indent">　すると、赤い文字が、ひとつ消えました。</p>
+
+<p class="no-indent">　次に、もう少し大きな仕組みでも同じ考え方を試しました。</p>
+
+<p class="no-indent">　また、赤い文字が消えました。</p>
+
+<p class="no-indent">　そして、しばらくすると、止まりかけていた発電所が、ゆっくり、でもたしかに元気を取りもどしていったのです。</p>
+
+<p class="sfx">ブゥゥゥン……。</p>
+
+<p class="no-indent">　地下から、力強い音がひびいてきました。<br>
+　海の力が、もう一度きれいに電気へ変わりはじめたのです。</p>
+
+<p class="dialogue">「動いた……！」<br>
+「もどったぞ！」<br>
+「町の電気も安定しています！」</p>
+
+<p class="no-indent">　発電所の中に、ぱっと明るい声が広がりました。</p>
+
+<p class="no-indent">　所長さんは、ほっとした顔でソウタに言いました。</p>
+
+<p class="dialogue">「助かりました。本当にありがとうございます」</p>
+
+<p class="no-indent">　でもソウタは、すぐにはうなずきませんでした。</p>
+
+<p class="dialogue">「今日直せてよかったです。でも、もっとだいじなのは、これからです」<br>
+「これから？」<br>
+「はい。どんなにすごい機械でも、わかりやすく作らないと、また同じことが起こります。だれが、いつ、だれに、何を伝えるのか。子どもでも追いかけられるくらい、はっきりしていることが大切なんです」</p>
+
+<p class="no-indent">　所長さんは、しばらく考えてから、静かに笑いました。</p>
+
+<p class="dialogue">「子どもでも、ですか」<br>
+「ええ。だって、ぼくは子どものころに教わりましたから」</p>
+
+<div class="section-break"></div>
+
+<p class="no-indent">　仕事を終えて外へ出ると、海は朝の光できらきらしていました。<br>
+　波は、何事もなかったように、静かに行ったり来たりしています。</p>
+
+<p class="no-indent">　若い技師さんが、ソウタのあとを追ってきました。</p>
+
+<p class="dialogue">「あの、さっきのScratch、ぼくにも送ってもらえますか」<br>
+「もちろん」<br>
+「正直、最初は子どもっぽいと思いました。でも、すごくわかりやすかったです」<br>
+「それならよかった」<br>
+「ぼくも子どものころ、Scratchをやっていました。ねこを走らせるくらいしかできませんでしたけど」</p>
+
+<p class="no-indent">　ソウタは足を止めて、少し笑いました。</p>
+
+<p class="dialogue">「それで十分ですよ」</p>
+
+<p class="dialogue">「十分ですか？」</p>
+
+<p class="dialogue">「はい。たとえば、旗を押したらねこが走るようにしていたでしょう。<br>
+『旗が押されたとき』を上につけて、<br>
+その下に『ずっと』を入れて、<br>
+『10歩動かす』をはめこんで、<br>
+『もし端についたなら、跳ね返る』をつなげる。<br>
+そうやって、"どの合図で始まって、どう動いて、どこで向きを変えるか"を考えていたはずです」</p>
+
+<p class="no-indent">　若い技師さんは、目を丸くしました。</p>
+
+<p class="no-indent">　ソウタはつづけました。</p>
+
+<p class="dialogue">「それって、ただねこを走らせていたんじゃないんです。<br>
+ものごとを、小さな順番に分けていたんです。<br>
+合図を決めて、くり返しを決めて、条件を決めて、うまくいかなかったらブロックを見直す。<br>
+発電所も、町の信号も、ロボットも、案外それと同じなんです」</p>
+
+<p class="no-indent">　若い技師さんは、しばらく黙っていましたが、やがて、うれしそうに笑いました。</p>
+
+<p class="dialogue">「じゃあ、ぼく、昔から少しは役に立つ練習をしていたんですね」</p>
+
+<p class="dialogue">「ええ」とソウタは言いました。<br>
+「世界を動かす練習をしていたんです」</p>
+
+<p class="no-indent">　ソウタは空を見上げました。<br>
+　遠くで点検用のドローンが、青い空をすいすい飛んでいきます。</p>
+
+<p class="no-indent">　子どものころ、色のついたブロックをつないで、<br>
+　ねこを一歩動かしたこと。<br>
+　ジャンプさせたこと。<br>
+　うまく動かなくて、何度も直したこと。</p>
+
+<p class="no-indent">　そんな小さな経験が、<br>
+　大人になってから、<br>
+　町の明かりを守る力になることもあるのです。</p>
+
+<p class="no-indent">　だから、ソウタは思いました。</p>
+
+<p class="no-indent">　子どものころに夢中になったことは、<br>
+　消えてしまうのではない。<br>
+　その人の中で、そっと育って、<br>
+　いつかだれかを助ける力になるのだと。</p>
+
+</div>
+</body>
+</html>
