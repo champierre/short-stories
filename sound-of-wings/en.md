@@ -6,7 +6,7 @@ By day it was noisy with students’ voices and the clatter of keyboards, but af
 Associate Professor Ishihara stared at the laptop on his desk.
 
 On the screen was a GitHub repository.  
-**ML2Scratch**.  
+**[ML2Scratch](https://github.com/champierre/ml2scratch)**.  
 A project designed to connect machine learning models with Scratch, letting children use trained models inside their own creations. Image classification, pose recognition, all brought into the world of blocks. It was elegant, imaginative, and had drawn attention among educators.
 
 But tonight, education was not the issue.
