@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Blocks and the Secret of the Sea</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Libre Baskerville', 'Georgia', serif;
+    background: #f5f0e8;
+    color: #2c2c2c;
+    line-height: 1.9;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  h1 {
+    font-size: 1.7em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+    color: #1a5276;
+    line-height: 1.4;
+  }
+
+  .lang-switch {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 0.9em;
+  }
+
+  .lang-switch a {
+    color: #4c97ff;
+    text-decoration: none;
+    border-bottom: 1px dashed #4c97ff;
+  }
+
+  .lang-switch a:hover {
+    color: #1a5276;
+    border-bottom-color: #1a5276;
+  }
+
+  p {
+    text-indent: 1.5em;
+    margin-bottom: 0.6em;
+  }
+
+  p.no-indent {
+    text-indent: 0;
+  }
+
+  .section-break {
+    height: 2em;
+  }
+
+  /* Scratch block styles */
+  .scratch-blocks {
+    margin: 1.2em 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .scratch-block {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.92em;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.6;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    width: fit-content;
+    position: relative;
+  }
+
+  .block-event {
+    background: #c79400;
+    border-bottom: 3px solid #a67c00;
+    padding-top: 10px;
+  }
+  .block-event::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 12px;
+    width: 24px;
+    height: 6px;
+    background: #c79400;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .block-control {
+    background: #e5a100;
+    border-bottom: 3px solid #c48a00;
+  }
+
+  .block-motion {
+    background: #4c97ff;
+    border-bottom: 3px solid #3d7ad8;
+  }
+
+  .block-variable {
+    background: #ff8c1a;
+    border-bottom: 3px solid #db7500;
+  }
+
+  .block-message {
+    background: #c79400;
+    border-bottom: 3px solid #a67c00;
+  }
+
+  .block-value {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 0 8px;
+    font-weight: 400;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .block-condition {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 0 8px;
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0 50%);
+    min-width: 40px;
+  }
+
+  .scratch-blocks .indent {
+    margin-left: 24px;
+  }
+
+  .scratch-blocks .indent-2 {
+    margin-left: 48px;
+  }
+
+  .char-label {
+    font-weight: 700;
+    display: block;
+    margin: 0.8em 0 0.2em;
+    text-indent: 0;
+    font-size: 0.95em;
+    color: #555;
+  }
+
+  .dialogue {
+    text-indent: 0;
+    margin-bottom: 0.3em;
+  }
+
+  .illustration {
+    margin: 2em auto;
+    text-align: center;
+  }
+
+  .illustration img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .illustration figcaption {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .illustration figcaption a {
+    display: inline-block;
+    margin-top: 4px;
+    font-style: normal;
+    font-size: 0.95em;
+    color: #4c97ff;
+    text-decoration: none;
+    border-bottom: 1px dashed #4c97ff;
+  }
+
+  .illustration figcaption a:hover {
+    color: #1a5276;
+    border-bottom-color: #1a5276;
+  }
+
+  .sfx {
+    text-align: center;
+    font-size: 1.1em;
+    letter-spacing: 0.15em;
+    margin: 1em 0;
+    text-indent: 0;
+  }
+
+  .monitor-msg {
+    text-indent: 0;
+    margin-bottom: 0.2em;
+    padding-left: 1em;
+  }
+
+  .monitor-msg::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #e74c3c;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    box-shadow: 0 0 4px #e74c3c;
+  }
+
+  .flow-msg {
+    text-indent: 0;
+    padding-left: 2em;
+    margin-bottom: 0.2em;
+    color: #555;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 32px 16px 60px; }
+    h1 { font-size: 1.4em; }
+    body { font-size: 16px; line-height: 1.8; }
+    .scratch-block { font-size: 0.85em; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<p class="lang-switch"><a href="../index.html">Table of Contents</a> | <a href="index.html">Japanese version</a></p>
+
+<h1>Blue Blocks and the Secret of the Sea</h1>
+
+<p class="no-indent">In a town near the sea, there lived a young man named Sota.</p>
+
+<p class="no-indent">As a child, Sota had loved programming. His favorite was a piece of software called Scratch. He could spend hours making the cat on screen run, jump, or collect stars in a game he built himself.</p>
+
+<p class="no-indent">The yellow "when flag clicked" block.<br>
+The orange "forever" block.<br>
+The blue "move 10 steps" block.<br>
+And the "broadcast message" block, which sent a signal whenever something happened.</p>
+
+<p class="no-indent">Sota would connect them, connect them, connect them,<br>
+and make the cat on screen come alive.</p>
+
+<p class="no-indent">For example, like this:</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when flag clicked</span>
+  <span class="scratch-block block-control">forever</span>
+  <span class="scratch-block block-motion indent">move 10 steps</span>
+  <span class="scratch-block block-motion indent">if on edge, bounce</span>
+</div>
+
+<p class="no-indent">And the cat would run happily across the screen, right and left.</p>
+
+<p class="no-indent">But sometimes, things didn't work out.</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when flag clicked</span>
+  <span class="scratch-block block-control">forever</span>
+  <span class="scratch-block block-control indent">if <span class="block-condition">received "Start"</span> then</span>
+  <span class="scratch-block block-motion indent-2">move 3 steps</span>
+</div>
+
+<p class="no-indent">If he built it like this, no matter how many times he clicked the flag, the cat wouldn't move. Because the "Start" signal had never been sent.</p>
+
+<p class="no-indent">And sometimes, this happened too:</p>
+
+<p class="char-label">Cat 1:</p>
+<div class="scratch-blocks">
+  <span class="scratch-block block-message">broadcast "Run"</span>
+</div>
+
+<p class="char-label">Cat 2:</p>
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when I receive "Run"</span>
+  <span class="scratch-block block-message">broadcast "Got it"</span>
+</div>
+
+<p class="char-label">Cat 1:</p>
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when I receive "Got it"</span>
+  <span class="scratch-block block-message">broadcast "Run"</span>
+</div>
+
+<p class="no-indent">When this happened, the cats would keep sending signals back and forth forever, and though the conversation continued, nothing ever moved forward.</p>
+
+<p class="no-indent">At times like those, Sota would stare quietly at the blocks.</p>
+
+<p class="no-indent">Which block was the beginning?<br>
+Where was each one sending its signal, and to whom?<br>
+Where was something waiting, and where was something repeating?</p>
+
+<p class="no-indent">Sota loved thinking about these things.</p>
+
+<div class="section-break"></div>
+
+<p class="no-indent">As an adult, Sota worked fixing all sorts of machines and computers around town. Even complicated machines sometimes looked to him like the Scratch blocks from his childhood.</p>
+
+<p class="no-indent">One summer morning, Sota received an urgent call.</p>
+
+<p class="dialogue">"It's an emergency! The power plant by the sea isn't working properly!"</p>
+
+<p class="no-indent">The plant was a large, impressive facility that generated electricity using the power of the ocean's tides. The town's streetlights, the school's air conditioners, the traffic signals at night&mdash;all of them depended on electricity from that plant.</p>
+
+<p class="no-indent">Sota headed straight there.</p>
+
+<p class="no-indent">Inside the plant, everyone wore worried faces. Red messages glowed across a large monitor.</p>
+
+<p class="monitor-msg">Output declining</p>
+<p class="monitor-msg">Adjusting</p>
+<p class="monitor-msg">Awaiting confirmation</p>
+
+<p class="no-indent">The plant director said:</p>
+
+<p class="dialogue">"The machines aren't broken. But for some reason, nothing is running smoothly. It's as if they're all stuck thinking&hellip;"</p>
+
+<p class="no-indent">Sota stared at the monitor. Indeed, nothing had stopped. But the machines would move a little, then pause, move a little, then hesitate&mdash;as if they were lost.</p>
+
+<p class="no-indent">It was as if everyone was saying,<br>
+"After you, please,"<br>
+"No, no, after you,"<br>
+and nobody could go first.</p>
+
+<p class="no-indent">Sota nodded quietly.</p>
+
+<p class="dialogue">"I think I might understand."</p>
+
+<p class="dialogue">"Really?!" said the director.</p>
+
+<p class="no-indent">But Sota didn't spread out a sheet of paper. Instead, he borrowed a support terminal next to the control desk and opened Scratch on it.</p>
+
+<p class="no-indent">A young engineer's eyes went wide.</p>
+
+<p class="dialogue">"Wait&hellip; Scratch?"</p>
+
+<p class="dialogue">"Yes. Before touching the real controls, I want to extract just the flow and run it on a small scale."</p>
+
+<p class="dialogue">"But this is a power plant!"</p>
+
+<p class="dialogue">"Exactly. When something is too complex, trying to look at it directly only makes it harder to understand. Let's use Scratch to keep just the sequence and the signals."</p>
+
+<p class="no-indent">Sota opened a new project. On the white stage, a single Scratch cat appeared.</p>
+
+<p class="no-indent">First, Sota created several variables:</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-variable">tide level</span>
+  <span class="scratch-block block-variable">demand</span>
+  <span class="scratch-block block-variable">change amount</span>
+  <span class="scratch-block block-variable">threshold</span>
+  <span class="scratch-block block-variable">status</span>
+</div>
+
+<p class="no-indent">Then, he began placing blocks one by one.</p>
+
+<p class="no-indent">The first column represented the changing sea.</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when flag clicked</span>
+  <span class="scratch-block block-variable">set threshold to <span class="block-value">3</span></span>
+  <span class="scratch-block block-variable">set tide level to <span class="block-value">0</span></span>
+  <span class="scratch-block block-control">forever</span>
+  <span class="scratch-block block-variable indent">change tide level by <span class="block-value">1</span></span>
+  <span class="scratch-block block-variable indent">set change amount to <span class="block-value">tide level mod 5</span></span>
+  <span class="scratch-block block-control indent">if <span class="block-condition">change amount &gt; threshold</span> then</span>
+  <span class="scratch-block block-message indent-2">broadcast "recalculate"</span>
+  <span class="scratch-block block-control indent">else</span>
+  <span class="scratch-block block-variable indent-2">set status to <span class="block-value">small change, proceed as is</span></span>
+</div>
+
+<p class="dialogue">"This represents how the sea gradually changes," Sota explained. "The real thing is much more complex, but the basic framework of 'when something changes, something happens' is enough to start."</p>
+
+<p class="no-indent">Next, he built the second column: the role that receives a signal and calculates the town's electricity demand.</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when I receive "recalculate"</span>
+  <span class="scratch-block block-variable">set status to <span class="block-value">recalculating demand</span></span>
+  <span class="scratch-block block-variable">set demand to <span class="block-value">tide level + 10</span></span>
+  <span class="scratch-block block-control">wait 0.5 seconds</span>
+  <span class="scratch-block block-message">broadcast "verify"</span>
+</div>
+
+<p class="dialogue">"This 'wait 0.5 seconds' matters too," Sota said. "In Scratch, adding a wait block changes how the flow behaves. At the power plant, the waiting time for checks can make things complicated."</p>
+
+<p class="no-indent">Then the third column: the safety monitor.</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when I receive "verify"</span>
+  <span class="scratch-block block-variable">set status to <span class="block-value">safety check in progress</span></span>
+  <span class="scratch-block block-control">wait 0.5 seconds</span>
+  <span class="scratch-block block-message">broadcast "inspect"</span>
+</div>
+
+<p class="no-indent">And the fourth column: the turbine inspector.</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-event">when I receive "inspect"</span>
+  <span class="scratch-block block-variable">set status to <span class="block-value">checking turbine, returning stable value</span></span>
+  <span class="scratch-block block-control">wait 0.5 seconds</span>
+  <span class="scratch-block block-variable">set status to <span class="block-value">stable value returned</span></span>
+</div>
+
+<p class="no-indent">The young engineer stared at the blocks on screen and said:</p>
+
+<p class="dialogue">"The power plant's entire job is right there in Scratch&hellip;"</p>
+
+<p class="dialogue">"Yes. Even when you're dealing with enormous machines, if you break the work into small pieces, it often looks just like this."</p>
+
+<p class="no-indent">Sota clicked the green flag.</p>
+
+<p class="no-indent">The cat moved gently on the left side of the stage while the variables changed on screen.<br>
+The tide level changed.<br>
+The change amount grew.<br>
+It exceeded the threshold.<br>
+Then "recalculate" was broadcast.<br>
+The status changed to "recalculating demand."<br>
+After a short wait, "verify" was broadcast.<br>
+After another wait, "inspect" was broadcast.</p>
+
+<p class="no-indent">So far, so good.</p>
+
+<p class="no-indent">But after running it a few times, Sota added a few more blocks to make it closer to the real power plant.</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-variable">after "stable value returned"</span>
+  <span class="scratch-block block-control">if <span class="block-condition">demand has changed</span> then</span>
+  <span class="scratch-block block-message indent">broadcast "recalculate"</span>
+</div>
+
+<p class="no-indent">The engineer said:</p>
+
+<p class="dialogue">"That sends it right back to the beginning, doesn't it?"</p>
+
+<p class="dialogue">"Yes. When we make it closer to the actual control system, that's exactly what happens."</p>
+
+<figure class="illustration">
+  <img src="img/before-fix-blocks.png" alt="Scratch blocks before fix: feedback loop present" loading="lazy">
+  <figcaption>Before fix: "inspect" broadcasts "recalculate," creating a feedback loop
+    <br><a href="before-fix.sb3" download>Download before-fix.sb3</a></figcaption>
+</figure>
+
+<p class="no-indent">Sota clicked the flag again.</p>
+
+<p class="no-indent">This time:</p>
+<p class="flow-msg">"recalculate"</p>
+<p class="flow-msg">"verify"</p>
+<p class="flow-msg">"inspect"</p>
+<p class="flow-msg">"recalculate"</p>
+<p class="flow-msg">"verify"</p>
+<p class="flow-msg">"inspect"</p>
+<p class="no-indent">The status began flickering restlessly.</p>
+
+<p class="no-indent">The cat hadn't stopped.<br>
+The numbers were still changing.<br>
+But it was clear that something was going around and around in the same circle.</p>
+
+<p class="no-indent">The young engineer couldn't help but cry out.</p>
+
+<p class="dialogue">"That's it!"</p>
+
+<p class="dialogue">"You see it?"</p>
+
+<p class="dialogue">"Yes&hellip; Nothing's broken. They're all so diligent about checking that they keep repeating the same conversation over and over."</p>
+
+<p class="dialogue">"Exactly," said Sota. "It's the same as in Scratch, when characters keep sending 'Start!' 'Got it!' 'Start!' back and forth."</p>
+
+<p class="no-indent">The director peered at the screen.</p>
+
+<p class="dialogue">"This little program shows how the power plant gets stuck?"</p>
+
+<p class="dialogue">"Yes. And we can also try out where to make changes."</p>
+
+<p class="no-indent">Sota swapped out one condition block.</p>
+
+<p class="no-indent">The old block had been:</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-control">if <span class="block-condition">any change at all</span> then</span>
+  <span class="scratch-block block-message indent">broadcast "recalculate"</span>
+</div>
+
+<p class="no-indent">Sota removed it and replaced it with:</p>
+
+<div class="scratch-blocks">
+  <span class="scratch-block block-control">if <span class="block-condition">change amount &gt; threshold</span> then</span>
+  <span class="scratch-block block-message indent">broadcast "recalculate"</span>
+  <span class="scratch-block block-control">else</span>
+  <span class="scratch-block block-variable indent">update directly</span>
+</div>
+
+<p class="dialogue">"We stop calling a meeting for every tiny ripple," Sota said. "We only bring everyone together when there's a truly big change."</p>
+
+<figure class="illustration">
+  <img src="img/after-fix-blocks.png" alt="Scratch blocks after fix: no feedback loop" loading="lazy">
+  <figcaption>After fix: a threshold condition eliminates the unnecessary recalculation loop
+    <br><a href="after-fix.sb3" download>Download after-fix.sb3</a></figcaption>
+</figure>
+
+<p class="no-indent">He clicked the flag once more.</p>
+
+<p class="no-indent">The tide level changed.<br>
+The change amount shifted.<br>
+For small changes, it simply moved on.<br>
+Only for big changes did "recalculate" get broadcast.<br>
+Demand was recalculated.<br>
+Safety was verified.<br>
+The turbine was inspected.<br>
+The status settled down.</p>
+
+<p class="no-indent">The spinning loop fell quiet.</p>
+
+<p class="no-indent">The young engineer watched the screen as if he'd forgotten to breathe.</p>
+
+<p class="dialogue">"The same blocks, but changing just one condition made such a difference&hellip;"</p>
+
+<p class="dialogue">"That's how Scratch works," said Sota. "Where you place a single block can change how the whole world behaves."</p>
+
+<div class="section-break"></div>
+
+<p class="no-indent">The young engineer's eyes lit up.</p>
+
+<p class="dialogue">"Could I&hellip; see this later?"</p>
+
+<p class="dialogue">"Of course."</p>
+
+<p class="dialogue">"Honestly, at first I thought it was just for kids. But it's so clear, and you can test things right on the spot&hellip;"</p>
+
+<p class="no-indent">Sota nodded.</p>
+
+<p class="dialogue">"The more important a system is, the more you should resist trying to see it all at once. Start small. Scratch is perfect for that."</p>
+
+<p class="no-indent">The director spoke quietly.</p>
+
+<p class="dialogue">"Do you think this approach can be applied to the real controls?"</p>
+
+<p class="dialogue">"Yes. Not all at once&mdash;start with a small subsystem first. In Scratch, you wouldn't change every sprite at once, would you?"</p>
+
+<p class="no-indent">And so the engineers, guided by the ideas they had tested in the simulation, fixed just one small turbine's control first.</p>
+
+<p class="no-indent">Everyone held their breath.</p>
+
+<p class="no-indent">One red message disappeared.</p>
+
+<p class="no-indent">Next, they tried the same approach on a slightly larger system.</p>
+
+<p class="no-indent">Another red message disappeared.</p>
+
+<p class="no-indent">Before long, the faltering power plant slowly, but surely, began to recover.</p>
+
+<p class="sfx">VRRRMMM&hellip;</p>
+
+<p class="no-indent">A powerful sound rumbled from below. The ocean's force was once again being cleanly transformed into electricity.</p>
+
+<p class="dialogue">"It's working&hellip;!"<br>
+"It's back!"<br>
+"The town's power is stable!"</p>
+
+<p class="no-indent">Bright voices filled the power plant.</p>
+
+<p class="no-indent">The director, looking relieved, said to Sota:</p>
+
+<p class="dialogue">"You saved us. Thank you so much."</p>
+
+<p class="no-indent">But Sota didn't nod right away.</p>
+
+<p class="dialogue">"I'm glad we could fix it today. But what matters more is what comes next."<br>
+"What comes next?"<br>
+"No matter how impressive a machine is, if it isn't built clearly, the same thing will happen again. Who sends what signal, to whom, and when&mdash;it should be clear enough that even a child could follow it."</p>
+
+<p class="no-indent">The director thought for a moment, then smiled gently.</p>
+
+<p class="dialogue">"Even a child?"<br>
+"Yes. Because I learned it as a child myself."</p>
+
+<div class="section-break"></div>
+
+<p class="no-indent">When the work was done and Sota stepped outside, the sea sparkled in the morning light. The waves came and went quietly, as if nothing had happened.</p>
+
+<p class="no-indent">The young engineer followed after him.</p>
+
+<p class="dialogue">"Um, could you send me that Scratch project?"<br>
+"Of course."<br>
+"Honestly, at first I thought it was childish. But it was really easy to understand."<br>
+"I'm glad."<br>
+"I used to play with Scratch as a kid, too. I could only make the cat run, though."</p>
+
+<p class="no-indent">Sota stopped walking and smiled.</p>
+
+<p class="dialogue">"That's more than enough."</p>
+
+<p class="dialogue">"Enough?"</p>
+
+<p class="dialogue">"Yes. For example, you made the cat run when the flag was clicked, right?<br>
+You put 'when flag clicked' on top,<br>
+then added 'forever' beneath it,<br>
+snapped in 'move 10 steps,'<br>
+and connected 'if on edge, bounce.'<br>
+You were thinking about which signal starts things, how to move, and where to turn around."</p>
+
+<p class="no-indent">The young engineer's eyes went wide.</p>
+
+<p class="no-indent">Sota continued:</p>
+
+<p class="dialogue">"You weren't just making a cat run.<br>
+You were breaking things down into small steps.<br>
+Deciding signals, deciding loops, deciding conditions, and going back to check the blocks when things didn't work.<br>
+Power plants, traffic lights, robots&mdash;they all work the same way, really."</p>
+
+<p class="no-indent">The young engineer was quiet for a while, but then he smiled, looking happy.</p>
+
+<p class="dialogue">"So I was practicing something useful all along."</p>
+
+<p class="dialogue">"Yes," said Sota. "You were practicing how to move the world."</p>
+
+<p class="no-indent">Sota looked up at the sky. In the distance, an inspection drone glided smoothly across the blue.</p>
+
+<p class="no-indent">As a child, connecting colorful blocks,<br>
+making the cat take one step,<br>
+making it jump,<br>
+fixing it again and again when it didn't work.</p>
+
+<p class="no-indent">Those small experiences<br>
+can grow up with you<br>
+and one day become the power to protect the lights of a town.</p>
+
+<p class="no-indent">And so Sota thought:</p>
+
+<p class="no-indent">The things you were passionate about as a child<br>
+don't disappear.<br>
+They grow quietly inside you,<br>
+and one day become the strength to help someone.</p>
+
+</div>
+</body>
+</html>
