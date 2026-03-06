@@ -1,6 +1,6 @@
 # The Sound of Wings in the Debugger
 
-At night, the old computer lab at Aiyama Gakuin took on a peculiar stillness.  
+At night, the old computer lab at Aiyama Gakuin University took on a peculiar stillness.  
 By day it was noisy with students’ voices and the clatter of keyboards, but after nine o’clock, only the low hum of the air conditioner and the blinking lights on the server rack seemed alive.
 
 Associate Professor Kishihara stared at the laptop on his desk.
