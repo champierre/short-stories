@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short Stories</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif JP', 'Libre Baskerville', serif;
+    background: #f5f0e8;
+    color: #2c2c2c;
+    line-height: 1.8;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 80px 24px 100px;
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #1a5276;
+    letter-spacing: 0.05em;
+  }
+
+  .story-card {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #d5cfc4;
+  }
+
+  .story-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .story-title {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #1a5276;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .story-subtitle {
+    font-size: 0.95em;
+    color: #777;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .story-desc {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+
+  .story-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .story-links a {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: 0.9em;
+    color: #4c97ff;
+    text-decoration: none;
+    border: 1px solid #4c97ff;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .story-links a:hover {
+    background: #4c97ff;
+    color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 48px 16px 60px; }
+    h1 { font-size: 1.6em; margin-bottom: 40px; }
+    .story-title { font-size: 1.15em; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Short Stories</h1>
+
+<div class="story-card">
+  <div class="story-title">羽音のデバッグ</div>
+  <div class="story-subtitle">The Sound of Wings in the Debugger</div>
+  <div class="story-desc">コーディングエージェントが「副作用の設計」までできるようになった時代。教育AI展示会で起きたネットワーク障害の裏に隠された、意図されたバタフライエフェクトの謎を追う。</div>
+  <div class="story-links">
+    <a href="sound-of-wings/index.html">日本語</a>
+    <a href="sound-of-wings/en.html">English</a>
+  </div>
+</div>
+
+<div class="story-card">
+  <div class="story-title">青いブロックと海のひみつ</div>
+  <div class="story-subtitle">Blue Blocks and the Secret of the Sea</div>
+  <div class="story-desc">子どものころ夢中になったScratchのブロック。大人になったソウタは、海辺の発電所のトラブルをScratchの考え方で読み解いていく。</div>
+  <div class="story-links">
+    <a href="blue-blocks-sea-secret/index.html">日本語</a>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
