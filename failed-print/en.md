@@ -22,7 +22,7 @@ On impulse, Minato submitted the application form.
 
 The Aogaku Tsukumana Lab felt much freer than he had expected. There were laptops on the tables, spools of filament in different colors, small prototype objects, and half-assembled parts of who-knew-what. It was tidy, but it still felt a little like a secret base.
 
-Near the shelves stood the 3D printers the lab used. Someone was saying that the lab had replaced the AnkerMake machines that had once been its main workhorses with Bambu Lab printers, which were cheaper and yet performed remarkably well. Minato did not understand the finer differences yet, but he could tell that the people in the lab were excited about the change.
+Near the shelves stood the 3D printers the lab used. Someone was saying that the lab had replaced the AnkerMake M5 and M5C that had once been its main workhorses with Bambu Lab printers, which were cheaper and yet performed remarkably well. Minato did not understand the finer differences yet, but he could tell that the people in the lab were excited about the change.
 
 The first time he touched Tinkercad, it felt almost surprisingly simple. Place a cube or a cylinder, stretch it, cut it, combine it. That was all. And yet, it was fun to watch a shape slowly come into being on the screen.
 
