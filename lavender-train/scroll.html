@@ -876,10 +876,9 @@ var audio = {
         attempt(index + 1);
       }, { once: true });
       sample.play().then(function() {
-        // Train SFX should be short; fade out quickly to avoid masking BGM.
         setTimeout(function() {
           var fade = setInterval(function() {
-            if (sample.volume <= 0.04) {
+            if (sample.volume <= 0.04 || sample.paused) {
               clearInterval(fade);
               sample.pause();
               sample.currentTime = 0;
@@ -887,6 +886,11 @@ var audio = {
             }
             sample.volume = Math.max(0, sample.volume - 0.06);
           }, 90);
+          // iOS Safari: volume is read-only, so force stop as safety
+          setTimeout(function() {
+            clearInterval(fade);
+            if (!sample.paused) { sample.pause(); sample.currentTime = 0; }
+          }, 1500);
         }, 5400);
       }).catch(function() {});
     };
