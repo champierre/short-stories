@@ -797,100 +797,150 @@ p.dialogue {
 </div>
 
 <script>
-/* ── Audio Engine (HTMLAudioElement-based) ── */
+/*
+ * Audio Engine — hybrid Web Audio API + HTMLAudioElement fallback.
+ * Web Audio API: works on iOS Safari (AudioContext unlocked once on
+ *   user gesture → SFX play from IntersectionObserver).
+ * HTMLAudioElement fallback: used when XHR is blocked (file:// CORS).
+ */
 var audio = {
   enabled: false,
   muted: false,
-  assets: {
-    bgm: ['audio/bgm-otologic.mp3'],
-    train: ['audio/train-pass-otologic.mp3'],
-    bell: ['audio/crossing-bell-otologic.mp3']
-  },
-  bgm: null,
+  mode: null,            // 'webaudio' | 'html'
+  ctx: null,
+  buffers: {},
+  bgmSource: null,
+  bgmGain: null,
+  htmlSamples: {},
+  htmlBgm: null,
   playedSfx: {},
   bgmVolume: 0.22,
-
-  playFromCandidates: function(candidates, volume, delayMs) {
-    if (!candidates || !candidates.length) return;
-    var attempt = function(index) {
-      if (index >= candidates.length) return;
-      var sample = new Audio(candidates[index]);
-      sample.volume = volume;
-      sample.addEventListener('error', function() {
-        attempt(index + 1);
-      }, { once: true });
-      sample.play().catch(function() {});
-    };
-    if (delayMs) {
-      setTimeout(function() { attempt(0); }, delayMs);
-    } else {
-      attempt(0);
-    }
-  },
-
-  startBgm: function() {
-    var candidates = this.assets.bgm;
-    if (!candidates || !candidates.length) return;
-    var index = 0;
-    var bgm = new Audio(candidates[index]);
-    bgm.loop = true;
-    bgm.volume = this.muted ? 0 : this.bgmVolume;
-    bgm.addEventListener('error', function() {
-      if (index < candidates.length - 1) {
-        index += 1;
-        bgm.src = candidates[index];
-        bgm.load();
-        bgm.play().catch(function() {});
-      }
-    });
-    bgm.play().catch(function() {});
-    this.bgm = bgm;
+  files: {
+    bgm: 'audio/bgm-otologic.mp3',
+    train: 'audio/train-pass-otologic.mp3',
+    bell: 'audio/crossing-bell-otologic.mp3'
   },
 
   init: function() {
-    this.startBgm();
+    if (this.mode === 'webaudio' && this.ctx) { this.ctx.resume(); this.enabled = true; return; }
+    if (this.mode === 'html') { this.enabled = true; return; }
+    var self = this;
+    /* Try Web Audio API via XHR first */
+    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    this.ctx.resume();
+    var names = Object.keys(this.files);
+    var firstXhr = new XMLHttpRequest();
+    firstXhr.open('GET', this.files[names[0]], true);
+    firstXhr.responseType = 'arraybuffer';
+    firstXhr.onload = function() {
+      /* XHR succeeded → use Web Audio API for all files */
+      self.mode = 'webaudio';
+      self.ctx.decodeAudioData(firstXhr.response, function(decoded) {
+        self.buffers[names[0]] = decoded;
+        if (names[0] === 'bgm' && !self.muted && !self.bgmSource) self.startBgmWA();
+      });
+      for (var i = 1; i < names.length; i++) {
+        (function(name) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', self.files[name], true);
+          xhr.responseType = 'arraybuffer';
+          xhr.onload = function() {
+            self.ctx.decodeAudioData(xhr.response, function(decoded) {
+              self.buffers[name] = decoded;
+              if (name === 'bgm' && !self.muted && !self.bgmSource) self.startBgmWA();
+            });
+          };
+          xhr.send();
+        })(names[i]);
+      }
+    };
+    firstXhr.onerror = function() {
+      /* XHR blocked (file:// CORS) → fall back to HTMLAudioElement */
+      self.mode = 'html';
+      self.ctx = null;
+      self.initHTML();
+    };
+    firstXhr.send();
     this.enabled = true;
   },
 
-  playSfx: function(name, delayMs) {
-    if (!this.enabled || this.muted) return;
-    var candidates = this.assets[name];
-    var volume = name === 'train' ? 0.38 : 0.7;
-    if (name === 'train') {
-      this.playTrainSfx(candidates, volume, delayMs);
-      return;
-    }
-    this.playFromCandidates(candidates, volume, delayMs);
+  /* ── Web Audio API path ── */
+  startBgmWA: function() {
+    if (!this.ctx || !this.buffers.bgm) return;
+    if (this.bgmSource) { try { this.bgmSource.stop(); } catch(e) {} }
+    var src = this.ctx.createBufferSource();
+    src.buffer = this.buffers.bgm;
+    src.loop = true;
+    var gain = this.ctx.createGain();
+    gain.gain.value = this.muted ? 0 : this.bgmVolume;
+    src.connect(gain);
+    gain.connect(this.ctx.destination);
+    src.start(0);
+    this.bgmSource = src;
+    this.bgmGain = gain;
   },
 
-  playTrainSfx: function(candidates, volume, delayMs) {
-    if (!candidates || !candidates.length) return;
-    var attempt = function(index) {
-      if (index >= candidates.length) return;
-      var sample = new Audio(candidates[index]);
-      sample.volume = volume;
-      sample.addEventListener('error', function() {
-        attempt(index + 1);
-      }, { once: true });
-      sample.play().then(function() {
-        // Train SFX should be short; fade out quickly to avoid masking BGM.
+  playBufferWA: function(name, volume, delayMs) {
+    if (!this.ctx || !this.buffers[name]) return;
+    var self = this;
+    var play = function() {
+      var src = self.ctx.createBufferSource();
+      src.buffer = self.buffers[name];
+      var gain = self.ctx.createGain();
+      gain.gain.value = volume;
+      src.connect(gain);
+      gain.connect(self.ctx.destination);
+      src.start(0);
+      if (name === 'train') {
+        var fadeStart = self.ctx.currentTime + 5.4;
+        gain.gain.setValueAtTime(volume, fadeStart);
+        gain.gain.linearRampToValueAtTime(0, fadeStart + 0.8);
+        src.stop(fadeStart + 0.9);
+      }
+    };
+    if (delayMs) { setTimeout(play, delayMs); } else { play(); }
+  },
+
+  /* ── HTMLAudioElement fallback path ── */
+  initHTML: function() {
+    var self = this;
+    Object.keys(this.files).forEach(function(name) {
+      self.htmlSamples[name] = new Audio(self.files[name]);
+    });
+    if (!this.muted) {
+      this.htmlBgm = new Audio(this.files.bgm);
+      this.htmlBgm.loop = true;
+      this.htmlBgm.volume = this.bgmVolume;
+      this.htmlBgm.play().catch(function() {});
+    }
+  },
+
+  playHTML: function(name, volume, delayMs) {
+    var self = this;
+    var play = function() {
+      var a = new Audio(self.files[name]);
+      a.volume = volume;
+      a.play().catch(function() {});
+      if (name === 'train') {
         setTimeout(function() {
           var fade = setInterval(function() {
-            if (sample.volume <= 0.04) {
-              clearInterval(fade);
-              sample.pause();
-              sample.currentTime = 0;
-              return;
-            }
-            sample.volume = Math.max(0, sample.volume - 0.06);
+            if (a.volume <= 0.04) { clearInterval(fade); a.pause(); return; }
+            a.volume = Math.max(0, a.volume - 0.06);
           }, 90);
         }, 5400);
-      }).catch(function() {});
+      }
     };
-    if (delayMs) {
-      setTimeout(function() { attempt(0); }, delayMs);
+    if (delayMs) { setTimeout(play, delayMs); } else { play(); }
+  },
+
+  /* ── Common interface ── */
+  playSfx: function(name, delayMs) {
+    if (!this.enabled || this.muted) return;
+    var vol = name === 'train' ? 0.38 : 0.7;
+    if (this.mode === 'webaudio') {
+      this.playBufferWA(name, vol, delayMs);
     } else {
-      attempt(0);
+      this.playHTML(name, vol, delayMs);
     }
   },
 
@@ -907,7 +957,6 @@ var audio = {
         this.playSfx('bell');
         break;
       case 'kita':
-        // Keep this scene silent by request.
         break;
       case 'train-2':
         this.playSfx('train');
@@ -918,8 +967,11 @@ var audio = {
 
   toggle: function() {
     this.muted = !this.muted;
-    if (this.bgm) {
-      this.bgm.volume = this.muted ? 0 : this.bgmVolume;
+    if (this.mode === 'webaudio' && this.bgmGain) {
+      this.bgmGain.gain.value = this.muted ? 0 : this.bgmVolume;
+    }
+    if (this.mode === 'html' && this.htmlBgm) {
+      this.htmlBgm.volume = this.muted ? 0 : this.bgmVolume;
     }
   }
 };
