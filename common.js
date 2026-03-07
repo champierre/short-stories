@@ -4,7 +4,7 @@
   var currentFile = location.pathname.split('/').pop();
   var otherFile = currentFile === 'en.html' ? 'index.html' : 'en.html';
 
-  var tocText = isJa ? '目次に戻る' : 'Table of Contents';
+  var tocText = isJa ? '他の作品を読んでみる' : 'More Stories';
   var switchText = isJa ? 'English version' : 'Japanese version';
 
   var style = document.createElement('style');
