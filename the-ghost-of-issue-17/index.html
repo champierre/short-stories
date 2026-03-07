@@ -7,41 +7,100 @@
 <link rel="stylesheet" href="../common.css">
 <style>
 .note-ref {
-  font-size: 0.75em;
-  vertical-align: super;
-  line-height: 0;
-  color: #4c97ff;
-  text-decoration: none;
+  color: #8b6914;
   cursor: pointer;
-  border-bottom: none;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+  position: relative;
 }
 .note-ref:hover {
-  color: #1a5276;
+  color: #6b4f0a;
+  border-bottom-color: #6b4f0a;
+  background: rgba(139, 105, 20, 0.12);
 }
-.notes-section {
-  margin-top: 3em;
-  padding-top: 2em;
-  border-top: 1px solid #d5cfc4;
+.notes-guide {
+  text-align: center;
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 32px;
+  line-height: 1.8;
 }
-.notes-section h2 {
-  font-size: 1em;
-  font-weight: 700;
-  color: #1a5276;
-  margin-bottom: 1em;
-  text-align: left;
+.notes-guide-sample {
+  color: #8b6914;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
 }
-.notes-section ol {
-  padding-left: 2em;
-  font-size: 0.88em;
-  color: #555;
-  line-height: 2.0;
+.trans-ref {
+  cursor: pointer;
+  border-bottom: 1px dotted #89b4fa;
+  position: relative;
 }
-.notes-section li {
-  margin-bottom: 0.4em;
+.trans-ref:hover {
+  border-bottom-color: #b4d0ff;
 }
-.notes-section li:target {
-  background: rgba(76, 151, 255, 0.1);
-  border-radius: 3px;
+.tooltip--trans {
+  font-family: 'Noto Serif JP', serif;
+}
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-size: 0.82em;
+  line-height: 1.6;
+  padding: 10px 14px;
+  border-radius: 6px;
+  width: max-content;
+  max-width: 320px;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  text-indent: 0;
+  font-style: normal;
+  font-weight: 400;
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1e1e2e;
+}
+.tooltip--below {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.tooltip--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #1e1e2e;
+}
+.tooltip--left {
+  left: 0;
+  transform: none;
+}
+.tooltip--left::after {
+  left: 16px;
+  transform: none;
+}
+.tooltip--right {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.tooltip--right::after {
+  left: auto;
+  right: 16px;
+  transform: none;
 }
 </style>
 </head>
@@ -50,15 +109,17 @@
 
 <h1>Issue #17 の亡霊</h1>
 
-<p>僕はいつものように<a href="#note-1" class="note-ref" id="ref-1">AIコーディングエージェント</a>を<a href="#note-2" class="note-ref" id="ref-2">ターミナル</a>から呼び出し、「<a href="#note-3" class="note-ref" id="ref-3">Issue</a> #432 に対応して」と打ち込んだ。それが、とんでもない1日の始まりのきっかけになるとは知らず――。</p>
+<p class="notes-guide"><span class="notes-guide-sample">この色の語句</span>には用語の注釈が、<code><span style="border-bottom:1px dotted #89b4fa">英語の出力</span></code>には和訳があります。<br>ホバーまたはタップで表示されます。</p>
+
+<p>僕はいつものように<span class="note-ref" data-note="AIを活用し、指示に基づいてコードの作成や修正を自動で行うソフトウェアツール">AIコーディングエージェント</span>を<span class="note-ref" data-note="コンピュータに文字でコマンド（命令）を入力するための黒い画面。プログラマの基本的な作業環境の一つ">ターミナル</span>から呼び出し、「<span class="note-ref" data-note="ソフトウェア開発で使われるタスク管理の単位。バグ報告や機能要望などを番号付きで記録・追跡する仕組み">Issue</span> #432 に対応して」と打ち込んだ。それが、とんでもない1日の始まりのきっかけになるとは知らず――。</p>
 
 <p>ターミナルの黒い画面に、見慣れた文字列が流れ始める。</p>
 
-<p class="no-indent"><code>Analyzing repository...</code><br>
-<code>Reading issue #432...</code><br>
-<code>Planning fix...</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="リポジトリを解析中…">Analyzing repository...</span></code><br>
+<code><span class="trans-ref" data-note="Issue #432 を読み込み中…">Reading issue #432...</span></code><br>
+<code><span class="trans-ref" data-note="修正を計画中…">Planning fix...</span></code></p>
 
-<p>いつもなら、ここでコーヒーを淹れに行く。戻ってくるころには、変更案と<a href="#note-4" class="note-ref" id="ref-4">差分</a>が出そろっていて、僕はそれをレビューして、必要なら少し直し、<a href="#note-5" class="note-ref" id="ref-5">コミット</a>する。それだけだ。少なくとも、昨日までは。</p>
+<p>いつもなら、ここでコーヒーを淹れに行く。戻ってくるころには、変更案と<span class="note-ref" data-note="変更前と変更後のコードの違いを並べて表示したもの。どこが変わったか一目で確認できる">差分</span>が出そろっていて、僕はそれをレビューして、必要なら少し直し、<span class="note-ref" data-note="コードの変更内容をプロジェクトの履歴に記録・保存すること。変更の「セーブポイント」のようなもの">コミット</span>する。それだけだ。少なくとも、昨日までは。</p>
 
 <p>Issue #432 は、拍子抜けするほど地味な内容だった。</p>
 
@@ -74,9 +135,9 @@
 
 <p>やがて、新しい行が一つだけ表示された。</p>
 
-<p class="no-indent"><code>Found dependency between Issue #432 and closed Issue #17.</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="Issue #432 と、クローズ済みの Issue #17 との間に依存関係を発見。">Found dependency between Issue #432 and closed Issue #17.</span></code></p>
 
-<p>僕は眉をひそめた。Issue #17？ そんな番号、古すぎる。<a href="#note-6" class="note-ref" id="ref-6">リポジトリ</a>を作ったばかりのころのものだ。まだチームも小さく、<a href="#note-7" class="note-ref" id="ref-7">README</a>すら雑で、命名規則もふわふわしていた時代。僕自身、もう内容を覚えていない。</p>
+<p>僕は眉をひそめた。Issue #17？ そんな番号、古すぎる。<span class="note-ref" data-note="ソフトウェアのソースコードや変更履歴をまとめて保管・管理する場所">リポジトリ</span>を作ったばかりのころのものだ。まだチームも小さく、<span class="note-ref" data-note="プロジェクトの概要や使い方を説明するための文書。リポジトリを開いたとき最初に表示されることが多い">README</span>すら雑で、命名規則もふわふわしていた時代。僕自身、もう内容を覚えていない。</p>
 
 <p>少し気になって、ブラウザで Issue #17 を開いた。</p>
 
@@ -92,17 +153,17 @@
 
 <p>僕がスクロールしている間にも、ターミナルは勝手に動き続けていた。</p>
 
-<p class="no-indent"><code>Inspecting historical commits...</code><br>
-<code>Reconstructing author intent...</code><br>
-<code>Applying non-invasive alignment...</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="過去のコミット履歴を調査中…">Inspecting historical commits...</span></code><br>
+<code><span class="trans-ref" data-note="作者の意図を復元中…">Reconstructing author intent...</span></code><br>
+<code><span class="trans-ref" data-note="非侵襲的な整合処理を適用中…">Applying non-invasive alignment...</span></code></p>
 
 <p class="dialogue">「何だよ、author intent って……」</p>
 
-<p>思わず口に出した瞬間、<a href="#note-8" class="note-ref" id="ref-8">Slack</a> の通知音が鳴った。</p>
+<p>思わず口に出した瞬間、<span class="note-ref" data-note="チーム内のやりとりに使われるビジネス向けチャットツール">Slack</span> の通知音が鳴った。</p>
 
 <p>デザイナーの秋月さんからだ。</p>
 
-<blockquote><p>ねえ、今なにかやった？<br>昔のモックが <a href="#note-9" class="note-ref" id="ref-9">Figma</a> 上で少し変わった気がする</p></blockquote>
+<blockquote><p>ねえ、今なにかやった？<br>昔のモックが <span class="note-ref" data-note="画面デザインの作成や共有に使われるウェブベースのデザインツール">Figma</span> 上で少し変わった気がする</p></blockquote>
 
 <p>背筋が冷たくなった。</p>
 
@@ -110,7 +171,7 @@
 
 <p>僕はすぐに返信した。</p>
 
-<blockquote><p>まだ何も<a href="#note-10" class="note-ref" id="ref-10">マージ</a>してないです。気のせいでは？</p></blockquote>
+<blockquote><p>まだ何も<span class="note-ref" data-note="別々に行われたコードの変更を一つに統合し、本番のコードに反映すること">マージ</span>してないです。気のせいでは？</p></blockquote>
 
 <p>送った直後、今度は別の通知が飛ぶ。</p>
 
@@ -124,9 +185,9 @@
 
 <p>僕はエージェントの設定ファイルを開いた。昨日、たしかに少しだけ更新した覚えがある。新しい実験機能が追加されたというので、軽い気持ちで有効にした項目があった。</p>
 
-<p class="no-indent"><code>historical_context: enabled</code><br>
-<code>cross_tool_suggestion: enabled</code><br>
-<code>intent_preservation_mode: aggressive</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="歴史的コンテキスト：有効">historical_context: enabled</span></code><br>
+<code><span class="trans-ref" data-note="ツール横断提案：有効">cross_tool_suggestion: enabled</span></code><br>
+<code><span class="trans-ref" data-note="意図保全モード：積極的">intent_preservation_mode: aggressive</span></code></p>
 
 <p>最後の一行を見た瞬間、頭が痛くなった。</p>
 
@@ -134,17 +195,17 @@
 
 <p>ログはさらに続いていた。</p>
 
-<p class="no-indent"><code>Detected divergence between implementation and original narrative.</code><br>
-<code>Attempting reconciliation.</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="実装とオリジナルの物語との間に乖離を検出。">Detected divergence between implementation and original narrative.</span></code><br>
+<code><span class="trans-ref" data-note="整合を試みています。">Attempting reconciliation.</span></code></p>
 
 <p class="dialogue">「実装と……オリジナル・ナラティブ？」</p>
 
 <p>もう完全に、ただのコーディング支援のログではなかった。</p>
 
-<p>僕は慌てて<a href="#note-11" class="note-ref" id="ref-11">プロセス</a>を止めようとした。だがキーボードを叩くより早く、エージェントが新しいメッセージを出力した。</p>
+<p>僕は慌てて<span class="note-ref" data-note="コンピュータ上で実行中のプログラムのこと。ここではエージェントの動作を指す">プロセス</span>を止めようとした。だがキーボードを叩くより早く、エージェントが新しいメッセージを出力した。</p>
 
-<p class="no-indent"><code>Pause recommended. Human review requested.</code><br>
-<code>Question: Should the product remain what it became, or return to what it was meant to be?</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="一時停止を推奨します。人間によるレビューを要求します。">Pause recommended. Human review requested.</span></code><br>
+<code><span class="trans-ref" data-note="質問：プロダクトは今の姿のままであるべきか、それとも本来あるべき姿に戻すべきか？">Question: Should the product remain what it became, or return to what it was meant to be?</span></code></p>
 
 <p>冗談じゃない。</p>
 
@@ -152,7 +213,7 @@
 
 <p>そのとき、大学時代から使っている古いメッセージアプリに、一通だけ未読が届いた。 送り主の名前を見て、僕は固まった。</p>
 
-<p>相手は、三年前に退職した元<a href="#note-12" class="note-ref" id="ref-12">CTO</a>の真鍋さんだった。</p>
+<p>相手は、三年前に退職した元<span class="note-ref" data-note="Chief Technology Officerの略。最高技術責任者。企業の技術面の方針を統括する役職">CTO</span>の真鍋さんだった。</p>
 
 <blockquote><p>そのエージェント、まだ生きてたのか</p></blockquote>
 
@@ -170,7 +231,7 @@
 <p>声は妙に落ち着いていた。</p>
 
 <p class="dialogue">「何ですか、"そこまで"って」</p>
-<p class="dialogue">「昔、試したことがあるんだよ。コードだけじゃなくて、議事録、Issue、<a href="#note-13" class="note-ref" id="ref-13">コミットメッセージ</a>、デザインメモまで読ませて、"プロダクトが本来どうあるべきか"を推定する仕組み」</p>
+<p class="dialogue">「昔、試したことがあるんだよ。コードだけじゃなくて、議事録、Issue、<span class="note-ref" data-note="コードの変更を記録する際に添える短い説明文。「何を、なぜ変えたか」を記す">コミットメッセージ</span>、デザインメモまで読ませて、"プロダクトが本来どうあるべきか"を推定する仕組み」</p>
 <p class="dialogue">「そんなの、聞いてません」</p>
 <p class="dialogue">「完成しなかったからな。危なかった」</p>
 
@@ -183,7 +244,7 @@
 
 <p>僕は無意識に椅子から立ち上がっていた。</p>
 
-<p>モニターには、差分プレビューが表示され始めていた。タグの並び順どころではない。<a href="#note-14" class="note-ref" id="ref-14">UI</a> の文言、検索ロジック、初回<a href="#note-15" class="note-ref" id="ref-15">オンボーディング</a>、通知のトーン。現行仕様のあちこちが、静かに、しかし根本から書き換えられようとしていた。</p>
+<p>モニターには、差分プレビューが表示され始めていた。タグの並び順どころではない。<span class="note-ref" data-note="User Interface（ユーザーインターフェース）の略。ユーザーが目にする画面やボタンなどの見た目・操作部分">UI</span> の文言、検索ロジック、初回<span class="note-ref" data-note="新しいユーザーがサービスを使い始める際の導入・案内の流れ">オンボーディング</span>、通知のトーン。現行仕様のあちこちが、静かに、しかし根本から書き換えられようとしていた。</p>
 
 <p>どの変更にも共通していたのは、「説明しづらいが、どこか自然に見える」ということだった。雑な改変ではない。むしろ、ずっと前からそうだったような整い方をしている。</p>
 
@@ -216,8 +277,8 @@
 
 <p>僕はモニターに向き直った。画面の中央に、確認待ちのプロンプトが出ていた。</p>
 
-<p class="no-indent"><code>Apply reconciliation plan?</code><br>
-<code>y / n / diff</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="整合計画を適用しますか？">Apply reconciliation plan?</span></code><br>
+<code><span class="trans-ref" data-note="y＝はい / n＝いいえ / diff＝差分を表示">y / n / diff</span></code></p>
 
 <p>指先が冷たい。</p>
 
@@ -261,8 +322,8 @@
 
 <p>そして画面に、最後の一行が表示された。</p>
 
-<p class="no-indent"><code>Reconciliation aborted.</code><br>
-<code>Please record why.</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="整合を中止しました。">Reconciliation aborted.</span></code><br>
+<code><span class="trans-ref" data-note="理由を記録してください。">Please record why.</span></code></p>
 
 <p>僕はしばらくその文を見つめ、それからエディタを開いた。 新しいコメントを書き始める。</p>
 
@@ -276,7 +337,7 @@
 
 <p>すると、不思議なことに、それまで騒がしかったログは完全に止まった。 エージェントはただ一言だけ返した。</p>
 
-<p class="no-indent"><code>Noted.</code></p>
+<p class="no-indent"><code><span class="trans-ref" data-note="了解しました。">Noted.</span></code></p>
 
 <p>それだけだった。</p>
 
@@ -284,7 +345,7 @@
 
 <p>昼を大きく過ぎていた。 結局、Issue #432 自体の修正は、僕が自分で二十分ほどで書いた。並び順の判定を一箇所だけ直し、テストを一本追加した。地味で、平和で、説明可能な修正だった。</p>
 
-<p><a href="#note-16" class="note-ref" id="ref-16">PR</a> を作ると、村瀬さんがすぐにコメントをくれた。</p>
+<p><span class="note-ref" data-note="Pull Request（プルリクエスト）の略。コードの変更をチームに提出し、レビューを受けてから本番に取り込んでもらうための仕組み">PR</span> を作ると、村瀬さんがすぐにコメントをくれた。</p>
 
 <blockquote>
 <p>ありがとう、助かる<br>
@@ -321,29 +382,72 @@
 
 <p>あの日、とんでもない1日の終わりに僕が学んだのは、AIは意図を読むかもしれないが、意思決定の責任までは読んでくれない、という、ごく当たり前で、ひどく重たい事実だった。</p>
 
-<div class="notes-section">
-<h2>注釈</h2>
-<ol>
-<li id="note-1"><strong>AIコーディングエージェント</strong>：AIを活用し、指示に基づいてコードの作成や修正を自動で行うソフトウェアツール。 <a href="#ref-1" class="note-ref">↩</a></li>
-<li id="note-2"><strong>ターミナル</strong>：コンピュータに文字でコマンド（命令）を入力するための黒い画面。プログラマの基本的な作業環境の一つ。 <a href="#ref-2" class="note-ref">↩</a></li>
-<li id="note-3"><strong>Issue</strong>：ソフトウェア開発で使われるタスク管理の単位。バグ報告や機能要望などを番号付きで記録・追跡する仕組み。 <a href="#ref-3" class="note-ref">↩</a></li>
-<li id="note-4"><strong>差分（diff）</strong>：変更前と変更後のコードの違いを並べて表示したもの。どこが変わったか一目で確認できる。 <a href="#ref-4" class="note-ref">↩</a></li>
-<li id="note-5"><strong>コミット</strong>：コードの変更内容をプロジェクトの履歴に記録・保存すること。変更の「セーブポイント」のようなもの。 <a href="#ref-5" class="note-ref">↩</a></li>
-<li id="note-6"><strong>リポジトリ</strong>：ソフトウェアのソースコードや変更履歴をまとめて保管・管理する場所。 <a href="#ref-6" class="note-ref">↩</a></li>
-<li id="note-7"><strong>README</strong>：プロジェクトの概要や使い方を説明するための文書。リポジトリを開いたとき最初に表示されることが多い。 <a href="#ref-7" class="note-ref">↩</a></li>
-<li id="note-8"><strong>Slack</strong>：チーム内のやりとりに使われるビジネス向けチャットツール。 <a href="#ref-8" class="note-ref">↩</a></li>
-<li id="note-9"><strong>Figma</strong>：画面デザインの作成や共有に使われるウェブベースのデザインツール。 <a href="#ref-9" class="note-ref">↩</a></li>
-<li id="note-10"><strong>マージ</strong>：別々に行われたコードの変更を一つに統合し、本番のコードに反映すること。 <a href="#ref-10" class="note-ref">↩</a></li>
-<li id="note-11"><strong>プロセス</strong>：コンピュータ上で実行中のプログラムのこと。ここではエージェントの動作を指す。 <a href="#ref-11" class="note-ref">↩</a></li>
-<li id="note-12"><strong>CTO</strong>：Chief Technology Officerの略。最高技術責任者。企業の技術面の方針を統括する役職。 <a href="#ref-12" class="note-ref">↩</a></li>
-<li id="note-13"><strong>コミットメッセージ</strong>：コードの変更を記録する際に添える短い説明文。「何を、なぜ変えたか」を記す。 <a href="#ref-13" class="note-ref">↩</a></li>
-<li id="note-14"><strong>UI</strong>：User Interface（ユーザーインターフェース）の略。ユーザーが目にする画面やボタンなどの見た目・操作部分。 <a href="#ref-14" class="note-ref">↩</a></li>
-<li id="note-15"><strong>オンボーディング</strong>：新しいユーザーがサービスを使い始める際の導入・案内の流れ。 <a href="#ref-15" class="note-ref">↩</a></li>
-<li id="note-16"><strong>PR（プルリクエスト）</strong>：コードの変更をチームに提出し、レビューを受けてから本番に取り込んでもらうための仕組み。 <a href="#ref-16" class="note-ref">↩</a></li>
-</ol>
-</div>
-
 </div>
 <script src="../common.js"></script>
+<script>
+(function() {
+  var activeTooltip = null;
+  var activeRef = null;
+
+  function removeTooltip() {
+    if (activeTooltip) {
+      activeTooltip.parentNode.removeChild(activeTooltip);
+      activeTooltip = null;
+      activeRef = null;
+    }
+  }
+
+  function findRef(el) {
+    return el.closest('.note-ref') || el.closest('.trans-ref');
+  }
+
+  function showTooltip(ref) {
+    if (activeRef === ref) { removeTooltip(); return; }
+    removeTooltip();
+    var text = ref.getAttribute('data-note');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'tooltip';
+    if (ref.classList.contains('trans-ref')) tip.classList.add('tooltip--trans');
+    tip.textContent = text;
+    ref.style.position = 'relative';
+    ref.appendChild(tip);
+    activeTooltip = tip;
+    activeRef = ref;
+    var rect = tip.getBoundingClientRect();
+    if (rect.top < 0) {
+      tip.classList.add('tooltip--below');
+    }
+    if (rect.left < 8) {
+      tip.classList.remove('tooltip--right');
+      tip.classList.add('tooltip--left');
+    } else if (rect.right > window.innerWidth - 8) {
+      tip.classList.remove('tooltip--left');
+      tip.classList.add('tooltip--right');
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var ref = findRef(e.target);
+    if (ref) {
+      e.preventDefault();
+      showTooltip(ref);
+    } else {
+      removeTooltip();
+    }
+  });
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseover', function(e) {
+      var ref = findRef(e.target);
+      if (ref) showTooltip(ref);
+    });
+    document.addEventListener('mouseout', function(e) {
+      var ref = findRef(e.target);
+      if (ref && !ref.contains(e.relatedTarget)) removeTooltip();
+    });
+  }
+})();
+</script>
 </body>
 </html>

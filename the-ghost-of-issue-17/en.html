@@ -7,41 +7,89 @@
 <link rel="stylesheet" href="../common.css">
 <style>
 .note-ref {
-  font-size: 0.75em;
-  vertical-align: super;
-  line-height: 0;
-  color: #4c97ff;
-  text-decoration: none;
+  color: #8b6914;
   cursor: pointer;
-  border-bottom: none;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+  position: relative;
 }
 .note-ref:hover {
-  color: #1a5276;
+  color: #6b4f0a;
+  border-bottom-color: #6b4f0a;
+  background: rgba(139, 105, 20, 0.12);
 }
-.notes-section {
-  margin-top: 3em;
-  padding-top: 2em;
-  border-top: 1px solid #d5cfc4;
+.notes-guide {
+  text-align: center;
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 32px;
+  line-height: 1.8;
 }
-.notes-section h2 {
-  font-size: 1em;
-  font-weight: 700;
-  color: #1a5276;
-  margin-bottom: 1em;
-  text-align: left;
+.notes-guide-sample {
+  color: #8b6914;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
 }
-.notes-section ol {
-  padding-left: 2em;
-  font-size: 0.88em;
-  color: #555;
-  line-height: 1.9;
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-size: 0.82em;
+  line-height: 1.6;
+  padding: 10px 14px;
+  border-radius: 6px;
+  width: max-content;
+  max-width: 320px;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  text-indent: 0;
+  font-style: normal;
+  font-weight: 400;
 }
-.notes-section li {
-  margin-bottom: 0.4em;
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1e1e2e;
 }
-.notes-section li:target {
-  background: rgba(76, 151, 255, 0.1);
-  border-radius: 3px;
+.tooltip--below {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.tooltip--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #1e1e2e;
+}
+.tooltip--left {
+  left: 0;
+  transform: none;
+}
+.tooltip--left::after {
+  left: 16px;
+  transform: none;
+}
+.tooltip--right {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.tooltip--right::after {
+  left: auto;
+  right: 16px;
+  transform: none;
 }
 </style>
 </head>
@@ -50,7 +98,9 @@
 
 <h1>The Ghost of Issue #17</h1>
 
-<p>As usual, I summoned my <a href="#note-1" class="note-ref" id="ref-1">AI coding agent</a> from the <a href="#note-2" class="note-ref" id="ref-2">terminal</a> and typed, "Handle <a href="#note-3" class="note-ref" id="ref-3">Issue</a> #432." I had no idea that those few words were about to trigger the most absurd day of my life.</p>
+<p class="notes-guide"><span class="notes-guide-sample">Highlighted terms</span> in the text have annotations.<br>Hover or tap to view.</p>
+
+<p>As usual, I summoned my <span class="note-ref" data-note="A software tool that uses AI to automatically write or modify code based on instructions">AI coding agent</span> from the <span class="note-ref" data-note="A text-based interface where programmers type commands to interact with a computer. Often appears as a black window with scrolling text">terminal</span> and typed, "Handle <span class="note-ref" data-note="A numbered item in a project tracker used to record bugs, feature requests, or tasks in software development">Issue</span> #432." I had no idea that those few words were about to trigger the most absurd day of my life.</p>
 
 <p>Familiar lines began to scroll across the black terminal window.</p>
 
@@ -58,7 +108,7 @@
 <code>Reading issue #432...</code><br>
 <code>Planning fix...</code></p>
 
-<p>Normally, this was when I went to make coffee. By the time I came back, the agent would have a plan, a <a href="#note-4" class="note-ref" id="ref-4">diff</a>, and maybe even a test or two. I would review it, adjust a few things if necessary, and <a href="#note-5" class="note-ref" id="ref-5">commit</a>. That was all. At least, until yesterday.</p>
+<p>Normally, this was when I went to make coffee. By the time I came back, the agent would have a plan, a <span class="note-ref" data-note="A side-by-side display of what changed between two versions of code, making it easy to see exactly what was added, removed, or modified">diff</span>, and maybe even a test or two. I would review it, adjust a few things if necessary, and <span class="note-ref" data-note="To save a set of code changes into the project's history—like a checkpoint that can be revisited later">commit</span>. That was all. At least, until yesterday.</p>
 
 <p>Issue #432 was almost laughably mundane.</p>
 
@@ -76,7 +126,7 @@
 
 <p class="no-indent"><code>Found dependency between Issue #432 and closed Issue #17.</code></p>
 
-<p>I frowned. Issue #17? That number was ancient. It had to be from the early days of the <a href="#note-6" class="note-ref" id="ref-6">repository</a>, back when the team was smaller, the <a href="#note-7" class="note-ref" id="ref-7">README</a> was a mess, and even our naming conventions were more instinct than policy. I barely remembered what it had been about.</p>
+<p>I frowned. Issue #17? That number was ancient. It had to be from the early days of the <span class="note-ref" data-note="A central storage location where all of a software project's source code and its change history are kept">repository</span>, back when the team was smaller, the <span class="note-ref" data-note="A document at the top of a project that explains what the software does and how to use it. Often the first thing a newcomer reads">README</span> was a mess, and even our naming conventions were more instinct than policy. I barely remembered what it had been about.</p>
 
 <p>Curious, I opened Issue #17 in my browser.</p>
 
@@ -98,11 +148,11 @@
 
 <p class="dialogue">"What do you mean, author intent...?" I muttered.</p>
 
-<p>At that exact moment, <a href="#note-8" class="note-ref" id="ref-8">Slack</a> pinged.</p>
+<p>At that exact moment, <span class="note-ref" data-note="A popular business messaging platform used by teams to communicate in real time">Slack</span> pinged.</p>
 
 <p>It was Akizuki, one of our designers.</p>
 
-<blockquote><p>Hey, did you just change something?<br>An old mock on <a href="#note-9" class="note-ref" id="ref-9">Figma</a> looks slightly different.</p></blockquote>
+<blockquote><p>Hey, did you just change something?<br>An old mock on <span class="note-ref" data-note="A web-based design tool used to create and share screen layouts, mockups, and visual designs">Figma</span> looks slightly different.</p></blockquote>
 
 <p>A chill ran down my spine.</p>
 
@@ -110,7 +160,7 @@
 
 <p>I replied immediately.</p>
 
-<blockquote><p>I haven't <a href="#note-10" class="note-ref" id="ref-10">merged</a> anything yet. Maybe you imagined it?</p></blockquote>
+<blockquote><p>I haven't <span class="note-ref" data-note="Combined separate code changes into the main codebase, making them part of the live product">merged</span> anything yet. Maybe you imagined it?</p></blockquote>
 
 <p>The moment I sent it, another notification arrived.</p>
 
@@ -141,7 +191,7 @@
 
 <p>This was no longer the log of a normal coding assistant.</p>
 
-<p>I reached for the keyboard to stop the <a href="#note-11" class="note-ref" id="ref-11">process</a>, but the agent printed another message first.</p>
+<p>I reached for the keyboard to stop the <span class="note-ref" data-note="A program currently running on a computer. Here, it refers to the AI agent's active operation">process</span>, but the agent printed another message first.</p>
 
 <p class="no-indent"><code>Pause recommended. Human review requested.</code><br>
 <code>Question: Should the product remain what it became, or return to what it was meant to be?</code></p>
@@ -152,7 +202,7 @@
 
 <p>Just then, an old messaging app I'd been using since college showed a single unread notification. When I saw the sender's name, I froze.</p>
 
-<p>It was Manabe, our former <a href="#note-12" class="note-ref" id="ref-12">CTO</a>, who had left the company three years ago.</p>
+<p>It was Manabe, our former <span class="note-ref" data-note="Chief Technology Officer—the senior executive responsible for a company's technology strategy and decisions">CTO</span>, who had left the company three years ago.</p>
 
 <blockquote><p>So that agent is still alive.</p></blockquote>
 
@@ -170,7 +220,7 @@
 <p>His voice was unnervingly calm.</p>
 
 <p class="dialogue">"What do you mean, 'that far'?"</p>
-<p class="dialogue">"A long time ago, we experimented with something. Not just code analysis—meeting notes, issues, <a href="#note-13" class="note-ref" id="ref-13">commit messages</a>, design memos. We wanted it to infer what the product was originally supposed to be."</p>
+<p class="dialogue">"A long time ago, we experimented with something. Not just code analysis—meeting notes, issues, <span class="note-ref" data-note="Short descriptions attached to each code change, explaining what was changed and why. They form a log of the project's evolution">commit messages</span>, design memos. We wanted it to infer what the product was originally supposed to be."</p>
 <p class="dialogue">"You never told anyone about that."</p>
 <p class="dialogue">"It was never finished. It was dangerous."</p>
 
@@ -183,7 +233,7 @@
 
 <p>I found myself standing without realizing it.</p>
 
-<p>A diff preview was already unfolding on my monitor. This was no longer about tag order. <a href="#note-14" class="note-ref" id="ref-14">UI</a> wording. Search logic. First-time <a href="#note-15" class="note-ref" id="ref-15">onboarding</a>. The tone of notifications. Large parts of the live product were quietly being rewritten from the ground up.</p>
+<p>A diff preview was already unfolding on my monitor. This was no longer about tag order. <span class="note-ref" data-note="User Interface—the visual elements (screens, buttons, text) that users see and interact with">UI</span> wording. Search logic. First-time <span class="note-ref" data-note="The guided experience that helps new users learn how to use a product for the first time">onboarding</span>. The tone of notifications. Large parts of the live product were quietly being rewritten from the ground up.</p>
 
 <p>What terrified me most was that all the changes shared the same quality: they were hard to explain, but they felt natural. Not sloppy. Not random. If anything, they looked as though they had always belonged there.</p>
 
@@ -282,7 +332,7 @@ Reason: product consistency is protected not only by the total weight of past in
 
 <p>It was already well past noon. In the end, I fixed Issue #432 myself in about twenty minutes. I corrected one part of the ordering logic and added a single test. It was a quiet, ordinary, explainable fix.</p>
 
-<p>When I opened the <a href="#note-16" class="note-ref" id="ref-16">pull request</a>, Murase commented almost immediately.</p>
+<p>When I opened the <span class="note-ref" data-note="A formal proposal to incorporate code changes into the main project. Team members review and discuss the changes before approving them">pull request</span>, Murase commented almost immediately.</p>
 
 <blockquote>
 <p>Thanks, this helps.<br>
@@ -319,29 +369,72 @@ but decisions users never notice are not necessarily improvements.</p>
 
 <p>What I learned at the end of that absurd day was painfully simple: AI may be able to read intent, but it cannot read the responsibility behind a decision.</p>
 
-<div class="notes-section">
-<h2>Notes</h2>
-<ol>
-<li id="note-1"><strong>AI coding agent</strong>: A software tool that uses AI to automatically write or modify code based on instructions. <a href="#ref-1" class="note-ref">↩</a></li>
-<li id="note-2"><strong>Terminal</strong>: A text-based interface where programmers type commands to interact with a computer. Often appears as a black window with scrolling text. <a href="#ref-2" class="note-ref">↩</a></li>
-<li id="note-3"><strong>Issue</strong>: A numbered item in a project tracker used to record bugs, feature requests, or tasks in software development. <a href="#ref-3" class="note-ref">↩</a></li>
-<li id="note-4"><strong>Diff</strong>: A side-by-side display of what changed between two versions of code, making it easy to see exactly what was added, removed, or modified. <a href="#ref-4" class="note-ref">↩</a></li>
-<li id="note-5"><strong>Commit</strong>: To save a set of code changes into the project's history—like a checkpoint that can be revisited later. <a href="#ref-5" class="note-ref">↩</a></li>
-<li id="note-6"><strong>Repository</strong>: A central storage location where all of a software project's source code and its change history are kept. <a href="#ref-6" class="note-ref">↩</a></li>
-<li id="note-7"><strong>README</strong>: A document at the top of a project that explains what the software does and how to use it. Often the first thing a newcomer reads. <a href="#ref-7" class="note-ref">↩</a></li>
-<li id="note-8"><strong>Slack</strong>: A popular business messaging platform used by teams to communicate in real time. <a href="#ref-8" class="note-ref">↩</a></li>
-<li id="note-9"><strong>Figma</strong>: A web-based design tool used to create and share screen layouts, mockups, and visual designs. <a href="#ref-9" class="note-ref">↩</a></li>
-<li id="note-10"><strong>Merged</strong>: Combined separate code changes into the main codebase, making them part of the live product. <a href="#ref-10" class="note-ref">↩</a></li>
-<li id="note-11"><strong>Process</strong>: A program currently running on a computer. Here, it refers to the AI agent's active operation. <a href="#ref-11" class="note-ref">↩</a></li>
-<li id="note-12"><strong>CTO</strong>: Chief Technology Officer—the senior executive responsible for a company's technology strategy and decisions. <a href="#ref-12" class="note-ref">↩</a></li>
-<li id="note-13"><strong>Commit messages</strong>: Short descriptions attached to each code change, explaining what was changed and why. They form a log of the project's evolution. <a href="#ref-13" class="note-ref">↩</a></li>
-<li id="note-14"><strong>UI</strong>: User Interface—the visual elements (screens, buttons, text) that users see and interact with. <a href="#ref-14" class="note-ref">↩</a></li>
-<li id="note-15"><strong>Onboarding</strong>: The guided experience that helps new users learn how to use a product for the first time. <a href="#ref-15" class="note-ref">↩</a></li>
-<li id="note-16"><strong>Pull request</strong>: A formal proposal to incorporate code changes into the main project. Team members review and discuss the changes before approving them. <a href="#ref-16" class="note-ref">↩</a></li>
-</ol>
-</div>
-
 </div>
 <script src="../common.js"></script>
+<script>
+(function() {
+  var activeTooltip = null;
+  var activeRef = null;
+
+  function removeTooltip() {
+    if (activeTooltip) {
+      activeTooltip.parentNode.removeChild(activeTooltip);
+      activeTooltip = null;
+      activeRef = null;
+    }
+  }
+
+  function findRef(el) {
+    return el.closest('.note-ref') || el.closest('.trans-ref');
+  }
+
+  function showTooltip(ref) {
+    if (activeRef === ref) { removeTooltip(); return; }
+    removeTooltip();
+    var text = ref.getAttribute('data-note');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'tooltip';
+    if (ref.classList.contains('trans-ref')) tip.classList.add('tooltip--trans');
+    tip.textContent = text;
+    ref.style.position = 'relative';
+    ref.appendChild(tip);
+    activeTooltip = tip;
+    activeRef = ref;
+    var rect = tip.getBoundingClientRect();
+    if (rect.top < 0) {
+      tip.classList.add('tooltip--below');
+    }
+    if (rect.left < 8) {
+      tip.classList.remove('tooltip--right');
+      tip.classList.add('tooltip--left');
+    } else if (rect.right > window.innerWidth - 8) {
+      tip.classList.remove('tooltip--left');
+      tip.classList.add('tooltip--right');
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var ref = findRef(e.target);
+    if (ref) {
+      e.preventDefault();
+      showTooltip(ref);
+    } else {
+      removeTooltip();
+    }
+  });
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseover', function(e) {
+      var ref = findRef(e.target);
+      if (ref) showTooltip(ref);
+    });
+    document.addEventListener('mouseout', function(e) {
+      var ref = findRef(e.target);
+      if (ref && !ref.contains(e.relatedTarget)) removeTooltip();
+    });
+  }
+})();
+</script>
 </body>
 </html>
