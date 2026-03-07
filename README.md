@@ -9,3 +9,13 @@
 
 - [HTML版 (Japanese)](blue-blocks-sea-secret/index.html)
 - [原稿 (Japanese)](blue-blocks-sea-secret/ja.md)
+
+## 失敗作 / The Failed Print
+
+- [HTML版 (Japanese)](failed-print/index.html)
+- [HTML版 (English)](failed-print/en.html)
+
+## 女王を捨てる日 / The Day I Sacrificed My Queen
+
+- [HTML版 (Japanese)](queen-sacrifice/index.html)
+- [HTML版 (English)](queen-sacrifice/en.html)
