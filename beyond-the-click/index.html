@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カチリの先に</title>
+<link rel="stylesheet" href="../common.css">
+<style>
+.note-ref {
+  color: #8b6914;
+  cursor: pointer;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+  position: relative;
+}
+.note-ref:hover {
+  color: #6b4f0a;
+  border-bottom-color: #6b4f0a;
+  background: rgba(139, 105, 20, 0.12);
+}
+.notes-guide {
+  text-align: center;
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+.notes-guide-sample {
+  color: #8b6914;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-size: 0.82em;
+  line-height: 1.6;
+  padding: 10px 14px;
+  border-radius: 6px;
+  width: max-content;
+  max-width: 320px;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  text-indent: 0;
+  font-style: normal;
+  font-weight: 400;
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1e1e2e;
+}
+.tooltip--below {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.tooltip--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #1e1e2e;
+}
+.tooltip--left {
+  left: 0;
+  transform: none;
+}
+.tooltip--left::after {
+  left: 16px;
+  transform: none;
+}
+.tooltip--right {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.tooltip--right::after {
+  left: auto;
+  right: 16px;
+  transform: none;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>カチリの先に</h1>
+
+<p class="notes-guide"><span class="notes-guide-sample">この色の語句</span>にはアーチェリー用語の注釈があります。<br>ホバーまたはタップで表示されます。</p>
+
+<p>意識して肩甲骨を押し開き、<span class="note-ref" data-note="弓に取り付けた薄い金属板。矢を一定の長さまで引くとカチリと音を立てて落ち、リリースのタイミングを知らせる">クリッカー</span>を落とす。カチリというその音が鳴った瞬間、矢を<span class="note-ref" data-note="弦から指を離して矢を放つ動作">リリース</span>する。</p>
+
+<p>その一瞬だけ、世界は音をなくした。</p>
+
+<p>つぎに聞こえてきたのは、的に矢がささる、乾いた音だった。<br>
+ぱしん、と小さく鳴って、体育館のように広い射場の空気にしずかに消えていく。</p>
+
+<p>結衣は息を止めていたことに気づき、細く吐いた。<br>
+矢は<span class="note-ref" data-note="的は中心から、黄色（10〜9点）・赤（8〜7点）・青（6〜5点）・黒（4〜3点）・白（2〜1点）の同心円で構成される">赤の8点</span>に立っていた。黄色の9点との境目に近い、惜しい一本だった。悪くない。けれど、よくもない。</p>
+
+<p class="dialogue">「いまの、のびあがった」</p>
+
+<p>後ろから声がした。<br>
+ふりむかなくてもわかる。二年の真壁先輩だ。</p>
+
+<p class="dialogue">「はい」</p>
+
+<p>結衣は短く答えた。自分でもわかっていた。<span class="note-ref" data-note="弓を引いて矢を引ききるまでの動作全体">ドローイング</span>の最後で、少しだけ当てにいってしまったのだ。肩は開けていた。腕の線もたぶん悪くなかった。でも、黄色を見た瞬間、心だけが前に出た。</p>
+
+<p>そのわずかな乱れが、矢に出る。</p>
+
+<p class="dialogue">「おまえ、形は前よりずっとよくなったよ」</p>
+
+<p>真壁先輩は結衣のとなりに立ち、的を見たまま言った。</p>
+
+<p class="dialogue">「でも、当てようとすると急に弱くなる」</p>
+<p class="dialogue">「……はい」</p>
+<p class="dialogue">「たぶん、こわいんだろ」</p>
+<p class="dialogue">「こわい、ですか」</p>
+<p class="dialogue">「外すのが」</p>
+
+<p>言われて、結衣は何も返せなかった。</p>
+
+<p>アーチェリーを始めて一年。<br>
+最初は、弓を引けるだけでうれしかった。矢が飛ぶだけでおもしろかった。的のどこかに刺されば、それだけで友だちに話したくなるくらいだった。</p>
+
+<p>けれど、試合に出るようになってから、一本の意味が変わった。</p>
+
+<p>一本で流れが変わる。<br>
+一本で順位が落ちる。<br>
+一本で、昨日まで積み上げたものが、たよりなく見える。</p>
+
+<p>それを知ってから、結衣は矢を放つたびに、自分の中に小さな濁りが生まれるのを感じるようになった。<br>
+失敗したくない。<br>
+ちゃんと当てたい。<br>
+先輩に認められたい。<br>
+団体のメンバーに入りたい。</p>
+
+<p>そんな気持ちが増えるほど、矢はまっすぐではなくなっていく。</p>
+
+<p class="dialogue">「もう一本いけるか」</p>
+<p class="dialogue">「はい」</p>
+
+<p>結衣はうなずいて、足をそろえなおした。</p>
+
+<p><span class="note-ref" data-note="射つときの足の位置と向き">スタンス</span>を決める。<br>
+弓を軽く握る。<br>
+<span class="note-ref" data-note="射の手順。フック＝弦に指をかける、セット＝姿勢を整える、セットアップ＝弓を持ち上げて引き始める">フック。セット。セットアップ</span>。<br>
+引きながら、背中に意識を集める。</p>
+
+<p>肩甲骨を寄せるんじゃない。押し開く。左右にひろげる。<br>
+大学の見学会に来たコーチがそう言っていたのを、結衣はずっと覚えていた。背中で引け。腕じゃない。胸でもない。背中の広さで持て、と。</p>
+
+<p><span class="note-ref" data-note="弓を引ききった状態で、弦を持つ手が顎の下など顔の決まった位置に触れること。狙いの基準点になる">アンカー</span>に入る。<br>
+照準をのせる。<br>
+<span class="note-ref" data-note="弓に取り付けた照準器。的に合わせて狙いを定める">サイト</span>の輪の向こうに、黄色の10点が小さく燃えている。</p>
+
+<p>当てたい。</p>
+
+<p>そう思った瞬間、自分の中に雑音が混じる。</p>
+
+<p>結衣はその言葉を、胸の奥でそっと押し返した。<br>
+当てたいじゃない。<br>
+やることをやるだけ。</p>
+
+<p>背中を保つ。<br>
+首を長くする。<br>
+呼吸をほどく。<br>
+クリッカーが落ちるのを待つ。</p>
+
+<p>カチリ。</p>
+
+<p>矢が飛ぶ。</p>
+
+<p>今度は、さっきよりもずっと自然だった。<br>
+放したというより、抜けていった、という感覚に近い。弦が指をはなれたあとも、結衣の右手は首の後ろへすべるように収まり、左腕は的のほうへ静かに伸びていた。</p>
+
+<p>矢は黄色の9点に刺さった。黄色の10点に近い、強い一本だった。</p>
+
+<p class="dialogue">「……あ」</p>
+
+<p>思わず声がもれた。</p>
+
+<p class="dialogue">「それだよ」</p>
+
+<p>真壁先輩の声は、めずらしくやわらかかった。</p>
+
+<p class="dialogue">「今の、おまえ自分でわかっただろ」</p>
+<p class="dialogue">「はい」</p>
+<p class="dialogue">「当たったからじゃないぞ」</p>
+<p class="dialogue">「……はい」</p>
+<p class="dialogue">「抜け方が違った」</p>
+
+<p>結衣はうなずいた。<br>
+たしかにそうだった。点数を見る前に、もうわかっていた。いい射は、的を見る前に体が知っている。</p>
+
+<p>その感覚がうれしかった。<br>
+10点に入ったことよりも、ずっと。</p>
+
+<div class="section-break"></div>
+
+<p>その日の部活の終わり、片づけをしながら、同級生の奈々が言った。</p>
+
+<p class="dialogue">「結衣、最近ちょっと顔変わったよね」</p>
+<p class="dialogue">「え、なにそれ」</p>
+<p class="dialogue">「なんか前は、ずっと怒られてる人の顔してた」</p>
+<p class="dialogue">「ひどい」</p>
+<p class="dialogue">「今は、悩んでる人の顔」</p>
+<p class="dialogue">「もっとひどい」</p>
+
+<p>奈々は笑った。結衣もつられて笑った。<br>
+でも、少しだけその意味がわかる気がした。</p>
+
+<p>前は、正解がどこかにあると思っていた。<br>
+きれいな形を作ればいい。強い先輩のまねをすればいい。たくさん引けば、いつか当たるようになる。そういう、目に見える答えを追いかけていた。</p>
+
+<p>けれど今は、同じ形をしていても、そこにのっている気持ちで矢は変わると知っている。<br>
+力むな、と言われても、こわければ力む。<br>
+自信を持て、と言われても、失敗の記憶が残っていれば体はすくむ。</p>
+
+<p>アーチェリーは、矢を飛ばす競技なのに、ほんとうは毎回、自分の心を見せられているみたいだった。</p>
+
+<div class="section-break"></div>
+
+<p>週末、県大会の予選があった。</p>
+
+<p>空は薄く曇っていて、風は弱い。<br>
+絶好、というほどではないが、悪くない条件だった。<br>
+会場には知らない学校の選手たちが並び、的が遠くまで規則正しく続いている。緊張した空気のなかに、<span class="note-ref" data-note="射った矢を的から回収すること。全射手が射ち終わった後に行う">矢取り</span>の足音と、弦の震える音だけが浮いていた。</p>
+
+<p>結衣は補欠ではなく、団体の三人に入っていた。</p>
+
+<p>朝、名前を告げられたときも、うれしさより先に不安が来た。自分でいいのか、外したらどうしよう、その思いが何度も胸の内側を往復した。</p>
+
+<p>でも、いまさら逃げるわけにはいかない。</p>
+
+<p>一本目。<br>
+赤の8点。</p>
+
+<p>二本目。<br>
+黄色の9点。</p>
+
+<p>三本目。<br>
+赤の8点。</p>
+
+<p>悪くない。けれど、流れに乗りきれない。<br>
+隣の<span class="note-ref" data-note="射手が並んで矢を射る位置を示すライン">射線</span>では、三年のエースが静かに黄色の10点を重ねている。その姿が視界に入るたび、結衣の心はせわしなくなる。</p>
+
+<p>自分も。<br>
+もっと。<br>
+外せない。</p>
+
+<p>四本目の前、結衣は小さく目を閉じた。</p>
+
+<p>見るのは的じゃない。<br>
+勝つことでも、点数でもない。<br>
+いまの一射でやることだけ。</p>
+
+<p>足の裏。<br>
+背中。<br>
+首の長さ。<br>
+左腕の押し。<br>
+そして、クリッカーが落ちるまで待つこと。</p>
+
+<p>カチリ。</p>
+
+<p>音が鳴る。<br>
+矢は黄色の10点に入った。</p>
+
+<p>それでも、結衣は顔を上げなかった。<br>
+つぎも同じようにやるだけだ、と自分に言い聞かせた。</p>
+
+<p>一本、また一本と射つうちに、不思議と会場のざわめきが遠のいていった。<br>
+緊張が消えたわけではない。むしろ心臓はずっと速かった。<br>
+でも、その速さを追い払おうとしないでいると、体のほうが勝手にやるべきことを拾っていく。</p>
+
+<p>最後の一本。<br>
+この一本で、団体の通過が決まるかもしれない。<br>
+そう聞こえた気がしたが、結衣は考えないことにした。</p>
+
+<p>アンカー。<br>
+<span class="note-ref" data-note="アンカーに入った後、クリッカーが落ちるまで背中で弓を押し広げ続ける動作">伸び合い</span>。<br>
+背中。<br>
+待つ。</p>
+
+<p>カチリ。</p>
+
+<p>放たれた矢は、まっすぐ飛んで、黄色の9点に立った。</p>
+
+<p>矢取りのあと、結果が張り出されるまでの時間が、ひどく長く感じた。<br>
+奈々が何かしゃべっていたが、結衣は半分も聞けていなかった。指先がまだ少し震えていた。</p>
+
+<p>やがて、真壁先輩が走って戻ってきた。</p>
+
+<p class="dialogue">「通った」</p>
+
+<p>その一言で、まわりの空気が一気にほどけた。<br>
+奈々が声を上げ、三年生たちが息を吐き、結衣はしばらく何も言えなかった。</p>
+
+<p class="dialogue">「ほんと、ですか」</p>
+<p class="dialogue">「ほんと」</p>
+
+<p>真壁先輩は笑った。<br>
+いつもより少しだけ子どもっぽい笑い方だった。</p>
+
+<p class="dialogue">「おまえの最後、でかかった」</p>
+<p class="dialogue">「……はい」</p>
+
+<p>その返事をした瞬間、ようやく実感が胸に落ちてきた。<br>
+うれしかった。<br>
+飛び上がりたいくらいうれしかった。</p>
+
+<p>でも、それ以上に不思議だった。<br>
+決めたのは最後の一本かもしれない。けれど、ほんとうに自分を変えたのは、今日の一本一本の前に、何度も心の中で言い直した小さな言葉のほうだった。</p>
+
+<p>当てたい、じゃない。<br>
+うまくやりたい、でもない。<br>
+ただ、やることをやる。</p>
+
+<p>帰り道、ボウケースを背負って歩きながら、結衣は空を見上げた。<br>
+雲の切れ間から、夕方の白い光が細く差していた。</p>
+
+<p>アーチェリーは、的の真ん中を射抜く競技だと思っていた。<br>
+でも、たぶん少し違う。</p>
+
+<p>ほんとうは毎回、真ん中を探しているのは、自分の中なのだ。</p>
+
+<p>焦りすぎてもいけない。<br>
+こわがりすぎてもいけない。<br>
+力みすぎても、考えすぎてもいけない。</p>
+
+<p>その、ちょうどいい場所を探しながら、人は何本も何本も矢を放つ。<br>
+外しながら、乱れながら、それでもまた立つ。</p>
+
+<p>結衣は歩きながら、右手をそっと開いた。<br>
+そこにはもう弦の感触も、クリッカーの音も残っていない。<br>
+けれど体のどこかに、たしかに今日の一射が残っていた。</p>
+
+<p>カチリ、という小さな音の先に、<br>
+自分でもまだ知らない自分がいる。</p>
+
+<p>そんな気がした。</p>
+
+</div>
+<script src="../common.js"></script>
+<script>
+(function() {
+  var activeTooltip = null;
+  var activeRef = null;
+
+  function removeTooltip() {
+    if (activeTooltip) {
+      activeTooltip.parentNode.removeChild(activeTooltip);
+      activeTooltip = null;
+      activeRef = null;
+    }
+  }
+
+  function showTooltip(ref) {
+    if (activeRef === ref) { removeTooltip(); return; }
+    removeTooltip();
+    var text = ref.getAttribute('data-note');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'tooltip';
+    tip.textContent = text;
+    ref.style.position = 'relative';
+    ref.appendChild(tip);
+    activeTooltip = tip;
+    activeRef = ref;
+    var rect = tip.getBoundingClientRect();
+    if (rect.top < 0) {
+      tip.classList.add('tooltip--below');
+    }
+    if (rect.left < 8) {
+      tip.classList.remove('tooltip--right');
+      tip.classList.add('tooltip--left');
+    } else if (rect.right > window.innerWidth - 8) {
+      tip.classList.remove('tooltip--left');
+      tip.classList.add('tooltip--right');
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var ref = e.target.closest('.note-ref');
+    if (ref) {
+      e.preventDefault();
+      showTooltip(ref);
+    } else {
+      removeTooltip();
+    }
+  });
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseover', function(e) {
+      var ref = e.target.closest('.note-ref');
+      if (ref) showTooltip(ref);
+    });
+    document.addEventListener('mouseout', function(e) {
+      var ref = e.target.closest('.note-ref');
+      if (ref && !ref.contains(e.relatedTarget)) removeTooltip();
+    });
+  }
+})();
+</script>
+</body>
+</html>

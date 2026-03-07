@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond the Click</title>
+<link rel="stylesheet" href="../common.css">
+<style>
+.note-ref {
+  color: #8b6914;
+  cursor: pointer;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+  position: relative;
+}
+.note-ref:hover {
+  color: #6b4f0a;
+  border-bottom-color: #6b4f0a;
+  background: rgba(139, 105, 20, 0.12);
+}
+.notes-guide {
+  text-align: center;
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+.notes-guide-sample {
+  color: #8b6914;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-size: 0.82em;
+  line-height: 1.6;
+  padding: 10px 14px;
+  border-radius: 6px;
+  width: max-content;
+  max-width: 320px;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  text-indent: 0;
+  font-style: normal;
+  font-weight: 400;
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1e1e2e;
+}
+.tooltip--below {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.tooltip--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #1e1e2e;
+}
+.tooltip--left {
+  left: 0;
+  transform: none;
+}
+.tooltip--left::after {
+  left: 16px;
+  transform: none;
+}
+.tooltip--right {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.tooltip--right::after {
+  left: auto;
+  right: 16px;
+  transform: none;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Beyond the Click</h1>
+
+<p class="notes-guide"><span class="notes-guide-sample">Highlighted terms</span> in the text have archery terminology annotations.<br>Hover or tap to view.</p>
+
+<p>I spread my shoulder blades on purpose and let the <span class="note-ref" data-note="A thin metal blade on the bow that clicks when the arrow is drawn to a consistent length, signaling the moment to release">clicker</span> fall. The instant that sharp click sounded, I released the arrow.</p>
+
+<p>For that one moment, the world lost all sound.</p>
+
+<p>Then came the dry noise of the arrow striking the target.<br>
+A small, crisp smack rang out, then faded quietly into the air of the wide range, which felt almost as large as a gymnasium.</p>
+
+<p>Yui realized she had been holding her breath and let it out in a thin stream.<br>
+Her arrow was in the <span class="note-ref" data-note="The target face has concentric rings scored from center outward: gold (10), yellow (9), red (8–7), blue (6–5), black (4–3), white (2–1)">red for 8 points</span>. It was close to the line for the yellow 9, an almost-good shot. Not bad. But not good either.</p>
+
+<p class="dialogue">"You lifted up at the end."</p>
+
+<p>The voice came from behind her.<br>
+She did not need to turn around to know who it was. Makabe-senpai, a second-year.</p>
+
+<p class="dialogue">"Yes."</p>
+
+<p>Yui answered shortly. She knew it herself. At the very end of the <span class="note-ref" data-note="The process of pulling back the bowstring to full extension">draw</span>, she had tried just a little too hard to hit the middle. Her shoulders had opened well enough. The line of her arm was probably not bad either. But the instant she saw the gold, only her mind had rushed forward.</p>
+
+<p>That slight disorder showed up in the arrow.</p>
+
+<p class="dialogue">"You've gotten a lot better in form than before."</p>
+
+<p>Makabe-senpai stood beside her and spoke while looking at the target.</p>
+
+<p class="dialogue">"But the moment you try to make it hit, you get weak."</p>
+<p class="dialogue">"...Yes."</p>
+<p class="dialogue">"You're probably scared."</p>
+<p class="dialogue">"Scared?"</p>
+<p class="dialogue">"Of missing."</p>
+
+<p>Yui could not answer.</p>
+
+<p>She had started archery a year ago.<br>
+At first, it had been enough just to draw the bow. It was fun just to see an arrow fly. If it stuck anywhere in the target, she felt like telling her friends about it.</p>
+
+<p>But once she started competing, the meaning of a single arrow changed.</p>
+
+<p>One arrow could change the flow.<br>
+One arrow could drop your ranking.<br>
+One arrow could make everything you had built up until yesterday seem unreliable.</p>
+
+<p>After learning that, Yui began to feel a small cloudiness growing inside her every time she shot.<br>
+I don't want to fail.<br>
+I want to hit properly.<br>
+I want senpai to notice me.<br>
+I want to make the team lineup.</p>
+
+<p>The more those feelings grew, the less straight her arrows flew.</p>
+
+<p class="dialogue">"You can shoot another?"</p>
+<p class="dialogue">"Yes."</p>
+
+<p>Yui nodded and set her feet again.</p>
+
+<p>Set the <span class="note-ref" data-note="The archer's foot position and body alignment on the shooting line">stance</span>.<br>
+Hold the bow lightly.<br>
+<span class="note-ref" data-note="The sequence of setting up a shot. Hook: placing the fingers on the bowstring. Set: aligning the body posture. Set-up: raising the bow to begin the draw">Hook. Set. Set-up</span>.<br>
+As she drew, she gathered her attention into her back.</p>
+
+<p>Don't squeeze the shoulder blades together. Push them open. Spread them to the sides.<br>
+A coach who had come to a university open practice had said that once, and Yui had never forgotten it. Pull with your back. Not your arms. Not your chest. Hold with the width of your back.</p>
+
+<p>She came into <span class="note-ref" data-note="The consistent point where the draw hand touches the face (usually under the chin) at full draw, providing a stable reference for aiming">anchor</span>.<br>
+She placed the <span class="note-ref" data-note="An aiming device mounted on the bow, aligned with the target center">sight</span>.<br>
+Beyond the ring of the sight, the gold 10 glowed small and bright.</p>
+
+<p>I want to hit it.</p>
+
+<p>The instant she thought that, noise mixed into her mind.</p>
+
+<p>Yui gently pushed the words back down inside herself.<br>
+Not I want to hit it.<br>
+Just do what I have to do.</p>
+
+<p>Keep the back.<br>
+Lengthen the neck.<br>
+Loosen the breath.<br>
+Wait for the clicker to fall.</p>
+
+<p>Click.</p>
+
+<p>The arrow flew.</p>
+
+<p>This time, it felt far more natural than before.<br>
+It was closer to slipping free than to something she had consciously released. Even after the string left her fingers, her right hand slid into place behind her neck, and her left arm stayed quietly extended toward the target.</p>
+
+<p>The arrow struck the yellow for 9 points. It was a strong shot, close to the gold 10.</p>
+
+<p class="dialogue">"...Ah."</p>
+
+<p>The sound slipped out of her before she knew it.</p>
+
+<p class="dialogue">"That's it."</p>
+
+<p>Makabe-senpai's voice was unusually soft.</p>
+
+<p class="dialogue">"You felt it yourself that time, didn't you?"</p>
+<p class="dialogue">"Yes."</p>
+<p class="dialogue">"Not because it scored well."</p>
+<p class="dialogue">"...Yes."</p>
+<p class="dialogue">"The release was different."</p>
+
+<p>Yui nodded.<br>
+That was true. She had known it before even looking at the score. A good shot was something the body understood before the eyes did.</p>
+
+<p>That feeling made her happier<br>
+than hitting the gold.</p>
+
+<div class="section-break"></div>
+
+<p>At the end of practice that day, while they were cleaning up, her classmate Nana said,</p>
+
+<p class="dialogue">"Yui, your face has kind of changed lately."</p>
+<p class="dialogue">"What does that mean?"</p>
+<p class="dialogue">"Before, you looked like someone who was always getting scolded."</p>
+<p class="dialogue">"That's awful."</p>
+<p class="dialogue">"Now you look like someone who's thinking hard."</p>
+<p class="dialogue">"That's even worse."</p>
+
+<p>Nana laughed, and Yui laughed too.<br>
+But she felt she understood a little of what Nana meant.</p>
+
+<p>Before, she had thought the right answer was somewhere outside herself.<br>
+Make a pretty form. Copy the strong upperclassmen. Shoot a lot, and someday you'll hit. She had chased those visible answers.</p>
+
+<p>But now she knew that even with the same form, the arrow changed depending on the feeling carried inside it.<br>
+People could tell her not to tense up, but if she was afraid, she would tense up.<br>
+People could tell her to be confident, but if the memory of failure remained, her body would still shrink.</p>
+
+<p>Archery was a sport where you sent arrows flying, and yet it felt as if each shot showed your heart to everyone.</p>
+
+<div class="section-break"></div>
+
+<p>That weekend, there was the prefectural qualifying round.</p>
+
+<p>The sky was thinly overcast, and the wind was light.<br>
+Not perfect, but not bad conditions.<br>
+Athletes from schools she did not know stood in lines, and targets stretched out in neat rows into the distance. In the tense air, only the sounds of footsteps during <span class="note-ref" data-note="The process of collecting arrows from the target after all archers have finished shooting an end">arrow retrieval</span> and bowstrings trembling seemed to float.</p>
+
+<p>Yui was not an alternate.<br>
+She was one of the three chosen for the team.</p>
+
+<p>Even that morning, when her name had been called, anxiety had come before joy. What if I'm not good enough? What if I miss? Those thoughts moved back and forth inside her chest again and again.</p>
+
+<p>But it was too late to run away now.</p>
+
+<p>First arrow.<br>
+Red, 8 points.</p>
+
+<p>Second arrow.<br>
+Yellow, 9 points.</p>
+
+<p>Third arrow.<br>
+Red, 8 points.</p>
+
+<p>Not bad. But she still could not catch the flow.<br>
+On the next <span class="note-ref" data-note="The line on the range behind which archers stand to shoot">shooting line</span>, the third-year ace kept quietly stacking gold 10s. Every time Yui caught that in the corner of her eye, her mind grew busier.</p>
+
+<p>Me too.<br>
+More.<br>
+I can't miss.</p>
+
+<p>Before the fourth arrow, Yui closed her eyes for a moment.</p>
+
+<p>Don't look at the target.<br>
+Not victory.<br>
+Not the score.<br>
+Only what this one shot needs.</p>
+
+<p>The soles of her feet.<br>
+Her back.<br>
+The length of her neck.<br>
+The push of her left arm.<br>
+And waiting for the clicker to fall.</p>
+
+<p>Click.</p>
+
+<p>The sound came.<br>
+The arrow went into the gold for 10.</p>
+
+<p>Even then, Yui did not lift her face.<br>
+Just do the next one the same way, she told herself.</p>
+
+<p>As she kept shooting, one arrow after another, the noise of the venue began to drift strangely far away.<br>
+The tension had not disappeared. If anything, her heart was beating fast the whole time.<br>
+But once she stopped trying to chase that feeling away, her body started picking up what it had to do on its own.</p>
+
+<p>Last arrow.<br>
+This one might decide whether the team advanced.<br>
+She felt as if she heard that, but chose not to think about it.</p>
+
+<p>Anchor.<br>
+<span class="note-ref" data-note="The continued pushing through with the back muscles after reaching anchor, maintaining tension until the clicker falls">Expansion</span>.<br>
+Back.<br>
+Wait.</p>
+
+<p>Click.</p>
+
+<p>The arrow flew straight and landed in the yellow for 9 points.</p>
+
+<p>After arrow retrieval, the time before the results were posted felt painfully long.<br>
+Nana was saying something, but Yui barely heard half of it. Her fingertips were still trembling a little.</p>
+
+<p>Then Makabe-senpai came running back.</p>
+
+<p class="dialogue">"We made it."</p>
+
+<p>With those words, the air around them loosened all at once.<br>
+Nana cried out, the third-years let out long breaths, and Yui could not say anything for a while.</p>
+
+<p class="dialogue">"Really?"</p>
+<p class="dialogue">"Really."</p>
+
+<p>Makabe-senpai smiled.<br>
+It was a smile a little more childish than usual.</p>
+
+<p class="dialogue">"Your last one was huge."</p>
+<p class="dialogue">"...Yes."</p>
+
+<p>The moment she answered, the feeling finally dropped into her chest.<br>
+She was happy.<br>
+Happy enough to jump.</p>
+
+<p>But more than that, she was struck by something stranger.<br>
+Maybe the last arrow had decided it. But what had really changed her were the small words she had repeated to herself before each shot all day long.</p>
+
+<p>Not I want to hit it.<br>
+Not I want to do well.<br>
+Just do what I have to do.</p>
+
+<p>On the way home, walking with her bow case on her back, Yui looked up at the sky.<br>
+Through a break in the clouds, a thin white evening light shone down.</p>
+
+<p>She had thought archery was a sport about piercing the center of the target.<br>
+But maybe that was not quite right.</p>
+
+<p>Maybe every time, what she was really trying to find was the center inside herself.</p>
+
+<p>Too much hurry would not do.<br>
+Too much fear would not do.<br>
+Too much force, too much thinking—none of that would do.</p>
+
+<p>Searching for that exact right place, people sent arrow after arrow into the air.<br>
+Missing, wavering, and still standing up again.</p>
+
+<p>As she walked, Yui quietly opened her right hand.<br>
+The feel of the string and the sound of the clicker were already gone.<br>
+And yet somewhere in her body, the shot from today remained.</p>
+
+<p>Beyond that small sound—click—<br>
+there was still a self she had not yet met.</p>
+
+<p>That was how it felt.</p>
+
+</div>
+<script src="../common.js"></script>
+<script>
+(function() {
+  var activeTooltip = null;
+  var activeRef = null;
+
+  function removeTooltip() {
+    if (activeTooltip) {
+      activeTooltip.parentNode.removeChild(activeTooltip);
+      activeTooltip = null;
+      activeRef = null;
+    }
+  }
+
+  function showTooltip(ref) {
+    if (activeRef === ref) { removeTooltip(); return; }
+    removeTooltip();
+    var text = ref.getAttribute('data-note');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'tooltip';
+    tip.textContent = text;
+    ref.style.position = 'relative';
+    ref.appendChild(tip);
+    activeTooltip = tip;
+    activeRef = ref;
+    var rect = tip.getBoundingClientRect();
+    if (rect.top < 0) {
+      tip.classList.add('tooltip--below');
+    }
+    if (rect.left < 8) {
+      tip.classList.remove('tooltip--right');
+      tip.classList.add('tooltip--left');
+    } else if (rect.right > window.innerWidth - 8) {
+      tip.classList.remove('tooltip--left');
+      tip.classList.add('tooltip--right');
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var ref = e.target.closest('.note-ref');
+    if (ref) {
+      e.preventDefault();
+      showTooltip(ref);
+    } else {
+      removeTooltip();
+    }
+  });
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseover', function(e) {
+      var ref = e.target.closest('.note-ref');
+      if (ref) showTooltip(ref);
+    });
+    document.addEventListener('mouseout', function(e) {
+      var ref = e.target.closest('.note-ref');
+      if (ref && !ref.contains(e.relatedTarget)) removeTooltip();
+    });
+  }
+})();
+</script>
+</body>
+</html>

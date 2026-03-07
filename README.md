@@ -38,5 +38,11 @@
 ## ラベンダーいろのでんしゃ / The Lavender Train
 
 - [HTML版 (Japanese)](lavender-train/index.html)
-- [原稿 (Japanese)](lavender-train/ja.md)
-- [English version](lavender-train/en.md)
+- [HTML版 (English)](lavender-train/en.html)
+- [えほんばん / スクロール版 (Japanese)](lavender-train/scroll.html)
+- [Picture Book / Scroll Edition (English)](lavender-train/scroll-en.html)
+
+## カチリの先に / Beyond the Click
+
+- [HTML版 (Japanese)](beyond-the-click/index.html)
+- [HTML版 (English)](beyond-the-click/en.html)

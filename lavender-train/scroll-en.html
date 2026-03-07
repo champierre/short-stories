@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lavender Train — Picture Book Edition</title>
+<meta name="description" content="A scroll-through picture book edition of 'The Lavender Train.' Enjoy the story as it gently appears, scene by scene.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #3a3a3a;
+  line-height: 2;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Navigation ── */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.top-nav a {
+  color: #9B8EC0;
+  text-decoration: none;
+  border-bottom: 1px dashed #9B8EC0;
+}
+
+.top-nav a:hover {
+  color: #7b6ea0;
+  border-bottom-color: #7b6ea0;
+}
+
+/* ── Scene layout ── */
+.scene {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px;
+  position: relative;
+}
+
+.scene-inner {
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ── Fade-in animation ── */
+.scene-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  margin-bottom: 40px;
+}
+
+.scene-content:last-child { margin-bottom: 0; }
+
+.scene-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pop-in variant for highlight moments */
+.scene-content-pop {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: none;
+}
+
+.scene-content-pop.visible {
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ── Background colors — time of day ── */
+.sky-dawn       { background: linear-gradient(180deg, #e4eef8, #edf3fa); }
+.sky-morning    { background: linear-gradient(180deg, #d2e8f5, #e2eff9); }
+.sky-morning-2  { background: linear-gradient(180deg, #c4e0f0, #d6eaf5); }
+.sky-midday     { background: linear-gradient(180deg, #b0d8ec, #c8e4f5); }
+.sky-lavender   { background: linear-gradient(180deg, #d8d0e8, #e4ddf0); }
+.sky-bright     { background: linear-gradient(180deg, #c8dff5, #dde8f8); }
+.sky-noon       { background: linear-gradient(180deg, #c0dde6, #d4e8f0); }
+.sky-afternoon  { background: linear-gradient(180deg, #d4dfda, #e8ead0); }
+.sky-sunset     { background: linear-gradient(180deg, #f0d0b0, #f0c0a0); }
+.sky-evening    { background: linear-gradient(180deg, #d8a8c0, #c8a0c8); }
+
+/* ── Typography ── */
+.scene-title {
+  font-size: 2.6em;
+  font-weight: 900;
+  color: #9B8EC0;
+  margin-bottom: 32px;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+.scene-subtitle {
+  font-size: 1em;
+  color: #9B8EC0;
+  opacity: 0.6;
+  margin-top: 8px;
+  letter-spacing: 0.15em;
+}
+
+p.text {
+  font-size: 1.25em;
+  font-weight: 400;
+  line-height: 2.2;
+  margin-bottom: 16px;
+  color: #3a3a3a;
+}
+
+p.text:last-child { margin-bottom: 0; }
+
+p.dialogue {
+  font-size: 1.45em;
+  font-weight: 700;
+  color: #6b5b8a;
+  margin: 20px 0;
+  line-height: 1.8;
+}
+
+.ono {
+  display: inline-block;
+  font-size: 1.6em;
+  font-weight: 900;
+  color: #9B8EC0;
+  letter-spacing: 0.15em;
+}
+
+.ono-warn {
+  color: #e07050;
+  font-size: 1.8em;
+}
+
+.highlight-kita {
+  font-size: 3.5em;
+  font-weight: 900;
+  color: #9B8EC0;
+}
+
+.lav { color: #9B8EC0; font-weight: 700; }
+
+.em-light { color: #8a7aaa; }
+
+.wish {
+  font-size: 1.45em;
+  font-weight: 700;
+  color: #9B8EC0;
+  margin: 20px 0;
+  line-height: 1.8;
+}
+
+/* ── Track divider ── */
+.track-divider {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.track-lines {
+  width: 100%;
+  max-width: 400px;
+  height: 12px;
+  position: relative;
+}
+
+.track-lines::before,
+.track-lines::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #b8a8d0 0px, #b8a8d0 18px,
+    transparent 18px, transparent 28px
+  );
+}
+
+.track-lines::before { top: 0; }
+.track-lines::after  { bottom: 0; }
+
+.track-lines .ties {
+  position: absolute;
+  top: -2px; left: 0; right: 0;
+  height: 16px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 12px,
+    #c8b8e0 12px, #c8b8e0 15px,
+    transparent 15px, transparent 28px
+  );
+  opacity: 0.5;
+}
+
+/* Mini train on divider */
+.mini-train {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50px; height: 20px;
+  background: #9B8EC0;
+  border-radius: 4px 10px 2px 2px;
+}
+
+.mini-train::before {
+  content: '';
+  position: absolute;
+  top: 3px; left: 6px;
+  width: 7px; height: 8px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 1px;
+  box-shadow: 10px 0 0 rgba(255,255,255,0.6), 20px 0 0 rgba(255,255,255,0.6), 30px 0 0 rgba(255,255,255,0.6);
+}
+
+.mini-train::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 6px;
+  width: 6px; height: 6px;
+  background: #666;
+  border-radius: 50%;
+  box-shadow: 12px 0 0 #666, 28px 0 0 #666;
+}
+
+/* ── Deco ── */
+.deco-dots {
+  text-align: center;
+  margin: 24px 0;
+  letter-spacing: 12px;
+  color: #b8a8d0;
+  font-size: 0.8em;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 60px 24px 80px;
+  background: linear-gradient(180deg, #c8a0c8, #a890b8);
+}
+
+.footer a {
+  display: inline-block;
+  padding: 14px 32px;
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 40px;
+  font-size: 1.05em;
+  font-weight: 700;
+  transition: background 0.3s, color 0.3s;
+  margin: 8px;
+}
+
+.footer a:hover {
+  background: rgba(255,255,255,0.9);
+  color: #9B8EC0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .scene { padding: 80px 20px; min-height: 85vh; }
+  .scene-title { font-size: 2em; }
+  p.text { font-size: 1.1em; }
+  p.dialogue { font-size: 1.25em; }
+  .ono { font-size: 1.3em; }
+  .ono-warn { font-size: 1.5em; }
+  .highlight-kita { font-size: 2.6em; }
+  .wish { font-size: 1.25em; }
+  .scene-content { margin-bottom: 32px; }
+}
+
+/* ── Audio overlay ── */
+#audio-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: linear-gradient(180deg, #e4eef8 0%, #d8d0e8 50%, #c8a0c8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay-inner {
+  max-width: 360px;
+  padding: 40px 24px;
+}
+
+.overlay-title {
+  font-size: 2em;
+  font-weight: 900;
+  color: #9B8EC0;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.overlay-sub {
+  font-size: 0.95em;
+  color: #8a7aaa;
+  margin-bottom: 40px;
+  letter-spacing: 0.15em;
+}
+
+.overlay-desc {
+  font-size: 1.05em;
+  color: #6b5b8a;
+  margin-bottom: 32px;
+}
+
+.overlay-btn {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 40px;
+  font-family: inherit;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.overlay-btn:active { transform: scale(0.97); }
+
+.overlay-btn-primary {
+  background: #9B8EC0;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(155, 142, 192, 0.4);
+}
+
+.overlay-btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(155, 142, 192, 0.6);
+}
+
+.overlay-btn-secondary {
+  background: rgba(255,255,255,0.6);
+  color: #6b5b8a;
+}
+
+.overlay-btn-secondary:hover {
+  background: rgba(255,255,255,0.8);
+}
+
+/* ── Sound toggle ── */
+#sound-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border: 2px solid #b8a8d0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #9B8EC0;
+  font-size: 1.1em;
+  font-weight: 900;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+  transition: opacity 0.3s;
+}
+
+#sound-toggle:hover { opacity: 0.8; }
+
+#sound-toggle.muted {
+  color: #ccc;
+  border-color: #ddd;
+}
+</style>
+</head>
+<body>
+
+<div id="audio-overlay">
+  <div class="overlay-inner">
+    <p class="overlay-title">The Lavender<br>Train</p>
+    <p class="overlay-sub">Picture Book Edition</p>
+    <p class="overlay-desc">This story has sound!</p>
+    <button class="overlay-btn overlay-btn-primary" onclick="startWithAudio()">&#9835; Read with Sound</button>
+    <button class="overlay-btn overlay-btn-secondary" onclick="startWithoutAudio()">Read without Sound</button>
+  </div>
+</div>
+
+<button id="sound-toggle" onclick="toggleSound()">&#9835;</button>
+
+<nav class="top-nav">
+  <a href="en.html">Read standard version</a>
+</nav>
+
+<!-- ════════════ Scene 1: Title + Introduction ════════════ -->
+<section class="scene sky-dawn">
+  <div class="scene-inner">
+    <div class="scene-content">
+      <h1 class="scene-title">The Lavender<br>Train</h1>
+      <p class="scene-subtitle">Picture Book Edition</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        Ruu's favorite thing<br>
+        in the whole world<br>
+        is the new <span class="lav">lavender-colored train</span><br>
+        on the Inokashira Line.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="track-divider" style="background: linear-gradient(180deg, #edf3fa, #d2e8f5);">
+  <div class="track-lines"><div class="ties"></div></div>
+  <div class="mini-train"></div>
+</div>
+
+<!-- ════════════ Scene 2: Morning Window ════════════ -->
+<section class="scene sky-morning">
+  <div class="scene-inner">
+    <div class="scene-content" data-sfx="train-1">
+      <p class="text">
+        Every morning,<br>
+        Ruu sits by the window<br>
+        and watches the trains.
+      </p>
+      <p class="text">
+        All kinds of trains rumble past<br>
+        the railroad crossing near his house,<br>
+        <span class="ono">clackety-clack</span>
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        A bluish train.<br>
+        A white train.
+      </p>
+      <p class="text">
+        But the one Ruu loves most of all<br>
+        is the <span class="lav">lavender-colored train</span>.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="dialogue">"I wonder if it'll come today."</p>
+      <p class="text">
+        Ruu said in a tiny voice.<br>
+        Then his mother smiled and said:
+      </p>
+      <p class="dialogue">"I hope so."</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        Whenever Ruu sees the <span class="lav">lavender train</span>,<br>
+        his chest feels warm and glowing.
+      </p>
+      <p class="text">
+        Its gentle color<br>
+        makes his heart feel bright,<br>
+        even on cloudy days.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="track-divider" style="background: linear-gradient(180deg, #e2eff9, #c4e0f0);">
+  <div class="track-lines"><div class="ties"></div></div>
+  <div class="mini-train"></div>
+</div>
+
+<!-- ════════════ Scene 3: To the Crossing ════════════ -->
+<section class="scene sky-morning-2">
+  <div class="scene-inner">
+    <div class="scene-content">
+      <p class="text">
+        That morning,<br>
+        before going to kindergarten,<br>
+        Ruu went to the railroad crossing.
+      </p>
+    </div>
+    <div class="scene-content" data-sfx="bell">
+      <p class="ono ono-warn">Clang, clang, clang</p>
+      <p class="text">
+        The signal sounded<br>
+        and the crossing gate<br>
+        slowly came down.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="dialogue">"Is this the one? Is this the one?"</p>
+      <p class="text">Ruu's heart was pounding.</p>
+    </div>
+  </div>
+</section>
+
+<div class="track-divider" style="background: linear-gradient(180deg, #d6eaf5, #b0d8ec);">
+  <div class="track-lines"><div class="ties"></div></div>
+  <div class="mini-train"></div>
+</div>
+
+<!-- ════════════ Scene 4: Not Yet? ════════════ -->
+<section class="scene sky-midday">
+  <div class="scene-inner">
+    <div class="scene-content">
+      <p class="text">
+        First, a white train<br>
+        glided past.
+      </p>
+      <p class="text">
+        Then, a bluish train<br>
+        went by.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        Ruu felt<br>
+        a little disappointed.
+      </p>
+      <p class="dialogue">"Maybe it's not coming today…"</p>
+    </div>
+  </div>
+</section>
+
+<!-- Scene 4→5: No divider — dramatic transition -->
+
+<!-- ════════════ Scene 5: There it is! ════════════ -->
+<section class="scene sky-lavender">
+  <div class="scene-inner">
+    <div class="scene-content">
+      <p class="text em-light">And then.</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        Far down the tracks,<br>
+        a soft, gentle color appeared.
+      </p>
+      <p class="text">
+        Catching the light,<br>
+        the <span class="lav">lavender</span><br>
+        shimmered faintly.
+      </p>
+    </div>
+    <div class="scene-content scene-content-pop" data-sfx="kita">
+      <p class="highlight-kita">"There it is!"</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">Ruu jumped up with joy.</p>
+    </div>
+  </div>
+</section>
+
+<div class="track-divider" style="background: linear-gradient(180deg, #e4ddf0, #c8dff5);">
+  <div class="track-lines"><div class="ties"></div></div>
+  <div class="mini-train"></div>
+</div>
+
+<!-- ════════════ Scene 6: Bye-bye ════════════ -->
+<section class="scene sky-bright">
+  <div class="scene-inner">
+    <div class="scene-content" data-sfx="train-2">
+      <p class="text">
+        The <span class="lav">lavender train</span> rumbled past —<br>
+        <span class="ono">clackety-clack, clackety-clack</span> —<br>
+        right in front of him.
+      </p>
+      <p class="text">
+        Its windows sparkled,<br>
+        and the body of the train<br>
+        was a gentle color,<br>
+        just like a flower.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        Ruu waved his little hands<br>
+        back and forth.
+      </p>
+      <p class="dialogue">"Bye-byeee!"</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        A young woman sitting by the window<br>
+        smiled and waved back at him.
+      </p>
+      <p class="text">
+        Ruu was so happy<br>
+        that his cheeks turned round.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="track-divider" style="background: linear-gradient(180deg, #dde8f8, #c0dde6);">
+  <div class="track-lines"><div class="ties"></div></div>
+  <div class="mini-train"></div>
+</div>
+
+<!-- ════════════ Scene 7: Kindergarten ════════════ -->
+<section class="scene sky-noon">
+  <div class="scene-inner">
+    <div class="scene-content">
+      <p class="text">
+        When he arrived at kindergarten,<br>
+        Ruu told his teacher right away:
+      </p>
+      <p class="dialogue">"I saw the <span class="lav">lavender train</span><br>today!"</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        The teacher's eyes went wide.
+      </p>
+      <p class="dialogue">"Really? How wonderful!<br>What color was it like?"</p>
+      <p class="dialogue">"A gentle color!<br>Soft and fluffy and beautiful!"</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        His friends gathered around him too.
+      </p>
+      <p class="dialogue">"I wanna see it!"<br>"Me too!"<br>"Where does it run?"</p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        Ruu felt so very happy.
+      </p>
+      <p class="text">
+        When he talked about the things he loved,<br>
+        everyone got excited too.<br>
+        That made Ruu happiest of all.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="track-divider" style="background: linear-gradient(180deg, #d4e8f0, #d4dfda);">
+  <div class="track-lines"><div class="ties"></div></div>
+  <div class="mini-train"></div>
+</div>
+
+<!-- ════════════ Scene 8: Drawing ════════════ -->
+<section class="scene sky-afternoon">
+  <div class="scene-inner">
+    <div class="scene-content">
+      <p class="text">
+        During drawing time,<br>
+        Ruu drew the train.
+      </p>
+      <p class="text">
+        Long windows.<br>
+        A shiny body.<br>
+        And a gentle <span class="lav">lavender color</span>.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="dialogue">"Done!"</p>
+      <p class="text">
+        In Ruu's picture,<br>
+        there was a big train,<br>
+        and standing in front of it,<br>
+        waving with a big smile,<br>
+        was Ruu himself.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        When his mother came to pick him up,<br>
+        she looked at the drawing and said:
+      </p>
+      <p class="dialogue">"That's lovely. You really do<br>love that train, don't you, Ruu?"</p>
+      <p class="text">
+        Ruu nodded<br>
+        with a big, big nod.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="track-divider" style="background: linear-gradient(180deg, #e8ead0, #f0d0b0);">
+  <div class="track-lines"><div class="ties"></div></div>
+  <div class="mini-train"></div>
+</div>
+
+<!-- ════════════ Scene 9: Way Home ════════════ -->
+<section class="scene sky-sunset">
+  <div class="scene-inner">
+    <div class="scene-content">
+      <p class="text">
+        On the way home,<br>
+        as they passed by the crossing,<br>
+        the <span class="lav">lavender train</span><br>
+        came along once more.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        In the glow of the sunset,<br>
+        its color looked even gentler<br>
+        than in the morning.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="text">
+        Ruu waved<br>
+        and thought to himself:
+      </p>
+      <p class="wish">I hope I get to see you again tomorrow.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Scene 9→10: No divider — smooth ending -->
+
+<!-- ════════════ Scene 10: The End ════════════ -->
+<section class="scene sky-evening">
+  <div class="scene-inner">
+    <div class="scene-content" data-sfx="train-3">
+      <p class="text">
+        The <span class="lav">lavender train</span><br>
+        rumbled softly through the town,<br>
+        <span class="ono">clackety-clack</span>,<br>
+        and disappeared<br>
+        into the distance.
+      </p>
+    </div>
+    <div class="scene-content">
+      <p class="deco-dots">&middot; &middot; &middot;</p>
+      <p class="text em-light">— The End —</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  <a href="en.html">Read standard version</a>
+  <a href="../index.html">Back to stories</a>
+</div>
+
+<script>
+/* ── Audio Engine (HTMLAudioElement-based) ── */
+var audio = {
+  enabled: false,
+  muted: false,
+  samples: {},
+  bgm: null,
+  playedSfx: {},
+
+  init: function() {
+    this.samples.clack = new Audio('audio/clack.mp3');
+    this.samples.bell = new Audio('audio/bell.mp3');
+    this.samples.chime = new Audio('audio/chime.mp3');
+    this.bgm = new Audio('audio/bgm.mp3');
+    this.bgm.loop = true;
+    this.bgm.volume = 0.35;
+    this.bgm.play();
+    this.enabled = true;
+  },
+
+  playSfx: function(name, delayMs) {
+    if (!this.enabled || this.muted || !this.samples[name]) return;
+    var a = this.samples[name].cloneNode();
+    a.volume = 0.7;
+    if (delayMs) {
+      setTimeout(function() { a.play(); }, delayMs);
+    } else {
+      a.play();
+    }
+  },
+
+  triggerScene: function(id) {
+    if (this.playedSfx[id] || !this.enabled || this.muted) return;
+    this.playedSfx[id] = true;
+    switch (id) {
+      case 'train-1':
+      case 'train-3':
+        this.playSfx('clack');
+        break;
+      case 'bell':
+        this.playSfx('bell');
+        break;
+      case 'kita':
+        this.playSfx('chime');
+        break;
+      case 'train-2':
+        this.playSfx('clack');
+        this.playSfx('clack', 900);
+        break;
+    }
+  },
+
+  toggle: function() {
+    this.muted = !this.muted;
+    if (this.bgm) {
+      this.bgm.volume = this.muted ? 0 : 0.35;
+    }
+  }
+};
+
+/* ── Overlay controls ── */
+function startWithAudio() {
+  audio.init();
+  document.getElementById('audio-overlay').style.display = 'none';
+  document.getElementById('sound-toggle').style.display = 'block';
+}
+
+function startWithoutAudio() {
+  document.getElementById('audio-overlay').style.display = 'none';
+}
+
+function toggleSound() {
+  audio.toggle();
+  var btn = document.getElementById('sound-toggle');
+  btn.classList.toggle('muted', audio.muted);
+  btn.textContent = audio.muted ? '--' : '\u266B';
+}
+
+/* ── Intersection Observer ── */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      var sfx = entry.target.getAttribute('data-sfx');
+      if (sfx) audio.triggerScene(sfx);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.scene-content, .scene-content-pop').forEach(function(el) {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
