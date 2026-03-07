@@ -834,17 +834,17 @@ var audio = {
     var index = 0;
     var bgm = new Audio(candidates[index]);
     bgm.loop = true;
-    bgm.volume = this.muted ? 0 : this.bgmVolume;
+    bgm.volume = this.bgmVolume;
     bgm.addEventListener('error', function() {
       if (index < candidates.length - 1) {
         index += 1;
         bgm.src = candidates[index];
         bgm.load();
-        bgm.play().catch(function() {});
+        if (!audio.muted) bgm.play().catch(function() {});
       }
     });
-    bgm.play().catch(function() {});
     this.bgm = bgm;
+    if (!this.muted) bgm.play().catch(function() {});
   },
 
   init: function() {
@@ -923,7 +923,11 @@ var audio = {
   toggle: function() {
     this.muted = !this.muted;
     if (this.bgm) {
-      this.bgm.volume = this.muted ? 0 : this.bgmVolume;
+      if (this.muted) {
+        this.bgm.pause();
+      } else {
+        this.bgm.play().catch(function() {});
+      }
     }
   }
 };
