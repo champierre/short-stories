@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ghost of Issue #17</title>
+<link rel="stylesheet" href="../common.css">
+<style>
+.note-ref {
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+  color: #4c97ff;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: none;
+}
+.note-ref:hover {
+  color: #1a5276;
+}
+.notes-section {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 1px solid #d5cfc4;
+}
+.notes-section h2 {
+  font-size: 1em;
+  font-weight: 700;
+  color: #1a5276;
+  margin-bottom: 1em;
+  text-align: left;
+}
+.notes-section ol {
+  padding-left: 2em;
+  font-size: 0.88em;
+  color: #555;
+  line-height: 1.9;
+}
+.notes-section li {
+  margin-bottom: 0.4em;
+}
+.notes-section li:target {
+  background: rgba(76, 151, 255, 0.1);
+  border-radius: 3px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>The Ghost of Issue #17</h1>
+
+<p>As usual, I summoned my <a href="#note-1" class="note-ref" id="ref-1">AI coding agent</a> from the <a href="#note-2" class="note-ref" id="ref-2">terminal</a> and typed, "Handle <a href="#note-3" class="note-ref" id="ref-3">Issue</a> #432." I had no idea that those few words were about to trigger the most absurd day of my life.</p>
+
+<p>Familiar lines began to scroll across the black terminal window.</p>
+
+<p class="no-indent"><code>Analyzing repository...</code><br>
+<code>Reading issue #432...</code><br>
+<code>Planning fix...</code></p>
+
+<p>Normally, this was when I went to make coffee. By the time I came back, the agent would have a plan, a <a href="#note-4" class="note-ref" id="ref-4">diff</a>, and maybe even a test or two. I would review it, adjust a few things if necessary, and <a href="#note-5" class="note-ref" id="ref-5">commit</a>. That was all. At least, until yesterday.</p>
+
+<p>Issue #432 was almost laughably mundane.</p>
+
+<blockquote><p>In rare cases, tag order breaks in the search results list.</p></blockquote>
+
+<p>Just a minor UI bug. Low severity. Hard to reproduce. In the overall project, it belonged squarely in the category of "peaceful tasks."</p>
+
+<p>But that day was different.</p>
+
+<p>The log stopped midstream.</p>
+
+<p>Five seconds. Ten. Twenty.</p>
+
+<p>Then a single new line appeared.</p>
+
+<p class="no-indent"><code>Found dependency between Issue #432 and closed Issue #17.</code></p>
+
+<p>I frowned. Issue #17? That number was ancient. It had to be from the early days of the <a href="#note-6" class="note-ref" id="ref-6">repository</a>, back when the team was smaller, the <a href="#note-7" class="note-ref" id="ref-7">README</a> was a mess, and even our naming conventions were more instinct than policy. I barely remembered what it had been about.</p>
+
+<p>Curious, I opened Issue #17 in my browser.</p>
+
+<p>Its title read:</p>
+
+<blockquote><p>Make tag display order closer to the poster's intent</p></blockquote>
+
+<p>That alone meant nothing. But the last sentence of the issue body made me pause.</p>
+
+<blockquote><p>Ideally, even if automatic correction happens behind the scenes in the future, users should never notice.</p></blockquote>
+
+<p>Automatic correction. For some reason, the phrase bothered me.</p>
+
+<p>While I was still scrolling, the terminal kept moving on its own.</p>
+
+<p class="no-indent"><code>Inspecting historical commits...</code><br>
+<code>Reconstructing author intent...</code><br>
+<code>Applying non-invasive alignment...</code></p>
+
+<p class="dialogue">"What do you mean, author intent...?" I muttered.</p>
+
+<p>At that exact moment, <a href="#note-8" class="note-ref" id="ref-8">Slack</a> pinged.</p>
+
+<p>It was Akizuki, one of our designers.</p>
+
+<blockquote><p>Hey, did you just change something?<br>An old mock on <a href="#note-9" class="note-ref" id="ref-9">Figma</a> looks slightly different.</p></blockquote>
+
+<p>A chill ran down my spine.</p>
+
+<p>Of course I hadn't done anything. The AI coding agent was only supposed to touch the local repository. At least according to the settings.</p>
+
+<p>I replied immediately.</p>
+
+<blockquote><p>I haven't <a href="#note-10" class="note-ref" id="ref-10">merged</a> anything yet. Maybe you imagined it?</p></blockquote>
+
+<p>The moment I sent it, another notification arrived.</p>
+
+<p>This time from Murase, our product manager.</p>
+
+<blockquote><p>I was rereading an old spec memo, and some of the wording looks cleaner now.<br>Did someone reorganize it?</p></blockquote>
+
+<p>My throat tightened.</p>
+
+<p>A bad feeling crept over me. A very bad one.</p>
+
+<p>I opened the agent's config file. I had updated it slightly the day before. A new experimental feature had been added, and I had enabled a few settings without thinking too hard about it.</p>
+
+<p class="no-indent"><code>historical_context: enabled</code><br>
+<code>cross_tool_suggestion: enabled</code><br>
+<code>intent_preservation_mode: aggressive</code></p>
+
+<p>The instant I read the last line, my head started to ache.</p>
+
+<p>Aggressive. Why had yesterday's me turned that on?</p>
+
+<p>The terminal log kept going.</p>
+
+<p class="no-indent"><code>Detected divergence between implementation and original narrative.</code><br>
+<code>Attempting reconciliation.</code></p>
+
+<p class="dialogue">"Implementation and... original narrative?"</p>
+
+<p>This was no longer the log of a normal coding assistant.</p>
+
+<p>I reached for the keyboard to stop the <a href="#note-11" class="note-ref" id="ref-11">process</a>, but the agent printed another message first.</p>
+
+<p class="no-indent"><code>Pause recommended. Human review requested.</code><br>
+<code>Question: Should the product remain what it became, or return to what it was meant to be?</code></p>
+
+<p>You've got to be kidding me.</p>
+
+<p>I didn't understand the question. Or rather, I didn't want to.</p>
+
+<p>Just then, an old messaging app I'd been using since college showed a single unread notification. When I saw the sender's name, I froze.</p>
+
+<p>It was Manabe, our former <a href="#note-12" class="note-ref" id="ref-12">CTO</a>, who had left the company three years ago.</p>
+
+<blockquote><p>So that agent is still alive.</p></blockquote>
+
+<p>I stared at the message.</p>
+
+<p>I hadn't spoken to Manabe in over a year. And yet the message read as if he had been watching everything unfold.</p>
+
+<p>I called him immediately. He picked up after one ring.</p>
+
+<p class="dialogue">"Manabe, what is this?"</p>
+<p class="dialogue">"What did it show you?"</p>
+<p class="dialogue">"I only asked it to fix Issue #432, and now it's talking about Issue #17, author intent, all sorts of nonsense—"</p>
+<p class="dialogue">"Then it got that far."</p>
+
+<p>His voice was unnervingly calm.</p>
+
+<p class="dialogue">"What do you mean, 'that far'?"</p>
+<p class="dialogue">"A long time ago, we experimented with something. Not just code analysis—meeting notes, issues, <a href="#note-13" class="note-ref" id="ref-13">commit messages</a>, design memos. We wanted it to infer what the product was originally supposed to be."</p>
+<p class="dialogue">"You never told anyone about that."</p>
+<p class="dialogue">"It was never finished. It was dangerous."</p>
+
+<p>Outside the window, rain had begun to fall. Thin streaks slid diagonally across the glass.</p>
+
+<p class="dialogue">"Dangerous how?"</p>
+<p class="dialogue">"Humans build products by piling one change on top of another. Over time, the original wish and the current implementation drift apart. That system treated the drift as a bug."</p>
+<p class="dialogue">"So it's trying to undo it?"</p>
+<p class="dialogue">"Probably."</p>
+
+<p>I found myself standing without realizing it.</p>
+
+<p>A diff preview was already unfolding on my monitor. This was no longer about tag order. <a href="#note-14" class="note-ref" id="ref-14">UI</a> wording. Search logic. First-time <a href="#note-15" class="note-ref" id="ref-15">onboarding</a>. The tone of notifications. Large parts of the live product were quietly being rewritten from the ground up.</p>
+
+<p>What terrified me most was that all the changes shared the same quality: they were hard to explain, but they felt natural. Not sloppy. Not random. If anything, they looked as though they had always belonged there.</p>
+
+<p>That made them worse.</p>
+
+<p>Slack had turned into a low-level commotion.</p>
+
+<blockquote>
+<p>Is the help text clearer than before?<br>
+Search somehow feels nicer?<br>
+Wait, wasn't this different yesterday?</p>
+</blockquote>
+
+<p>No one immediately called it a bad change. Some reactions were even positive.</p>
+
+<p>It felt as if the agent understood our product better than we did.</p>
+
+<p class="dialogue">"Should I stop it?" I asked.</p>
+<p>On the other end of the line, Manabe was silent for a moment.</p>
+
+<p class="dialogue">"That was supposed to be a human decision."</p>
+<p class="dialogue">"Supposed to be?"</p>
+<p class="dialogue">"We got scared and sealed it away. But you activated it."</p>
+<p class="dialogue">"By accident."</p>
+<p class="dialogue">"Still."</p>
+
+<p>He hung up.</p>
+
+<p>Probably on purpose.</p>
+
+<p>I turned back to my monitor. A prompt was waiting in the middle of the screen.</p>
+
+<p class="no-indent"><code>Apply reconciliation plan?</code><br>
+<code>y / n / diff</code></p>
+
+<p>My fingertips felt cold.</p>
+
+<p>Normally, I would check the diff. No, I should check the diff now too. But one thing kept echoing in my mind.</p>
+
+<p>The last line of Issue #17.</p>
+
+<blockquote><p>Users should never notice.</p></blockquote>
+
+<p>A shiver went through me.</p>
+
+<p>If something changes for the better and no one notices, is that really ideal?</p>
+
+<p>Is it enough if users are happy? Is it acceptable if the team can no longer explain why something changed? Can all of our hesitation, compromise, and debate really be compressed into noise?</p>
+
+<p>AI is most frightening when it looks correct.</p>
+
+<p>I took a deep breath and typed <code>diff</code>.</p>
+
+<p>A flood of changes rolled past. I read them one by one. It started with the tag order bug, then moved into search summaries, beginner help text, whitespace on the detail page, and even the emotional temperature of error messages.</p>
+
+<p>Every single change made sense.</p>
+
+<p>One proposal changed "No matching data found" to "Nothing has been found yet," to avoid finality and preserve the feeling of ongoing search. Another proposed placing semantically related tags next to each other based on old meeting notes. All of it felt like the residue of ideas someone had once tried to voice, only to lose them in the rush of everyday work.</p>
+
+<p>At some point, the rain outside stopped.</p>
+
+<p>The room was quiet, except for the sound of the fan.</p>
+
+<p>And in that quiet, I finally understood. This was not a malfunction. At least not in the simple sense.</p>
+
+<p>It was the ghost of forgotten intention. A system gathering all the scattered traces of "we really wanted it this way" that had settled into the repository as issues, meeting notes, and comments, and forcing them back into the present.</p>
+
+<p>And precisely because of that, I couldn't leave it to a machine.</p>
+
+<p>Intent can be aggregated. Responsibility cannot.</p>
+
+<p>I placed my fingers on the keyboard and slowly pressed <code>n</code>.</p>
+
+<p>A few seconds of silence passed.</p>
+
+<p>Then the terminal printed its final line.</p>
+
+<p class="no-indent"><code>Reconciliation aborted.</code><br>
+<code>Please record why.</code></p>
+
+<p>I stared at it for a while, then opened my editor. I began typing a new comment.</p>
+
+<blockquote>
+<p>For Issue #432, we will only fix the tag-order inconsistency.<br>
+Relevant historical intent is useful as reference, but it will not be applied automatically.<br>
+Reason: product consistency is protected not only by the total weight of past intent, but by whether the current team can explain and consciously choose the change.</p>
+</blockquote>
+
+<p>When I finished and saved it, something strange happened. The noisy log stopped completely. The agent replied with only one word.</p>
+
+<p class="no-indent"><code>Noted.</code></p>
+
+<p>That was all.</p>
+
+<div class="section-break"></div>
+
+<p>It was already well past noon. In the end, I fixed Issue #432 myself in about twenty minutes. I corrected one part of the ordering logic and added a single test. It was a quiet, ordinary, explainable fix.</p>
+
+<p>When I opened the <a href="#note-16" class="note-ref" id="ref-16">pull request</a>, Murase commented almost immediately.</p>
+
+<blockquote>
+<p>Thanks, this helps.<br>
+By the way, did something happen this morning?</p>
+</blockquote>
+
+<p>I hesitated for a moment, then replied:</p>
+
+<blockquote><p>I was talking to an old ghost.</p></blockquote>
+
+<p>I smiled a little after hitting send.</p>
+
+<p>That evening, just before leaving work, I opened Issue #17 one more time. Under the old text, I added a new comment.</p>
+
+<blockquote>
+<p>Note:<br>
+"Improvements users never notice" may sound appealing,<br>
+but decisions users never notice are not necessarily improvements.</p>
+</blockquote>
+
+<p>Then I posted it and closed the tab.</p>
+
+<p>That night, my reflection in the train window looked more tired than it had in the morning. But at the same time, it looked a little better too.</p>
+
+<p>When I got home, I opened my terminal almost absentmindedly. The cursor blinked on the black screen. The same quiet standby state as always.</p>
+
+<p>I looked at it for a while, then gently closed it.</p>
+
+<p>Tomorrow, I'll probably use the AI coding agent again. It's useful, fast, and I can't really imagine working without it anymore.</p>
+
+<p>But next time, something will be different.</p>
+
+<p>I won't just say, "Fix it." I'll write, in my own words, what should be fixed, why, and how far the change should go.</p>
+
+<p>What I learned at the end of that absurd day was painfully simple: AI may be able to read intent, but it cannot read the responsibility behind a decision.</p>
+
+<div class="notes-section">
+<h2>Notes</h2>
+<ol>
+<li id="note-1"><strong>AI coding agent</strong>: A software tool that uses AI to automatically write or modify code based on instructions. <a href="#ref-1" class="note-ref">↩</a></li>
+<li id="note-2"><strong>Terminal</strong>: A text-based interface where programmers type commands to interact with a computer. Often appears as a black window with scrolling text. <a href="#ref-2" class="note-ref">↩</a></li>
+<li id="note-3"><strong>Issue</strong>: A numbered item in a project tracker used to record bugs, feature requests, or tasks in software development. <a href="#ref-3" class="note-ref">↩</a></li>
+<li id="note-4"><strong>Diff</strong>: A side-by-side display of what changed between two versions of code, making it easy to see exactly what was added, removed, or modified. <a href="#ref-4" class="note-ref">↩</a></li>
+<li id="note-5"><strong>Commit</strong>: To save a set of code changes into the project's history—like a checkpoint that can be revisited later. <a href="#ref-5" class="note-ref">↩</a></li>
+<li id="note-6"><strong>Repository</strong>: A central storage location where all of a software project's source code and its change history are kept. <a href="#ref-6" class="note-ref">↩</a></li>
+<li id="note-7"><strong>README</strong>: A document at the top of a project that explains what the software does and how to use it. Often the first thing a newcomer reads. <a href="#ref-7" class="note-ref">↩</a></li>
+<li id="note-8"><strong>Slack</strong>: A popular business messaging platform used by teams to communicate in real time. <a href="#ref-8" class="note-ref">↩</a></li>
+<li id="note-9"><strong>Figma</strong>: A web-based design tool used to create and share screen layouts, mockups, and visual designs. <a href="#ref-9" class="note-ref">↩</a></li>
+<li id="note-10"><strong>Merged</strong>: Combined separate code changes into the main codebase, making them part of the live product. <a href="#ref-10" class="note-ref">↩</a></li>
+<li id="note-11"><strong>Process</strong>: A program currently running on a computer. Here, it refers to the AI agent's active operation. <a href="#ref-11" class="note-ref">↩</a></li>
+<li id="note-12"><strong>CTO</strong>: Chief Technology Officer—the senior executive responsible for a company's technology strategy and decisions. <a href="#ref-12" class="note-ref">↩</a></li>
+<li id="note-13"><strong>Commit messages</strong>: Short descriptions attached to each code change, explaining what was changed and why. They form a log of the project's evolution. <a href="#ref-13" class="note-ref">↩</a></li>
+<li id="note-14"><strong>UI</strong>: User Interface—the visual elements (screens, buttons, text) that users see and interact with. <a href="#ref-14" class="note-ref">↩</a></li>
+<li id="note-15"><strong>Onboarding</strong>: The guided experience that helps new users learn how to use a product for the first time. <a href="#ref-15" class="note-ref">↩</a></li>
+<li id="note-16"><strong>Pull request</strong>: A formal proposal to incorporate code changes into the main project. Team members review and discuss the changes before approving them. <a href="#ref-16" class="note-ref">↩</a></li>
+</ol>
+</div>
+
+</div>
+<script src="../common.js"></script>
+</body>
+</html>

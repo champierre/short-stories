@@ -19,3 +19,8 @@
 
 - [HTML版 (Japanese)](queen-sacrifice/index.html)
 - [HTML版 (English)](queen-sacrifice/en.html)
+
+## Issue #17 の亡霊 / The Ghost of Issue #17
+
+- [HTML版 (Japanese)](the-ghost-of-issue-17/index.html)
+- [HTML版 (English)](the-ghost-of-issue-17/en.html)
