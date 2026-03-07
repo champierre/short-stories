@@ -933,6 +933,7 @@ function startWithAudio() {
   btn.style.display = 'block';
   btn.classList.remove('muted');
   btn.textContent = '\u266B';
+  window.scrollTo(0, 0);
 }
 
 function startWithoutAudio() {
@@ -942,6 +943,7 @@ function startWithoutAudio() {
   btn.style.display = 'block';
   btn.classList.add('muted');
   btn.textContent = '--';
+  window.scrollTo(0, 0);
 }
 
 function toggleSound() {
