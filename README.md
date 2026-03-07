@@ -24,3 +24,8 @@
 
 - [HTML版 (Japanese)](the-ghost-of-issue-17/index.html)
 - [HTML版 (English)](the-ghost-of-issue-17/en.html)
+
+## 戦略と氷のあいだ / Between Strategy and Ice
+
+- [HTML版 (Japanese)](between-strategy-and-ice/index.html)
+- [HTML版 (English)](between-strategy-and-ice/en.html)

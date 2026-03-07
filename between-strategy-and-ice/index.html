@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>戦略と氷のあいだ</title>
+<link rel="stylesheet" href="../common.css">
+<style>
+.note-ref {
+  color: #8b6914;
+  cursor: pointer;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+  position: relative;
+}
+.note-ref:hover {
+  color: #6b4f0a;
+  border-bottom-color: #6b4f0a;
+  background: rgba(139, 105, 20, 0.12);
+}
+.notes-guide {
+  text-align: center;
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+.notes-guide-sample {
+  color: #8b6914;
+  border-bottom: 1px dashed #8b6914;
+  background: rgba(139, 105, 20, 0.06);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-size: 0.82em;
+  line-height: 1.6;
+  padding: 10px 14px;
+  border-radius: 6px;
+  width: max-content;
+  max-width: 320px;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  text-indent: 0;
+  font-style: normal;
+  font-weight: 400;
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1e1e2e;
+}
+.tooltip--below {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.tooltip--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: #1e1e2e;
+}
+.tooltip--left {
+  left: 0;
+  transform: none;
+}
+.tooltip--left::after {
+  left: 16px;
+  transform: none;
+}
+.tooltip--right {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.tooltip--right::after {
+  left: auto;
+  right: 16px;
+  transform: none;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>戦略と氷のあいだ</h1>
+
+<p class="notes-guide"><span class="notes-guide-sample">この色の語句</span>にはカーリング用語の注釈があります。<br>ホバーまたはタップで表示されます。</p>
+
+<p>カーリングはこうしようという戦略をたてても、そう投げられないというもどかしさがある。</p>
+
+<p>氷の上に立つたび、葵はそれを思った。頭の中では、<span class="note-ref" data-note="カーリングの的となる同心円のエリア。ストーンをこの中に入れることで得点になる">ハウス</span>の奥にぴたりと止まる理想のラインが何本も引ける。相手の<span class="note-ref" data-note="相手のショットを妨害するために、ハウスの手前に置く防御用のストーン">ガード</span>をかわして、味方の<span class="note-ref" data-note="カーリングで使う約20kgの花崗岩の石。取っ手（ハンドル）が付いている">ストーン</span>を生かし、次の一投まで見越した配置も考えられる。ノートに書けば、たぶん悪くない作戦だ。けれど実際にストーンを持ち、<span class="note-ref" data-note="投球時に足を踏ん張るための足場。ゴム製のブロックが氷に埋め込まれている">ハック</span>を蹴って前に出ると、その「たぶん」は簡単に砕けた。</p>
+
+<p>ほんの少しだけ<span class="note-ref" data-note="ストーンを手から離すタイミング。リリースの瞬間がショットの精度を大きく左右する">リリース</span>が早い。<br>
+ほんの少しだけ回転が強い。<br>
+ほんの少しだけ重い。</p>
+
+<p>そのほんの少しが、氷の上では致命的だった。</p>
+
+<p class="dialogue">「ナイスライン！　まだ伸びる！」</p>
+
+<p><span class="note-ref" data-note="チームの司令塔。ハウス側に立って指示を出し、戦略を組み立てる役割">スキップ</span>の真帆が叫ぶ。葵とペアの汐里が懸命に<span class="note-ref" data-note="ストーンの前の氷をブラシで擦ること。摩擦熱で氷を溶かし、ストーンの速度や曲がり具合を調整する">スイープ</span>する。けれどストーンは二人の努力を裏切るように、狙った場所を半メートル外れて止まった。完全な失投ではない。試合を壊すほどでもない。けれど、狙い通りでもない。その半端さが、いちばん苦しかった。</p>
+
+<p class="dialogue">「ごめん」</p>
+
+<p><span class="note-ref" data-note="カーリングの試合の単位。両チームが交互に8投ずつ投げて1エンドが終わる。通常の試合は8〜10エンドで行われる">エンド</span>が終わるたび、葵は小さく言った。</p>
+
+<p>真帆は怒らなかった。いつも「次いこう」とだけ言った。汐里も、「さっきよりよかった」と笑った。優しさなのはわかっている。でも、優しい言葉はときどき、失敗そのものより胸に刺さることがあった。自分だけが、自分の未熟さをはっきり見ている気がした。</p>
+
+<p>高校二年の冬だった。カーリング部は創部四年目で、まだ強豪とは呼べなかった。それでも今年は地区予選を抜け、初めて県大会のベスト四まで来ていた。あと一つ勝てば、上の大会が見える。そんな場所まで来られたのは、真帆の冷静な判断と、汐里の強いスイープ、それから一年生たちの地道な練習のおかげだった。</p>
+
+<p>葵は、自分がその中で何を支えているのか、ときどきわからなくなった。</p>
+
+<p>作戦会議では誰よりもよく喋る。相手の癖にもよく気づく。<span class="note-ref" data-note="試合中にチームが取れる作戦会議の時間。1試合につき回数と持ち時間が決まっている">タイムアウト</span>中に「ここ、<span class="note-ref" data-note="ストーンをゆっくり滑らせてハウス内の狙った位置に止めるショット">ドロー</span>で一枚作るより、薄く<span class="note-ref" data-note="相手のストーンに当てて弾き出すショット。テイクアウトとも呼ぶ">テイク</span>して次を楽にしたい」と言うと、真帆も「それでいこう」とうなずくことが多い。なのに、いざそのショットを自分が投げる段になると、急に体が遠くなる。考えていた戦略と、自分の手足がつながらなくなる。</p>
+
+<div class="section-break"></div>
+
+<p>県大会準決勝の相手は、去年の優勝校だった。<br>
+四エンド終了で二点ビハインド。まだ十分に追える点差だったが、空気はじわじわと重くなっていた。</p>
+
+<p>五エンド、<span class="note-ref" data-note="そのエンドで最後にストーンを投げる権利を持つこと。最終投で有利な配置を作れるため、大きなアドバンテージになる">後攻</span>。</p>
+
+<p>相手はセンターに厄介なガードを置いてきた。こちらのストーンはハウス手前に一枚、微妙な位置で残っている。ここで葵の一投目。真帆が示したのは、ガードの横を抜けて<span class="note-ref" data-note="ハウスの中心にある小さな円。ここに近いストーンほど有利な位置とされる">ボタン</span>付近に止めるドローだった。通れば形勢は悪くない。むしろ良い形になる。</p>
+
+<p class="dialogue">「速度、いつも通りで。狭いけど、ラインは見えてる」</p>
+<p>真帆が言う。</p>
+<p class="dialogue">「見えてる」</p>
+<p>葵は答えた。</p>
+
+<p>本当に、見えていた。<br>
+問題は、それを投げられるかどうかだった。</p>
+
+<p>しゃがみ込み、ハンドルを握る。呼吸をひとつ。<span class="note-ref" data-note="カーリングの競技場。約45メートルの長さがある氷面">リンク</span>の照明が氷に白く映り、遠くのハウスが少しだけ滲んで見えた。練習で何百回もやった動きなのに、大事な場面ほど、自分の体が借り物みたいになる。</p>
+
+<p>出る。<br>
+滑る。<br>
+離す。</p>
+
+<p>指先を離れた瞬間、わかった。少しだけ重い。</p>
+
+<p class="dialogue">「スイープ！」</p>
+<p>真帆の声。</p>
+
+<p>汐里が走る。もう一人も追う。ブラシの音が鋭く氷を擦る。ストーンはガードを抜けた。だが抜けた先で止まりきらず、奥に流れて相手の好位置の石に当たり、中途半端に弾いて散らした。完全なミスではない。けれど、いちばんやってはいけない崩し方だった。</p>
+
+<p>相手ベンチから小さなどよめきが起きる。<br>
+葵の中で、何かがすっと冷えた。</p>
+
+<p>タイムアウトのとき、真帆は<span class="note-ref" data-note="ハウスの配置を描いて作戦を話し合うための小さなボード">タクティクスボード</span>を見つめながら言った。</p>
+<p class="dialogue">「まだ大丈夫。次で立て直せる」</p>
+<p class="dialogue">「……ごめん」</p>
+<p class="dialogue">「謝らなくていい」</p>
+<p>真帆は顔を上げた。</p>
+<p class="dialogue">「たぶん今、葵は"外したくない"で投げてる」</p>
+
+<p>葵は何も言えなかった。</p>
+
+<p class="dialogue">「"ここに置く"より、"失敗しない"が先に来ると、だいたい少しずれる」</p>
+<p>汐里が、息を弾ませながら言った。</p>
+<p class="dialogue">「でもそれ、わかる。私もそうなる」</p>
+
+<p>慰めではなかった。汐里はただ事実を言っていた。そのことが、逆に葵には苦しかった。</p>
+
+<div class="section-break"></div>
+
+<p>試合は終盤までもつれた。最終エンドを前に、一点差。<br>
+まだ勝てる。<br>
+まだ届く。</p>
+
+<p>最終エンド、こちらが後攻。<br>
+何投かの応酬の末、ハウスの中は混み合った。赤と黄のストーンが重なり、ガードも残っている。最後の一投を前に、こちらは一点負け。二点取れば逆転勝ちだが、簡単ではない。真帆のラストショットの前に、葵の二投目が回ってきた。</p>
+
+<p>求められたのは、右側の薄い隙間を通し、相手の<span class="note-ref" data-note="ハウスの中心（ボタン）に最も近いストーンのこと。得点の基準になる">ナンバーワン</span>を軽く押して、自分たちの石を<span class="note-ref" data-note="ハウスの中心に2番目に近いストーンのこと">ナンバーツー</span>に残すショット。派手ではないが、真帆の最後につなぐための一投だった。</p>
+
+<p class="dialogue">「さっきと違って、これは強くいらない」</p>
+<p>真帆が言う。</p>
+<p class="dialogue">「うん」</p>
+<p class="dialogue">「決めよう、じゃなくて、届けよう」</p>
+<p>その言葉に、葵は少しだけ顔を上げた。</p>
+
+<p>届けよう。</p>
+
+<p>勝つために。挽回するために。ミスを取り返すために。<br>
+そういう大きな言葉ではなく、ただ目の前の一投を、必要な場所へ届ける。</p>
+
+<p>ハックに足をかけたとき、葵は初めて、その日の自分がずっと未来を見すぎていたことに気づいた。勝てるかどうか。失敗したらどうなるか。責められるか。悔やむか。そういうものばかり見て、いま手の中にあるストーンを見ていなかった。</p>
+
+<p>前に出る。<br>
+呼吸に合わせて滑る。<br>
+肘を固めすぎない。<br>
+離す。</p>
+
+<p>ストーンは静かに手を離れた。</p>
+
+<p class="dialogue">「うん、いい！」</p>
+<p>真帆の声が、今度は遠くなかった。</p>
+
+<p>汐里たちがスイープに入る。ラインは生きていた。狭い隙間を抜け、ストーンは相手の石の横腹にやわらかく触れた。コン、と乾いた音がして、相手のナンバーワンが少しだけずれる。こちらの石がその内側に残る。</p>
+
+<p>完璧ではない。<br>
+けれど必要な形だった。</p>
+
+<p>リンクの端で、顧問の先生が小さく拳を握るのが見えた。<br>
+葵はその場で息を吐いた。胸の奥に張っていた糸が、一本だけほどけた気がした。</p>
+
+<p>そのあと真帆が見事なラストショットを決め、チームは二点を奪って逆転した。<br>
+試合終了の握手の列で、相手の選手に「最後、よかったです」と言われたとき、葵はうまく返事ができなかった。ただ「ありがとうございます」と言うので精一杯だった。</p>
+
+<div class="section-break"></div>
+
+<p>控えスペースに戻ると、真帆がペットボトルを投げてよこした。</p>
+<p class="dialogue">「ほら、ナイス」</p>
+<p class="dialogue">「真帆の最後がすごかっただけだよ」</p>
+<p class="dialogue">「その前がなきゃ打てなかった」</p>
+<p>汐里もうなずく。</p>
+<p class="dialogue">「葵、最後だけ顔違った」</p>
+<p class="dialogue">「え」</p>
+<p class="dialogue">「なんか、やっとカーリングしてた」</p>
+
+<p>からかわれているのかと思ったが、二人とも真面目な顔だった。</p>
+
+<p>葵はキャップを開けながら、少し考えた。<br>
+戦略を立てることは好きだ。盤面を読むのも好きだ。正しい形を考えるのも嫌いじゃない。でも、それだけでは足りない。カーリングは将棋のようで、将棋ではない。正解を思いついても、氷の上ではそれを指す手がぶれる。だから苦しい。だから面白いのかもしれなかった。</p>
+
+<p>作戦と技術のあいだには、思っていたよりずっと深い溝がある。<br>
+けれど今日、そこに橋をかける方法を少しだけ知った気がした。</p>
+
+<p>大きな理想を一気に実現しようとしないこと。<br>
+失敗しないために投げるのではなく、必要な場所へ届けること。<br>
+未来の結果ではなく、今の一投に触れていること。</p>
+
+<p>リンクを出ると、外はもう暗かった。冬の空気は痛いほど冷えていたのに、頬だけが妙に熱かった。全国に行けるかどうかなんて、まだわからない。次の試合でまた思い通りに投げられなくなるかもしれない。それでも葵は、前より少しだけ、自分の未熟さを恐れずにいられる気がした。</p>
+
+<p>カーリングはこうしようという戦略をたてても、そう投げられないというもどかしさがある。</p>
+
+<p>でもたぶん、そのもどかしさの先にしか、ほんとうの一投はないのだ。</p>
+
+</div>
+<script src="../common.js"></script>
+<script>
+(function() {
+  var activeTooltip = null;
+  var activeRef = null;
+
+  function removeTooltip() {
+    if (activeTooltip) {
+      activeTooltip.parentNode.removeChild(activeTooltip);
+      activeTooltip = null;
+      activeRef = null;
+    }
+  }
+
+  function showTooltip(ref) {
+    if (activeRef === ref) { removeTooltip(); return; }
+    removeTooltip();
+    var text = ref.getAttribute('data-note');
+    if (!text) return;
+    var tip = document.createElement('span');
+    tip.className = 'tooltip';
+    tip.textContent = text;
+    ref.style.position = 'relative';
+    ref.appendChild(tip);
+    activeTooltip = tip;
+    activeRef = ref;
+    var rect = tip.getBoundingClientRect();
+    if (rect.top < 0) {
+      tip.classList.add('tooltip--below');
+    }
+    if (rect.left < 8) {
+      tip.classList.remove('tooltip--right');
+      tip.classList.add('tooltip--left');
+    } else if (rect.right > window.innerWidth - 8) {
+      tip.classList.remove('tooltip--left');
+      tip.classList.add('tooltip--right');
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    var ref = e.target.closest('.note-ref');
+    if (ref) {
+      e.preventDefault();
+      showTooltip(ref);
+    } else {
+      removeTooltip();
+    }
+  });
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mouseover', function(e) {
+      var ref = e.target.closest('.note-ref');
+      if (ref) showTooltip(ref);
+    });
+    document.addEventListener('mouseout', function(e) {
+      var ref = e.target.closest('.note-ref');
+      if (ref && !ref.contains(e.relatedTarget)) removeTooltip();
+    });
+  }
+})();
+</script>
+</body>
+</html>
