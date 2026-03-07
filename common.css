@@ -135,6 +135,26 @@ code {
   border-radius: 3px;
 }
 
+/* Footer */
+.site-footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #d5cfc4;
+  font-size: 0.85em;
+  color: #888;
+}
+
+.site-footer a {
+  color: #888;
+  border-bottom: 1px dashed #bbb;
+}
+
+.site-footer a:hover {
+  color: #1a5276;
+  border-bottom-color: #1a5276;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .container {

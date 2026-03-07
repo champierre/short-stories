@@ -28,5 +28,10 @@
   if (container) {
     container.insertBefore(createNav(), container.firstChild);
     container.appendChild(createNav());
+
+    var footer = document.createElement('footer');
+    footer.className = 'site-footer';
+    footer.innerHTML = '<a href="https://x.com/jishiha" target="_blank" rel="noopener">Junya Ishihara</a>';
+    container.appendChild(footer);
   }
 })();
