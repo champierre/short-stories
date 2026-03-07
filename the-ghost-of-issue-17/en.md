@@ -118,6 +118,8 @@ I stared at the message.
 
 I hadn’t spoken to Manabe in over a year. And yet the message read as if he had been watching everything unfold.
 
+Apparently, before leaving the company, he had forgotten to remove a private notification hook that alerted only him whenever that experimental feature was activated.
+
 I called him immediately. He picked up after one ring.
 
 “Manabe, what is this?”
