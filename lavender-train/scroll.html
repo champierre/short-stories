@@ -154,6 +154,39 @@ p.dialogue {
   font-size: 1.8em;
 }
 
+.sfx-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  vertical-align: middle;
+}
+
+.sfx-btn {
+  width: 1.85em;
+  height: 1.85em;
+  border: 2px solid #b8a8d0;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #9B8EC0;
+  font-size: 0.86em;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .12s ease, opacity .12s ease;
+}
+
+.sfx-btn:hover { opacity: 0.8; transform: scale(1.06); }
+.sfx-btn:active { transform: scale(0.96); }
+.sfx-btn:focus-visible {
+  outline: 2px solid #9B8EC0;
+  outline-offset: 2px;
+}
+
 .highlight-kita {
   font-size: 3.5em;
   font-weight: 900;
@@ -170,6 +203,30 @@ p.dialogue {
   color: #9B8EC0;
   margin: 20px 0;
   line-height: 1.8;
+}
+
+.kid-drawing-card {
+  margin: 14px 0 20px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 2px dashed #cdbfdf;
+  background: rgba(255,255,255,0.72);
+}
+
+.kid-drawing-card svg {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  height: auto;
+}
+
+.kid-drawing-caption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 0.86em;
+  color: #7d6f99;
+  letter-spacing: 0.04em;
 }
 
 /* ── Track divider ── */
@@ -454,7 +511,7 @@ p.dialogue {
       <p class="text">
         おうちのちかくのふみきりを、<br>
         いろんなでんしゃが、<br>
-        <span class="ono">ガタンゴトン</span><br>
+        <span class="sfx-inline"><span class="ono">ガタンゴトン</span><button type="button" class="sfx-btn" onclick="playSfxFromButton('train-1', event)" aria-label="ガタンゴトンの音をならす">&#9835;</button></span><br>
         とおっていきます。
       </p>
     </div>
@@ -507,7 +564,7 @@ p.dialogue {
       </p>
     </div>
     <div class="scene-content" data-sfx="bell">
-      <p class="ono ono-warn">カンカンカン</p>
+      <p class="ono ono-warn"><span class="sfx-inline"><span>カンカンカン</span><button type="button" class="sfx-btn" onclick="playSfxFromButton('bell', event)" aria-label="ふみきりの音をならす">&#9835;</button></span></p>
       <p class="text">
         おとがして、<br>
         しゃだんきがゆっくりおりました。
@@ -587,7 +644,7 @@ p.dialogue {
     <div class="scene-content" data-sfx="train-2">
       <p class="text">
         <span class="lav">ラベンダーいろのでんしゃ</span>は、<br>
-        <span class="ono">ガタンゴトン、ガタンゴトン</span><br>
+        <span class="sfx-inline"><span class="ono">ガタンゴトン、ガタンゴトン</span><button type="button" class="sfx-btn" onclick="playSfxFromButton('train-2', event)" aria-label="ガタンゴトンの音をならす">&#9835;</button></span><br>
         るうくんのまえをとおっていきました。
       </p>
       <p class="text">
@@ -680,6 +737,25 @@ p.dialogue {
       </p>
     </div>
     <div class="scene-content">
+      <div class="kid-drawing-card">
+        <svg viewBox="0 0 380 210" role="img" aria-label="るうくんがかいたラベンダーいろのでんしゃのえ">
+          <rect x="8" y="8" width="364" height="194" rx="10" fill="#f8f3ff" stroke="#d8c6ee" stroke-width="3"/>
+          <circle cx="52" cy="42" r="12" fill="#ffd66b" stroke="#f0b95e" stroke-width="3"/>
+          <path d="M88 142 L290 142 L312 122 L324 122 L324 160 L88 160 Z" fill="#b69ed9" stroke="#8f74be" stroke-width="5" stroke-linejoin="round"/>
+          <rect x="112" y="116" width="28" height="20" rx="3" fill="#e7f7ff" stroke="#8f74be" stroke-width="3"/>
+          <rect x="148" y="116" width="28" height="20" rx="3" fill="#e7f7ff" stroke="#8f74be" stroke-width="3"/>
+          <rect x="184" y="116" width="28" height="20" rx="3" fill="#e7f7ff" stroke="#8f74be" stroke-width="3"/>
+          <rect x="220" y="116" width="28" height="20" rx="3" fill="#e7f7ff" stroke="#8f74be" stroke-width="3"/>
+          <circle cx="126" cy="168" r="12" fill="#5c4c7a"/>
+          <circle cx="254" cy="168" r="12" fill="#5c4c7a"/>
+          <path d="M70 174 L332 174" stroke="#9d8db9" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="60" cy="154" r="13" fill="#ffd7bf" stroke="#e0a98b" stroke-width="3"/>
+          <path d="M45 171 L60 160 L75 171" fill="none" stroke="#de8ba0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M43 147 L34 154 M77 147 L86 154" stroke="#de8ba0" stroke-width="4" stroke-linecap="round"/>
+          <path d="M48 152 Q60 160 72 152" fill="none" stroke="#7f5b42" stroke-width="2"/>
+        </svg>
+        <p class="kid-drawing-caption">るうくんのえ（ようちえん）</p>
+      </div>
       <p class="dialogue">「できた！」</p>
       <p class="text">
         るうくんのかいたえには、<br>
@@ -744,7 +820,7 @@ p.dialogue {
     <div class="scene-content" data-sfx="train-3">
       <p class="text">
         <span class="lav">ラベンダーいろのでんしゃ</span>は、<br>
-        <span class="ono">ガタンゴトン</span><br>
+        <span class="sfx-inline"><span class="ono">ガタンゴトン</span><button type="button" class="sfx-btn" onclick="playSfxFromButton('train-3', event)" aria-label="ガタンゴトンの音をならす">&#9835;</button></span><br>
         おとをたてて、<br>
         やさしくまちのなかを<br>
         はしっていきました。
@@ -761,6 +837,9 @@ p.dialogue {
 <div class="footer">
   <a href="index.html">つうじょうばんをよむ</a>
   <a href="../index.html">もくじにもどる</a>
+  <p style="margin-top:10px;font-size:12px;opacity:0.72;">
+    音源: <a href="https://otologic.jp/" target="_blank" rel="noopener noreferrer">OtoLogic</a> (CC BY 4.0) / 詳細は audio/CREDITS.md
+  </p>
 </div>
 
 <script>
@@ -768,49 +847,117 @@ p.dialogue {
 var audio = {
   enabled: false,
   muted: false,
-  samples: {},
+  assets: {
+    bgm: ['audio/bgm-otologic.mp3'],
+    train: ['audio/train-pass-otologic.mp3'],
+    bell: ['audio/crossing-bell-otologic.mp3']
+  },
   bgm: null,
   playedSfx: {},
+  bgmVolume: 0.22,
+
+  playFromCandidates: function(candidates, volume, delayMs) {
+    if (!candidates || !candidates.length) return;
+    var attempt = function(index) {
+      if (index >= candidates.length) return;
+      var sample = new Audio(candidates[index]);
+      sample.volume = volume;
+      sample.addEventListener('error', function() {
+        attempt(index + 1);
+      }, { once: true });
+      sample.play().catch(function() {});
+    };
+    if (delayMs) {
+      setTimeout(function() { attempt(0); }, delayMs);
+    } else {
+      attempt(0);
+    }
+  },
+
+  startBgm: function() {
+    var candidates = this.assets.bgm;
+    if (!candidates || !candidates.length) return;
+    var index = 0;
+    var bgm = new Audio(candidates[index]);
+    bgm.loop = true;
+    bgm.volume = this.muted ? 0 : this.bgmVolume;
+    bgm.addEventListener('error', function() {
+      if (index < candidates.length - 1) {
+        index += 1;
+        bgm.src = candidates[index];
+        bgm.load();
+        bgm.play().catch(function() {});
+      }
+    });
+    bgm.play().catch(function() {});
+    this.bgm = bgm;
+  },
 
   init: function() {
-    this.samples.clack = new Audio('audio/clack.mp3');
-    this.samples.bell = new Audio('audio/bell.mp3');
-    this.samples.chime = new Audio('audio/chime.mp3');
-    this.bgm = new Audio('audio/bgm.mp3');
-    this.bgm.loop = true;
-    this.bgm.volume = 0.35;
-    this.bgm.play();
+    this.startBgm();
     this.enabled = true;
   },
 
   playSfx: function(name, delayMs) {
-    if (!this.enabled || this.muted || !this.samples[name]) return;
-    var a = this.samples[name].cloneNode();
-    a.volume = 0.7;
+    if (!this.enabled || this.muted) return;
+    var candidates = this.assets[name];
+    var volume = name === 'train' ? 0.38 : 0.7;
+    if (name === 'train') {
+      this.playTrainSfx(candidates, volume, delayMs);
+      return;
+    }
+    this.playFromCandidates(candidates, volume, delayMs);
+  },
+
+  playTrainSfx: function(candidates, volume, delayMs) {
+    if (!candidates || !candidates.length) return;
+    var attempt = function(index) {
+      if (index >= candidates.length) return;
+      var sample = new Audio(candidates[index]);
+      sample.volume = volume;
+      sample.addEventListener('error', function() {
+        attempt(index + 1);
+      }, { once: true });
+      sample.play().then(function() {
+        // Train SFX should be short; fade out quickly to avoid masking BGM.
+        setTimeout(function() {
+          var fade = setInterval(function() {
+            if (sample.volume <= 0.04) {
+              clearInterval(fade);
+              sample.pause();
+              sample.currentTime = 0;
+              return;
+            }
+            sample.volume = Math.max(0, sample.volume - 0.06);
+          }, 90);
+        }, 5400);
+      }).catch(function() {});
+    };
     if (delayMs) {
-      setTimeout(function() { a.play(); }, delayMs);
+      setTimeout(function() { attempt(0); }, delayMs);
     } else {
-      a.play();
+      attempt(0);
     }
   },
 
-  triggerScene: function(id) {
-    if (this.playedSfx[id] || !this.enabled || this.muted) return;
-    this.playedSfx[id] = true;
+  triggerScene: function(id, force) {
+    if (!this.enabled || this.muted) return;
+    if (!force && this.playedSfx[id]) return;
+    if (!force) this.playedSfx[id] = true;
     switch (id) {
       case 'train-1':
       case 'train-3':
-        this.playSfx('clack');
+        this.playSfx('train');
         break;
       case 'bell':
         this.playSfx('bell');
         break;
       case 'kita':
-        this.playSfx('chime');
+        // Keep this scene silent by request.
         break;
       case 'train-2':
-        this.playSfx('clack');
-        this.playSfx('clack', 900);
+        this.playSfx('train');
+        this.playSfx('train', 800);
         break;
     }
   },
@@ -818,7 +965,7 @@ var audio = {
   toggle: function() {
     this.muted = !this.muted;
     if (this.bgm) {
-      this.bgm.volume = this.muted ? 0 : 0.35;
+      this.bgm.volume = this.muted ? 0 : this.bgmVolume;
     }
   }
 };
@@ -826,19 +973,47 @@ var audio = {
 /* ── Overlay controls ── */
 function startWithAudio() {
   audio.init();
+  audio.muted = false;
   document.getElementById('audio-overlay').style.display = 'none';
-  document.getElementById('sound-toggle').style.display = 'block';
+  var btn = document.getElementById('sound-toggle');
+  btn.style.display = 'block';
+  btn.classList.remove('muted');
+  btn.textContent = '\u266B';
 }
 
 function startWithoutAudio() {
   document.getElementById('audio-overlay').style.display = 'none';
+  audio.muted = true;
+  var btn = document.getElementById('sound-toggle');
+  btn.style.display = 'block';
+  btn.classList.add('muted');
+  btn.textContent = '--';
 }
 
 function toggleSound() {
+  if (!audio.enabled) {
+    audio.init();
+  }
   audio.toggle();
   var btn = document.getElementById('sound-toggle');
   btn.classList.toggle('muted', audio.muted);
   btn.textContent = audio.muted ? '--' : '\u266B';
+}
+
+function playSfxFromButton(id, event) {
+  if (event) event.stopPropagation();
+  if (!audio.enabled) {
+    audio.init();
+    document.getElementById('audio-overlay').style.display = 'none';
+    document.getElementById('sound-toggle').style.display = 'block';
+  }
+  if (audio.muted) {
+    audio.toggle();
+    var btn = document.getElementById('sound-toggle');
+    btn.classList.remove('muted');
+    btn.textContent = '\u266B';
+  }
+  audio.triggerScene(id, true);
 }
 
 /* ── Intersection Observer ── */
