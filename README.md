@@ -29,3 +29,14 @@
 
 - [HTML版 (Japanese)](between-strategy-and-ice/index.html)
 - [HTML版 (English)](between-strategy-and-ice/en.html)
+
+## スペランカー / Spelunker
+
+- [HTML版 (Japanese)](spelunker/index.html)
+- [HTML版 (English)](spelunker/en.html)
+
+## ラベンダーいろのでんしゃ / The Lavender Train
+
+- [HTML版 (Japanese)](lavender-train/index.html)
+- [原稿 (Japanese)](lavender-train/ja.md)
+- [English version](lavender-train/en.md)
