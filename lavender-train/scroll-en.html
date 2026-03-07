@@ -825,43 +825,58 @@ var audio = {
     if (this.mode === 'webaudio' && this.ctx) { this.ctx.resume(); this.enabled = true; return; }
     if (this.mode === 'html') { this.enabled = true; return; }
     var self = this;
-    /* Try Web Audio API via XHR first */
-    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    /* Create AudioContext and play a silent buffer to activate it on iOS */
+    try {
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    } catch(e) {
+      this.mode = 'html'; this.initHTML(); this.enabled = true; return;
+    }
     this.ctx.resume();
+    var silent = this.ctx.createBuffer(1, 1, 22050);
+    var warmup = this.ctx.createBufferSource();
+    warmup.buffer = silent;
+    warmup.connect(this.ctx.destination);
+    warmup.start(0);
+
+    /* Try loading first file via XHR to detect file:// CORS */
     var names = Object.keys(this.files);
     var firstXhr = new XMLHttpRequest();
     firstXhr.open('GET', this.files[names[0]], true);
     firstXhr.responseType = 'arraybuffer';
     firstXhr.onload = function() {
-      /* XHR succeeded → use Web Audio API for all files */
       self.mode = 'webaudio';
-      self.ctx.decodeAudioData(firstXhr.response, function(decoded) {
-        self.buffers[names[0]] = decoded;
-        if (names[0] === 'bgm' && !self.muted && !self.bgmSource) self.startBgmWA();
-      });
+      self.loadBufferWA(names[0], firstXhr.response);
       for (var i = 1; i < names.length; i++) {
-        (function(name) {
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET', self.files[name], true);
-          xhr.responseType = 'arraybuffer';
-          xhr.onload = function() {
-            self.ctx.decodeAudioData(xhr.response, function(decoded) {
-              self.buffers[name] = decoded;
-              if (name === 'bgm' && !self.muted && !self.bgmSource) self.startBgmWA();
-            });
-          };
-          xhr.send();
-        })(names[i]);
+        self.fetchAndDecode(names[i]);
       }
     };
     firstXhr.onerror = function() {
-      /* XHR blocked (file:// CORS) → fall back to HTMLAudioElement */
       self.mode = 'html';
       self.ctx = null;
       self.initHTML();
     };
     firstXhr.send();
     this.enabled = true;
+  },
+
+  loadBufferWA: function(name, arrayBuf) {
+    var self = this;
+    this.ctx.decodeAudioData(arrayBuf,
+      function(decoded) {
+        self.buffers[name] = decoded;
+        if (name === 'bgm' && !self.muted && !self.bgmSource) self.startBgmWA();
+      },
+      function() { /* decode failed — this sound simply won't play via WA */ }
+    );
+  },
+
+  fetchAndDecode: function(name) {
+    var self = this;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', this.files[name], true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function() { self.loadBufferWA(name, xhr.response); };
+    xhr.send();
   },
 
   /* ── Web Audio API path ── */
