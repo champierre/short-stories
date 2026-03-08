@@ -143,6 +143,15 @@ code {
   border-top: 1px solid #d5cfc4;
 }
 
+.share-buttons--top {
+  margin-top: 0;
+  margin-bottom: 32px;
+  padding-top: 0;
+  padding-bottom: 24px;
+  border-top: none;
+  border-bottom: 1px solid #d5cfc4;
+}
+
 .share-buttons-label {
   font-size: 0.85em;
   color: #888;

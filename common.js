@@ -38,9 +38,7 @@
       ? encodeURIComponent(document.title + '\n' + pageDesc)
       : pageTitle;
 
-    var shareDiv = document.createElement('div');
-    shareDiv.className = 'share-buttons';
-    shareDiv.innerHTML =
+    var shareBtnHtml =
       '<p class="share-buttons-label">' + shareLabel + '</p>' +
       '<div class="share-buttons-list">' +
         '<a class="share-btn share-btn--x" href="https://x.com/intent/tweet?url=' + pageUrl + '&text=' + shareText + '" target="_blank" rel="noopener" aria-label="Share on X">' +
@@ -56,7 +54,19 @@
           '<svg viewBox="0 0 24 24"><path d="M20.47 0C22.42 0 24 1.58 24 3.53v16.94c0 1.95-1.58 3.53-3.53 3.53H3.53C1.58 24 0 22.42 0 20.47V3.53C0 1.58 1.58 0 3.53 0h16.94zm-3.705 14.47c-.78 0-1.41.63-1.41 1.41s.63 1.414 1.41 1.414 1.41-.634 1.41-1.414-.63-1.41-1.41-1.41zm.255-9.036h-2.37v8.595h2.37V5.434zM13.22 5.44H8.665v2.25h1.77v6.705H8.665v2.25h6.09v-2.25h-1.535V5.44z"/></svg>' +
         '</a>' +
       '</div>';
-    container.appendChild(shareDiv);
+
+    var shareTop = document.createElement('div');
+    shareTop.className = 'share-buttons share-buttons--top';
+    shareTop.innerHTML = shareBtnHtml;
+    var firstNav = container.querySelector('.story-nav');
+    if (firstNav && firstNav.nextSibling) {
+      container.insertBefore(shareTop, firstNav.nextSibling);
+    }
+
+    var shareBottom = document.createElement('div');
+    shareBottom.className = 'share-buttons';
+    shareBottom.innerHTML = shareBtnHtml;
+    container.appendChild(shareBottom);
 
     var footer = document.createElement('footer');
     footer.className = 'site-footer';
