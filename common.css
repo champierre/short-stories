@@ -135,6 +135,59 @@ code {
   border-radius: 3px;
 }
 
+/* Share buttons */
+.share-buttons {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #d5cfc4;
+}
+
+.share-buttons-label {
+  font-size: 0.85em;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.share-buttons-list {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.share-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.1);
+  color: #fff;
+  border-bottom: none;
+}
+
+.share-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.share-btn--x        { background: #000; }
+.share-btn--facebook { background: #1877f2; }
+.share-btn--line     { background: #06c755; }
+.share-btn--hatena   { background: #00a4de; }
+
 /* Footer */
 .site-footer {
   text-align: center;
