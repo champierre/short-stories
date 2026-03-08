@@ -31,7 +31,7 @@
 
     var footer = document.createElement('footer');
     footer.className = 'site-footer';
-    footer.innerHTML = '<a href="https://x.com/jishiha" target="_blank" rel="noopener">Junya Ishihara</a>';
+    footer.innerHTML = '<a href="https://x.com/jishiha" target="_blank" rel="noopener">Junya Ishihara</a> — authored with generative AI';
     container.appendChild(footer);
   }
 })();
