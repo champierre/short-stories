@@ -403,6 +403,52 @@ p.dialogue {
   background: rgba(255,255,255,0.8);
 }
 
+/* ── Scroll hint ── */
+#scroll-hint {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #9B8EC0;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 0.85em;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  text-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+
+#scroll-hint.shown {
+  display: flex;
+  opacity: 1;
+  animation: scrollHintBounce 1.8s ease-in-out infinite;
+}
+
+#scroll-hint.hidden {
+  opacity: 0;
+}
+
+#scroll-hint .arrow {
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+@keyframes scrollHintBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(10px); }
+}
+
+@media (max-width: 600px) {
+  #scroll-hint { bottom: 18px; font-size: 0.8em; }
+}
+
 /* ── Sound toggle ── */
 #sound-toggle {
   display: none;
@@ -447,6 +493,11 @@ p.dialogue {
 </div>
 
 <button id="sound-toggle" onclick="toggleSound()">&#9835;</button>
+
+<div id="scroll-hint" aria-hidden="true">
+  <span>つづきをよむ</span>
+  <span class="arrow">&#9660;</span>
+</div>
 
 <nav class="top-nav">
   <a href="index.html">つうじょうばんをよむ</a>
@@ -945,6 +996,7 @@ function startWithAudio() {
   btn.classList.remove('muted');
   btn.textContent = '\u266B';
   window.scrollTo(0, 0);
+  showScrollHint();
 }
 
 function startWithoutAudio() {
@@ -955,7 +1007,20 @@ function startWithoutAudio() {
   btn.classList.add('muted');
   btn.textContent = '--';
   window.scrollTo(0, 0);
+  showScrollHint();
 }
+
+function showScrollHint() {
+  var hint = document.getElementById('scroll-hint');
+  if (hint) hint.classList.add('shown');
+}
+
+window.addEventListener('scroll', function() {
+  var hint = document.getElementById('scroll-hint');
+  if (hint && hint.classList.contains('shown') && window.scrollY > 40) {
+    hint.classList.add('hidden');
+  }
+}, { passive: true });
 
 function toggleSound() {
   if (!audio.enabled) {
