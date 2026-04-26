@@ -406,14 +406,20 @@ p.dialogue {
 /* ── Scroll hint ── */
 #scroll-hint {
   position: fixed;
-  bottom: 24px;
+  bottom: 28px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 90;
   display: none;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
+  padding: 8px 18px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px rgba(155, 142, 192, 0.18);
   color: #9B8EC0;
   font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 0.85em;
@@ -422,7 +428,6 @@ p.dialogue {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.6s ease;
-  text-shadow: 0 0 12px rgba(255,255,255,0.9);
 }
 
 #scroll-hint.shown {
@@ -436,17 +441,22 @@ p.dialogue {
 }
 
 #scroll-hint .arrow {
-  font-size: 1.5em;
+  font-size: 1.3em;
   line-height: 1;
 }
 
 @keyframes scrollHintBounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%      { transform: translateX(-50%) translateY(10px); }
+  50%      { transform: translateX(-50%) translateY(8px); }
 }
 
 @media (max-width: 600px) {
-  #scroll-hint { bottom: 18px; font-size: 0.8em; }
+  #scroll-hint {
+    bottom: 22px;
+    font-size: 0.78em;
+    padding: 6px 14px 5px;
+  }
+  #scroll-hint .arrow { font-size: 1.15em; }
 }
 
 /* ── Sound toggle ── */
